@@ -45,11 +45,13 @@
   },
   "include": [
     "src/**/*.ts",
+    "src/**/tests/*.testplane.js",
     "src/**/*.tsx",
     "src/settings/**/*.d.ts",
     ".storybook/**/*.ts",
     ".storybook/**/*.tsx",
-    "testplane.config.ts"
+    "testplane.config.cts",
+    "vite.config.ts"
   ],
   "exclude": ["node_modules", "eslint.config.js", "prettier.config.js", "stylelint.config.js"]
 }
