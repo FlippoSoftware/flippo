@@ -1,7 +1,7 @@
 import type Surreal from 'surrealdb';
 
 import { createMutation, createQuery } from '@farfetched/core';
-import { $db } from '@settings/surreal';
+import { $db, SurrealError } from '@settings/surreal';
 import { createFormInput } from '@shared/factories';
 import { displayRequestError, displayRequestSuccess, type TTranslationOptions } from '@widgets/ToastNotification';
 import { createEffect, createEvent, createStore, sample, type StoreWritable } from 'effector';
@@ -9,17 +9,21 @@ import { and, not, reset } from 'patronum';
 import { z } from 'zod';
 
 const $modalRef = createStore<HTMLDialogElement | null>(null);
-export const modalRefChanged = createEvent<HTMLDialogElement>();
+export const modalRefChanged = createEvent<HTMLDialogElement | null>();
 
-const NameSchema = z.string().min(1, 'empty');
+const NameSchema = z.string().trim().min(1, 'empty');
 export const input = createFormInput('name', '', NameSchema);
 
 export const createFolder = createEvent();
 export const closeModal = createEvent();
-const closeModalFx = createEffect<HTMLDialogElement | null, void>((ref) => ref?.close());
+const closeModalFx = createEffect<HTMLDialogElement | null, void>((ref) => {
+  if (ref) ref.close();
+});
 
 const countDuplicateMut = createQuery<[{ db: Surreal; name: string }], number>({
   handler: async ({ db, name }) => {
+    if (!(await db.info())?.id) throw SurrealError.DatabaseUnauthorized();
+
     const [result] = await db.query<[{ count: number }]>(
       /* surql */ `
         SELECT count() as count FROM folder WHERE $auth.id = author 
@@ -37,11 +41,13 @@ const countDuplicateMut = createQuery<[{ db: Surreal; name: string }], number>({
 
 const createFolderMut = createMutation<{ db: Surreal; name: string }, void>({
   handler: async ({ db, name }) => {
+    if (!(await db.info())?.id) throw SurrealError.DatabaseUnauthorized();
+
     await db.query(
       /*surql */ `
         CREATE folder CONTENT {
           name: string::trim($name)
-s        }
+        }
       `,
       {
         name
@@ -56,11 +62,14 @@ export const $creationInProgress = and(countDuplicateMut.$pending, createFolderM
 $modalRef.on(modalRefChanged, (_, ref) => ref);
 
 // Reset model
-reset({ clock: closeModal, target: [input.$nameInput, input.$nameInputError, input.$nameInputRef, $modalRef] });
-sample({ clock: closeModal, target: [countDuplicateMut.reset, createFolderMut.reset] });
+reset({
+  clock: closeModalFx.finally,
+  target: [input.$nameInput, input.$nameInputError]
+});
+sample({ clock: closeModalFx.finally, target: [countDuplicateMut.reset, createFolderMut.reset] });
 
 // Close modal
-sample({ clock: closeModal, source: $modalRef, filter: (ref) => !!ref, target: closeModalFx });
+sample({ clock: closeModal, source: $modalRef, target: closeModalFx });
 
 // Checking the entered name
 sample({
