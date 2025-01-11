@@ -1,6 +1,5 @@
 'use client';
 
-import { useClickOutside } from '@shared/hooks';
 import clsx from 'clsx';
 import { type ForwardedRef, forwardRef, useImperativeHandle, useRef } from 'react';
 
@@ -12,10 +11,9 @@ function Dialog(props: TDialogProps, ref: ForwardedRef<HTMLDialogElement>) {
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   useImperativeHandle(ref, () => dialogRef.current as HTMLDialogElement);
-  useClickOutside(dialogRef, () => dialogRef.current?.close());
 
   return (
-    <dialog className={clsx(st.dialog, className)} ref={ref} {...otherProps}>
+    <dialog className={clsx(st.dialog, className)} ref={dialogRef} {...otherProps}>
       {children}
     </dialog>
   );
