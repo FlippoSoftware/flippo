@@ -3,6 +3,7 @@ import { AddIcon, ExploreIcon, FolderIcon, HomeIcon, InterestsIcon, Notification
 import { Button, IconButton } from '@shared/ui/Button';
 import { NavigationLink } from '@shared/ui/Link';
 import { Separator } from '@shared/ui/Separator';
+import NewFolderModal from '@widgets/Modal/NewFolderModal';
 import { Link } from 'atomic-router-react';
 import { useTranslation } from 'react-i18next';
 
@@ -11,8 +12,18 @@ import { useHeader } from '../vm/useHeader';
 import st from './Header.module.scss';
 
 function Header() {
-  const { currentLanguage, folders, onLanguageSwitch, onLogout, onToAuth, onToSettings, recent, sessionForHeader } =
-    useHeader();
+  const {
+    currentLanguage,
+    folders,
+    newFolderModalRef,
+    onLanguageSwitch,
+    onLogout,
+    onOpenNewFolderModal,
+    onToAuth,
+    onToSettings,
+    recent,
+    sessionForHeader
+  } = useHeader();
   const { t } = useTranslation('header');
 
   return (
@@ -57,9 +68,10 @@ function Header() {
             <section aria-labelledby={'your-folders-header'} className={st.folderSection}>
               <div>
                 <h3 id={'your-folders-header'}>{t('yourFolders')}</h3>
-                <IconButton aria-label={'Add folder'} size={'small'} variant={'label'}>
+                <IconButton aria-label={'Add folder'} onClick={onOpenNewFolderModal} size={'small'} variant={'label'}>
                   <AddIcon />
                 </IconButton>
+                <NewFolderModal ref={newFolderModalRef} />
               </div>
               <ul aria-labelledby={'your-folders-header'}>
                 {folders.map((folder) => (
