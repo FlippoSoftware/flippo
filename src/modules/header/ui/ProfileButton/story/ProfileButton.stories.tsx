@@ -1,6 +1,7 @@
 import { $language, changeLanguageFx } from '@settings/i18next';
 import { type Meta, type StoryObj } from '@storybook/react';
 import { useUnit } from 'effector-react';
+import { type TInternationalizationLocales } from 'src/settings/i18next/i18next.constants';
 
 import { type TProfileButtonProps } from '../types/TProfileButtonProps';
 import { default as ProfileButton } from '../ui/ProfileButton';
@@ -38,7 +39,7 @@ function WithProps() {
       avatar={
         'https://sun2-20.userapi.com/impg/CkWKZcMUKKMbth_9d9NuJuQFjdCmAQwgYs5unw/S_pymG0DSiE.jpg?size=1055x1280&quality=95&sign=63fcbb86259de04e38caad096bb671e3&type=album'
       }
-      language={language || 'en'}
+      language={(language as TInternationalizationLocales) || 'en'}
       onLanguageSwitch={onChangeLanguage}
       onLogout={() => console.log('Logout')}
       onSettings={() => console.log('Redirect to Settings')}

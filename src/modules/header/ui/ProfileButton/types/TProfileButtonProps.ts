@@ -1,6 +1,8 @@
+import { type TInternationalizationLocales } from 'src/settings/i18next/i18next.constants';
+
 type TProfileButtonProps = {
   avatar?: string;
-  language: string;
+  language: TInternationalizationLocales;
   onLanguageSwitch: () => void;
   onLogout: () => void;
   onSettings: () => void;
