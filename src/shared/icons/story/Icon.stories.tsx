@@ -12,6 +12,7 @@ export default meta;
 export const AllIcons = {
   render: () => (
     <div className={st.grid}>
+      <Icons.LanguageIcon />
       <Icons.EnIcon />
       <Icons.RuIcon />
       <Icons.GoogleIcon />
@@ -59,6 +60,7 @@ export const AllIcons = {
       <Icons.LinkIcon type={'off'} />
       <Icons.ListIcon type={'order'} />
       <Icons.ListIcon type={'unorder'} />
+      <Icons.LoginIcon />
       <Icons.LogoutIcon />
       <Icons.MoreIcon type={'horizontal'} />
       <Icons.MoreIcon type={'vertical'} />
