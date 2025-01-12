@@ -1,5 +1,14 @@
 import { collectionRoute, communityRoute, mainRoute } from '@settings/routing';
-import { AddIcon, ExploreIcon, FolderIcon, HomeIcon, InterestsIcon, NotificationIcon, SetIcon } from '@shared/icons';
+import {
+  AddIcon,
+  ExploreIcon,
+  FolderIcon,
+  HomeIcon,
+  InterestsIcon,
+  LoginIcon,
+  NotificationIcon,
+  SetIcon
+} from '@shared/icons';
 import { Button, IconButton } from '@shared/ui/Button';
 import { NavigationLink } from '@shared/ui/Link';
 import { Separator } from '@shared/ui/Separator';
@@ -7,6 +16,7 @@ import NewFolderModal from '@widgets/Modal/NewFolderModal';
 import { Link } from 'atomic-router-react';
 import { useTranslation } from 'react-i18next';
 
+import LanguageButton from '../ui/LanguageButton';
 import ProfileButton from '../ui/ProfileButton';
 import { useHeader } from '../vm/useHeader';
 import st from './Header.module.scss';
@@ -102,9 +112,19 @@ function Header() {
             </IconButton>
           </>
         ) : (
-          <Button className={st.signButton} onClick={onToAuth} size={'small'} variant={'outlined'}>
-            {t('signin')}
-          </Button>
+          <>
+            <Button
+              className={st.signButton}
+              iconLeft={<LoginIcon />}
+              onClick={onToAuth}
+              size={'small'}
+              variant={'secondary'}
+            >
+              {t('signin')}
+            </Button>
+            <Separator orientation={'vertical'} spacing={'spacing-8'} />
+            <LanguageButton language={currentLanguage} onLanguageSwitch={onLanguageSwitch} />
+          </>
         )}
       </div>
     </header>

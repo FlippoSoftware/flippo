@@ -2,7 +2,8 @@ import { $language, changeLanguageFx } from '@settings/i18next';
 import { authRoute, settingsRoute } from '@settings/routing';
 import { $session, sessionSignOut } from '@settings/session';
 import { type TFolder, type TSet } from '@shared/schemas';
-import { createEffect, createEvent, restore, sample } from 'effector';
+import { createEffect, createEvent, restore, sample, type Store } from 'effector';
+import { type TInternationalizationLocales } from 'src/settings/i18next/i18next.constants';
 
 import { fetchUserFolders, fetchUserRecent } from '../api';
 
@@ -21,7 +22,7 @@ export const $sessionForHeader = $session.map((store) => {
   };
 });
 
-export const $currentLanguage = $language.map((store) => store || 'en');
+export const $currentLanguage = $language.map((store) => store || 'en') as Store<TInternationalizationLocales>;
 export const languageSwitch = createEvent();
 
 const getFoldersFx = createEffect<string, Pick<TFolder, 'id' | 'name'>[]>(async (userId) => {
