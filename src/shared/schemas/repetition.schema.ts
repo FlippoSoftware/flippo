@@ -1,12 +1,11 @@
+import { RecordId } from 'surrealdb';
 import { z } from 'zod';
 
-import { record } from './record.schema';
-
 const RepetitionSchema = z.object({
-  cards: z.array(record('card')),
-  id: record('repetition'),
-  in: record('user'),
-  out: record('set')
+  cards: z.array(z.instanceof(RecordId<'card'>)),
+  id: z.instanceof(RecordId<'repetition'>),
+  in: z.instanceof(RecordId<'user'>),
+  out: z.instanceof(RecordId<'set'>)
 });
 
 type TRepetition = z.infer<typeof RepetitionSchema>;

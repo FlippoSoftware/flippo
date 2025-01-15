@@ -1,8 +1,7 @@
+import { RecordId } from 'surrealdb';
 import { z } from 'zod';
 
-import { record } from './record.schema';
-
-const SourceType = z.union([record('folder'), record('set')]);
+const SourceType = z.union([z.instanceof(RecordId<'folder'>), z.instanceof(RecordId<'set'>)]);
 type TSourceType = z.infer<typeof SourceType>;
 
 export { SourceType, type TSourceType };

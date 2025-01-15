@@ -1,11 +1,10 @@
+import { RecordId } from 'surrealdb';
 import { z } from 'zod';
 
-import { record } from './record.schema';
-
 const FolderSchema = z.object({
-  author: record('user'),
+  author: z.instanceof(RecordId<'user'>),
   created: z.coerce.date(),
-  id: record('folder'),
+  id: z.instanceof(RecordId<'folder'>),
   name: z.string(),
   updated: z.coerce.date()
 });

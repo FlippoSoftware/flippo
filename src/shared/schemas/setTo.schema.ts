@@ -1,11 +1,10 @@
+import { RecordId } from 'surrealdb';
 import { z } from 'zod';
 
-import { record } from './record.schema';
-
 const SetToSchema = z.object({
-  id: record('set_to'),
-  in: record('set'),
-  out: record('tag')
+  id: z.instanceof(RecordId<'setTo'>),
+  in: z.instanceof(RecordId<'set'>),
+  out: z.instanceof(RecordId<'tag'>)
 });
 
 type TSetTo = z.infer<typeof SetToSchema>;

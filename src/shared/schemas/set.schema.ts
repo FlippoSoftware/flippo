@@ -1,16 +1,15 @@
+import { RecordId } from 'surrealdb';
 import { z } from 'zod';
 
-import { record } from './record.schema';
-
 const SetSchema = z.object({
-  author: record('user'),
-  cards: z.array(record('card')),
+  author: z.instanceof(RecordId<'user'>),
+  cards: z.array(z.instanceof(RecordId<'card'>)),
   countCards: z.number().int().positive(),
   created: z.coerce.date(),
   description: z.string(),
-  id: record('set'),
+  id: z.instanceof(RecordId<'set'>),
   name: z.string(),
-  publication: record('publication'),
+  publication: z.instanceof(RecordId<'publication'>),
   updated: z.coerce.date()
 });
 

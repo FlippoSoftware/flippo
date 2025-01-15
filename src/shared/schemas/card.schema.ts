@@ -1,6 +1,5 @@
+import { RecordId } from 'surrealdb';
 import { z } from 'zod';
-
-import { record } from './record.schema';
 
 const StateType = z.union([z.literal('none'), z.literal('reserved'), z.literal('process'), z.literal('ready')]);
 type TStateType = z.infer<typeof StateType>;
@@ -8,11 +7,11 @@ type TStateType = z.infer<typeof StateType>;
 const CardSchema = z.object({
   answer: z.string(),
   created: z.coerce.date(),
-  editors: z.array(record('user')),
+  editors: z.array(z.instanceof(RecordId<'user'>)),
   extendedAnswer: z.string(),
-  id: record('card'),
+  id: z.instanceof(RecordId<'card'>),
   question: z.string(),
-  set: record('set'),
+  set: z.instanceof(RecordId<'set'>),
   state: StateType,
   updated: z.coerce.date()
 });

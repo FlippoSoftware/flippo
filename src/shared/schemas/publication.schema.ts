@@ -1,13 +1,13 @@
+import { RecordId } from 'surrealdb';
 import { z } from 'zod';
 
-import { record } from './record.schema';
 import { SourceType } from './source.schema';
 
 const PublicationSchema = z.object({
-  author: record('user'),
+  author: z.instanceof(RecordId<'user'>),
   created: z.coerce.date(),
-  id: record('publication'),
-  in: record('user'),
+  id: z.instanceof(RecordId<'publication'>),
+  in: z.instanceof(RecordId<'user'>),
   out: SourceType,
   updated: z.coerce.date()
 });

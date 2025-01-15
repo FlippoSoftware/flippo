@@ -1,12 +1,11 @@
+import { RecordId } from 'surrealdb';
 import { z } from 'zod';
-
-import { record } from './record.schema';
 
 const TagSchema = z.object({
   created: z.coerce.date(),
-  id: record('tag'),
+  id: z.instanceof(RecordId<'tag'>),
   name: z.string(),
-  owner: record('user'),
+  owner: z.instanceof(RecordId<'user'>),
   updated: z.coerce.date()
 });
 

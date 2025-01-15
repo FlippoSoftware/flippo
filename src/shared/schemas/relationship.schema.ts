@@ -1,6 +1,6 @@
+import { RecordId } from 'surrealdb';
 import { z } from 'zod';
 
-import { record } from './record.schema';
 import { SourceType } from './source.schema';
 
 const ViewType = z.union([z.literal('like'), z.literal('person'), z.literal('publication'), z.literal('available')]);
@@ -10,8 +10,8 @@ const RoleType = z.union([z.literal('observer'), z.literal('editor'), z.literal(
 type TRoleType = z.infer<typeof RoleType>;
 
 const RelationshipSchema = z.object({
-  id: record('relationship'),
-  in: record('user'),
+  id: z.instanceof(RecordId<'relationship'>),
+  in: z.instanceof(RecordId<'user'>),
   out: SourceType,
   role: RoleType,
   viewType: ViewType
