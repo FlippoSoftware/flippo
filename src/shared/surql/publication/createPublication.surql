@@ -1,0 +1,2 @@
+RELATE $user->publication->$source
+;
