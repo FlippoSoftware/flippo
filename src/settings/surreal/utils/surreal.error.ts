@@ -14,7 +14,7 @@ export class SurrealError extends Error {
     return new SurrealError('ERR_TOKEN_MISSING', 'Database token is missing!');
   }
 
-  static DatabaseUnauthorized() {
-    return new SurrealError('ERR_UNAUTHORIZED', 'Database unauthorized!');
+  static DatabaseUnauthenticated() {
+    return new SurrealError('ERR_UNAUTHENTICATED', 'Database unauthenticated!');
   }
 }
