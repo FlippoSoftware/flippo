@@ -33,13 +33,3 @@ export const sessionSignOutFx = createEffect<void, void, string>(() => {
     url: '/auth/refresh_token/signout'
   });
 });
-
-export const requestDbTokenFx = createEffect<void, void, string>(() => {
-  return requestFx({
-    method: 'GET',
-    options: {
-      withCredentials: true
-    },
-    url: '/auth/token_db'
-  });
-});

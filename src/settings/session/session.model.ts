@@ -1,4 +1,13 @@
-import * as sessionApi from '@shared/api';
+import { type Mutation, type Query, retry } from '@farfetched/core';
+import {
+  dbConnect,
+  getAuthDbFx,
+  dbAuthenticateFx as originalDbAuthenticateFx,
+  dbInvalidateFx as originalDbInvalidateFx,
+  SurrealError,
+  type TSurrealAuthenticateError
+} from '@settings/surreal';
+import { getErrorStatus } from '@shared/api';
 import { chainRoute, type RouteInstance, type RouteParams, type RouteParamsAndQuery } from 'atomic-router';
 import {
   attach,
@@ -12,9 +21,15 @@ import {
   sample,
   split
 } from 'effector';
-import { and, condition, not } from 'patronum';
+import { and, not } from 'patronum';
 
+import { createSessionAuthMut, createSessionRefreshMut, createSessionSignOutMut } from './session.api';
 import { SessionSchema, type TSession } from './session.schema';
+
+type RemoteOperation = Mutation<any, any, any> | Query<any, any, any, any>;
+type RetryConfig<T extends RemoteOperation> = Parameters<typeof retry<T>>['1'];
+type Otherwise<T extends RemoteOperation> = Exclude<RetryConfig<T>['otherwise'], undefined>;
+type FailInfo<T extends RemoteOperation> = Exclude<Parameters<Otherwise<T>>['0'], undefined>;
 
 enum AuthStatus {
   Initial = 0,
@@ -24,98 +39,136 @@ enum AuthStatus {
 }
 
 // #region session
-const sessionAuthFx = attach({ effect: sessionApi.sessionAuthFx });
-const sessionRefreshFx = attach({ effect: sessionApi.sessionRefreshFx });
-const sessionSignOutFx = attach({ effect: sessionApi.sessionSignOutFx });
+const sessionAuthMut = createSessionAuthMut();
+const sessionRefreshMut = createSessionRefreshMut();
+const sessionSignOutMut = createSessionSignOutMut();
+
+const dbAuthenticateFx = attach({ effect: originalDbAuthenticateFx });
+const dbInvalidateFx = attach({ effect: originalDbInvalidateFx });
 
 export const $session = createStore<null | TSession>(null);
-export const sessionChanged = createEvent<TSession>();
-export const sessionReset = createEvent();
+export const sessionValidateFx = createEffect<unknown, TSession>((session) => {
+  const validSession = SessionSchema.parse(session);
 
-export const sessionAuth = createEvent();
-export const sessionSignOut = createEvent();
-export const sessionRefresh = createEvent();
+  return validSession;
+});
+export const sessionChangedFx = createEffect<void, TSession>(async () => {
+  const db = await getAuthDbFx();
+  const info = (await db.info()) as Exclude<Awaited<ReturnType<typeof db.info>>, undefined>;
 
-export const sessionValidateFx = createEffect<TSession, TSession>((session) => {
-  SessionSchema.parse(session);
+  const pickProperties = new Set(SessionSchema.keyof().options as string[]);
+  const session = await sessionValidateFx(
+    Object.fromEntries(Object.entries(info).filter((entry) => pickProperties.has(entry[0])))
+  );
 
   return session;
 });
 
-const COUNT_ATTEMPTS = 2;
-const $countOfAuthenticationAttempts = createStore<number>(COUNT_ATTEMPTS);
-const countOfAuthenticationAttemptsDecrement = createEvent();
+export const sessionAuth = createEvent();
+export const sessionSignOut = createEvent();
+export const sessionRefresh = createEvent();
+export const sessionAuthenticateDatabase = createEvent();
+
+const sessionReset = createEvent();
 
 const $authenticationStatus = createStore<AuthStatus>(AuthStatus.Initial);
 
-$authenticationStatus.on(sessionAuthFx, (status) => {
+$session.reset(sessionReset);
+
+// change authentication status
+$authenticationStatus.on(sessionAuthMut.started, (status) => {
   if (status === AuthStatus.Initial) return AuthStatus.Pending;
   return status;
 });
+$authenticationStatus.on(dbAuthenticateFx.done, () => AuthStatus.Authenticated);
+$authenticationStatus.on(
+  [sessionAuthMut.finished.failure, dbAuthenticateFx.fail, sessionSignOutMut.start],
+  () => AuthStatus.Anonymous
+);
 
-$authenticationStatus.on(sessionAuthFx.done, () => AuthStatus.Authenticated);
-$authenticationStatus.on(sessionAuthFx.fail, () => AuthStatus.Anonymous);
-$authenticationStatus.on(sessionSignOutFx.finally, () => AuthStatus.Anonymous);
-
-$countOfAuthenticationAttempts.reset(sessionAuthFx.doneData, sessionSignOut);
-$session.reset(sessionReset);
-
-sample({
-  clock: countOfAuthenticationAttemptsDecrement,
-  source: $countOfAuthenticationAttempts,
-  fn: (state) => {
-    if (state > 0) return state - 1;
-
-    return 0;
-  },
-  target: $countOfAuthenticationAttempts
-});
-
-sample({
-  clock: sessionChanged,
-  target: sessionValidateFx
-});
-
-sample({ clock: sessionValidateFx.doneData, target: $session });
-
+// request token for db
 sample({
   clock: sessionAuth,
-  filter: not(sessionAuthFx.pending),
-  target: sessionAuthFx
+  filter: not(sessionAuthMut.$pending),
+  target: sessionAuthMut.start
+});
+
+// success get token -> authenticate db
+sample({
+  clock: sessionAuthMut.finished.success,
+  target: sessionAuthenticateDatabase
 });
 
 sample({
-  clock: sessionAuthFx.doneData,
-  target: sessionChanged
+  clock: sessionAuthenticateDatabase,
+  filter: not(dbAuthenticateFx.pending),
+  target: dbAuthenticateFx
 });
 
+// success get authenticate db -> extract info on user
+sample({
+  clock: dbAuthenticateFx.done,
+  target: sessionChangedFx
+});
+
+// success get extracted info on user -> setting session data
+sample({
+  clock: sessionChangedFx.doneData,
+  target: $session
+});
+
+// failure get token -> refresh auth token
+sample({
+  clock: sessionAuthMut.finished.failure,
+  target: sessionRefresh
+});
+
+sample({
+  clock: [sessionRefresh, sessionAuthMut.finished.failure],
+  filter: not(sessionRefreshMut.$pending),
+  target: sessionRefreshMut.start
+});
+
+retry(sessionRefreshMut, {
+  delay: 0,
+  filter: (data) => {
+    if (getErrorStatus(data.error) === '500') return false;
+
+    return true;
+  },
+  otherwise: sessionSignOut as unknown as EventCallable<FailInfo<typeof sessionSignOutMut>>,
+  times: 2
+});
+
+// success refresh -> authenticate session
+sample({ clock: sessionRefreshMut.finished.success, target: sessionAuth });
+
 split({
-  source: sessionAuthFx.failData,
-  match: (value) => (value === '401' ? 'unauthorized' : 'fail'),
+  source: dbAuthenticateFx.failData,
+  match: (error) => {
+    if (error instanceof SurrealError) {
+      return error.code;
+    }
+
+    return '__';
+  },
   cases: {
-    fail: sessionSignOut,
-    unauthorized: sessionRefresh
+    ERR_OFFLINE: dbConnect,
+    ERR_TOKEN_MISSING: sessionAuth,
+    __: createEffect(() => console.error('Fail authenticate db.'))
   }
 });
 
-condition({
-  source: sessionRefresh,
-  if: $countOfAuthenticationAttempts.map((state) => state > 0),
-  then: sessionRefreshFx,
-  else: sessionSignOut
-});
-
-sample({ clock: sessionRefreshFx.done, target: sessionAuth });
-
-sample({
-  clock: sessionRefreshFx.fail,
-  target: sessionSignOut
-});
-
+// sign out of account
 sample({
   clock: sessionSignOut,
-  filter: and($session),
-  target: [sessionSignOutFx, sessionReset]
+  filter: and($session, not(sessionSignOutMut.$pending)),
+  target: [sessionSignOutMut.start, sessionReset]
+});
+
+sample({
+  clock: sessionSignOutMut.started,
+  target: dbInvalidateFx
 });
 // #endregion
 
@@ -147,11 +200,11 @@ export function chainAuthorized<Params extends RouteParams>(
     clock: sessionCheckStarted,
     source: $authenticationStatus,
     filter: (status) => status === AuthStatus.Initial,
-    target: sessionAuthFx
+    target: sessionAuthMut.start
   });
 
   sample({
-    clock: [alreadyAnonymous, sessionAuthFx.fail],
+    clock: [alreadyAnonymous, sessionAuthMut.finished.failure],
     source: { params: route.$params, query: route.$query },
     filter: route.$isOpened,
     target: sessionReceivedAnonymous
@@ -174,7 +227,7 @@ export function chainAuthorized<Params extends RouteParams>(
   return chainRoute({
     route,
     beforeOpen: sessionCheckStarted,
-    openOn: [alreadyAuthenticated, sessionAuthFx.done],
+    openOn: [alreadyAuthenticated, sessionAuthMut.finished.success],
     cancelOn: sessionReceivedAnonymous
   });
 }
@@ -202,11 +255,11 @@ export function chainAnonymous<Params extends RouteParams>(
     clock: sessionCheckStarted,
     source: $authenticationStatus,
     filter: (status) => status === AuthStatus.Initial,
-    target: sessionAuthFx
+    target: sessionAuthMut.start
   });
 
   sample({
-    clock: [alreadyAuthenticated, sessionAuthFx.done],
+    clock: [alreadyAuthenticated, sessionAuthMut.finished.success],
     source: { params: route.$params, query: route.$query },
     filter: route.$isOpened,
     target: sessionReceivedAuthenticated
@@ -229,7 +282,7 @@ export function chainAnonymous<Params extends RouteParams>(
   return chainRoute({
     route,
     beforeOpen: sessionCheckStarted,
-    openOn: [alreadyAnonymous, sessionAuthFx.fail],
+    openOn: [alreadyAnonymous, sessionAuthMut.finished.failure],
     cancelOn: sessionReceivedAuthenticated
   });
 }
@@ -255,13 +308,13 @@ export function chainOptionalAuthorization<Params extends RouteParams>(
     clock: sessionCheckStarted,
     source: $authenticationStatus,
     filter: (status) => status === AuthStatus.Initial,
-    target: sessionAuthFx
+    target: sessionAuthMut.start
   });
 
   return chainRoute({
     route,
     beforeOpen: sessionCheckStarted,
-    openOn: [alreadyAnonymous, alreadyAuthenticated, sessionAuthFx.done, sessionAuthFx.fail]
+    openOn: [alreadyAnonymous, alreadyAuthenticated, sessionAuthMut.finished.finally]
   });
 }
 // #endregion

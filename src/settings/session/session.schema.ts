@@ -1,4 +1,4 @@
-import { record } from '@shared/schemas';
+import { RecordId } from 'surrealdb';
 import { z } from 'zod';
 
 const SessionSchema = z.object({
@@ -7,7 +7,7 @@ const SessionSchema = z.object({
   name: z.string().optional(),
   role: z.union([z.literal('user'), z.literal('admin'), z.literal('premium')]),
   surname: z.string().optional(),
-  userId: record('user'),
+  userId: z.instanceof(RecordId<'user'>),
   username: z.string().optional()
 });
 
