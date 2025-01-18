@@ -20,7 +20,7 @@ const DEFAULT_CONFIG: TDbConfig = {
 export const $db = createStore<null | Surreal>(null);
 export const $dbConfig = createStore<TDbConfig>(DEFAULT_CONFIG);
 
-export const initDb = createEvent();
+export const dbConnect = createEvent();
 
 export const getDbFx = attach({
   effect: createEffect<null | Surreal, Surreal, SurrealError>((db) => {
@@ -74,23 +74,35 @@ export const dbAuthenticateFx = createEffect<void, Surreal, TSurrealAuthenticate
   return db;
 });
 
+export const dbInvalidateFx = createEffect<void, true, TSurrealAuthenticateError>(async () => {
+  const db = await getDbFx();
+  await db.invalidate();
+
+  return true as const;
+});
+
 export const removeDbTokenCookieFx = createEffect(() => {
   removeDbTokenCookie();
 });
 
 // verifying the authenticity of a database connection
-export const dbIsAuthenticatedFx = createEffect<void, boolean, SurrealError>(async () => {
+export const dbIsAuthenticatedFx = createEffect<void, true, SurrealError>(async () => {
   const db = await getDbFx();
   await isAuthenticated(db);
 
-  return true;
+  return true as const;
 });
 
-sample({ clock: initDb, source: $dbConfig, target: dbConnectFx });
+sample({ clock: dbConnect, source: $dbConfig, target: dbConnectFx });
 
 sample({
   clock: dbConnectFx.doneData,
   target: $db
+});
+
+sample({
+  clock: dbAuthenticateFx.done,
+  target: removeDbTokenCookieFx
 });
 
 // #region utils

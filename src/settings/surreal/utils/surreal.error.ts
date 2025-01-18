@@ -1,7 +1,9 @@
-export class SurrealError extends Error {
-  code: string;
+type TSurrealErrorCode = 'ERR_OFFLINE' | 'ERR_TOKEN_MISSING' | 'ERR_UNAUTHENTICATED';
 
-  constructor(code: string, message: string) {
+export class SurrealError extends Error {
+  code: TSurrealErrorCode;
+
+  constructor(code: TSurrealErrorCode, message: string) {
     super(message);
     this.code = code;
   }
