@@ -1,13 +1,8 @@
 import { type Mutation, type Query, retry } from '@farfetched/core';
-import {
-  dbConnect,
-  getAuthDbFx,
-  dbAuthenticateFx as originalDbAuthenticateFx,
-  dbInvalidateFx as originalDbInvalidateFx,
-  SurrealError,
-  type TSurrealAuthenticateError
-} from '@settings/surreal';
+import { SurrealError } from '@settings/surreal';
+import * as dbApi from '@settings/surreal';
 import { getErrorStatus } from '@shared/api';
+import { displayRequestError, type TTranslationOptions } from '@widgets/ToastNotification';
 import { chainRoute, type RouteInstance, type RouteParams, type RouteParamsAndQuery } from 'atomic-router';
 import {
   attach,
@@ -43,8 +38,10 @@ const sessionAuthMut = createSessionAuthMut();
 const sessionRefreshMut = createSessionRefreshMut();
 const sessionSignOutMut = createSessionSignOutMut();
 
-const dbAuthenticateFx = attach({ effect: originalDbAuthenticateFx });
-const dbInvalidateFx = attach({ effect: originalDbInvalidateFx });
+const dbConnectFx = attach({ effect: dbApi.dbConnectFx });
+const dbAuthenticateFx = attach({ effect: dbApi.dbAuthenticateFx });
+const dbInvalidateFx = attach({ effect: dbApi.dbInvalidateFx });
+const getAuthDbFx = attach({ effect: dbApi.getAuthDbFx });
 
 export const $session = createStore<null | TSession>(null);
 export const sessionValidateFx = createEffect<unknown, TSession>((session) => {
@@ -66,7 +63,6 @@ export const sessionChangedFx = createEffect<void, TSession>(async () => {
 
 export const sessionAuth = createEvent();
 export const sessionSignOut = createEvent();
-export const sessionRefresh = createEvent();
 export const sessionAuthenticateDatabase = createEvent();
 
 const sessionReset = createEvent();
@@ -117,14 +113,12 @@ sample({
   target: $session
 });
 
+// success refresh -> authenticate session
+sample({ clock: sessionRefreshMut.finished.success, target: sessionAuth });
+
 // failure get token -> refresh auth token
 sample({
   clock: sessionAuthMut.finished.failure,
-  target: sessionRefresh
-});
-
-sample({
-  clock: [sessionRefresh, sessionAuthMut.finished.failure],
   filter: not(sessionRefreshMut.$pending),
   target: sessionRefreshMut.start
 });
@@ -132,7 +126,7 @@ sample({
 retry(sessionRefreshMut, {
   delay: 0,
   filter: (data) => {
-    if (getErrorStatus(data.error) === '500') return false;
+    if (['400', '401'].includes(getErrorStatus(data.error))) return false;
 
     return true;
   },
@@ -140,35 +134,78 @@ retry(sessionRefreshMut, {
   times: 2
 });
 
-// success refresh -> authenticate session
-sample({ clock: sessionRefreshMut.finished.success, target: sessionAuth });
+// #region retry logic for authenticate in db
+const RETRY_ATTEMPTS_ERR_OFFLINE = 2;
+const RETRY_ATTEMPTS_ERR_TOKEN_MISSING = 2;
+
+const $retryOffline = createStore<number>(0);
+const $retryTokenMissing = createStore<number>(0);
+
+const retryOfflineFx = attach({
+  effect: createEffect<number, void>(async (attempt) => {
+    if (attempt === RETRY_ATTEMPTS_ERR_OFFLINE) throw Error('The attempts to connect to the database have ended.');
+
+    await dbConnectFx();
+  }),
+  source: $retryOffline
+});
+
+const retryTokenMissingFx = attach({
+  effect: createEffect<number, void>((attempt) => {
+    if (attempt === RETRY_ATTEMPTS_ERR_TOKEN_MISSING)
+      throw Error('The attempts to authenticate the connection to the database have ended.');
+  }),
+  source: $retryTokenMissing
+});
+
+const displayErrorAuthenticateDb = createEvent();
+
+sample({
+  clock: displayErrorAuthenticateDb,
+  fn: (): TTranslationOptions => ['error.500'],
+  target: displayRequestError
+});
 
 split({
   source: dbAuthenticateFx.failData,
   match: (error) => {
-    if (error instanceof SurrealError) {
-      return error.code;
-    }
+    if (error instanceof SurrealError) return error.code;
 
-    return '__';
+    return;
   },
   cases: {
-    ERR_OFFLINE: dbConnect,
-    ERR_TOKEN_MISSING: sessionAuth,
-    __: createEffect(() => console.error('Fail authenticate db.'))
+    ERR_OFFLINE: retryOfflineFx,
+    ERR_TOKEN_MISSING: retryTokenMissingFx,
+    __: displayErrorAuthenticateDb
   }
 });
+
+sample({
+  clock: retryOfflineFx.done,
+  target: sessionAuthenticateDatabase
+});
+
+sample({
+  clock: retryTokenMissingFx.done,
+  target: sessionAuth
+});
+
+sample({
+  clock: [retryOfflineFx.fail, retryTokenMissingFx.fail],
+  target: displayErrorAuthenticateDb
+});
+// #endregion
 
 // sign out of account
 sample({
   clock: sessionSignOut,
   filter: and($session, not(sessionSignOutMut.$pending)),
-  target: [sessionSignOutMut.start, sessionReset]
+  target: [sessionSignOutMut.start, sessionReset, dbInvalidateFx]
 });
 
 sample({
-  clock: sessionSignOutMut.started,
-  target: dbInvalidateFx
+  clock: sessionSignOutMut.finished.failure,
+  target: createEffect(() => console.log('Server side error.'))
 });
 // #endregion
 
