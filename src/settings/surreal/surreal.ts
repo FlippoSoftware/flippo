@@ -1,5 +1,5 @@
 import { ENV } from '@shared/env';
-import { attach, createEffect, createEvent, createStore, sample } from 'effector';
+import { attach, createEffect, createStore, sample } from 'effector';
 import { type ResponseError, Surreal, type SurrealDbError } from 'surrealdb';
 
 import { getDbTokenCookie, removeDbTokenCookie } from './utils/cookie.utils';
@@ -20,8 +20,6 @@ const DEFAULT_CONFIG: TDbConfig = {
 export const $db = createStore<null | Surreal>(null);
 export const $dbConfig = createStore<TDbConfig>(DEFAULT_CONFIG);
 
-export const dbConnect = createEvent();
-
 export const getDbFx = attach({
   effect: createEffect<null | Surreal, Surreal, SurrealError>((db) => {
     if (!isSurreal(db)) throw SurrealError.DatabaseOffline();
@@ -40,14 +38,17 @@ export const getAuthDbFx = createEffect<void, Surreal, SurrealError>(async () =>
 });
 
 // connecting to database
-const dbConnectFx = createEffect<TDbConfig, Surreal, SurrealDbError>(async (config) => {
-  const db = new Surreal();
+export const dbConnectFx = attach({
+  effect: createEffect<TDbConfig, Surreal, SurrealDbError>(async (config) => {
+    const db = new Surreal();
 
-  await db.connect(config.endpoint);
-  await db.use({ database: config.database, namespace: config.namespace });
-  await db.ready;
+    await db.connect(config.endpoint);
+    await db.use({ database: config.database, namespace: config.namespace });
+    await db.ready;
 
-  return db;
+    return db;
+  }),
+  source: $dbConfig
 });
 
 export const dbConnected = dbConnectFx.done;
@@ -92,8 +93,6 @@ export const dbIsAuthenticatedFx = createEffect<void, true, SurrealError>(async 
 
   return true as const;
 });
-
-sample({ clock: dbConnect, source: $dbConfig, target: dbConnectFx });
 
 sample({
   clock: dbConnectFx.doneData,
