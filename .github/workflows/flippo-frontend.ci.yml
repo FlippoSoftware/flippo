@@ -1,0 +1,56 @@
+name: "Flippo CI"
+
+run-name: "Continuous integration called by user ${{github.actor}} (${{github.actor_id}}) in response to event ${{github.event_name}}"
+
+on:
+  push:
+    branches: [ "main", "dev" ]
+  pull_request:
+    branches: [ "main", "dev" ]
+
+jobs:
+  tests:
+    name: "Test check."
+    
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [20.x, 22.x, 23.x]
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'pnpm'
+    - name: "Installing dependencies"
+      run: pnpm install
+    - name: "Start unit tests: "
+      run: pnpm tests:unit
+    - name: "Start screenshots test: "
+      run: pnpm tests:screenshots
+    - name: "Start e2e tests: "
+      run: pnpm tests:e2e
+  build:
+    needs: [tests]
+    name: "Build."
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [20.x, 22.x, 23.x]
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'pnpm'
+    - name: "Installing dependencies"
+      run: pnpm install
+    - name: "Run build"
+      run: pnpm run build
