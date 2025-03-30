@@ -10,8 +10,9 @@
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "tests": "npx testplane -c testplane.config.cts",
-    "tests:screenshots": "npx testplane gui --storybook --port 6000 -c testplane.storybook.config.cts"
+    "tests:unit": "npx testplane -c testplane.config.cts",
+    "tests:screenshots": "npx testplane gui --storybook --port 6000 -c testplane.storybook.config.cts",
+    "tests:e2e": ""
   },
   "dependencies": {
     "@farfetched/core": "^0.13.0",
