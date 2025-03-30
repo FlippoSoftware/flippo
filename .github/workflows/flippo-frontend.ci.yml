@@ -19,20 +19,33 @@ jobs:
         node-version: [20.x, 22.x, 23.x]
 
     steps:
-    - uses: actions/checkout@v4
+    - name: "Checkout"
+      uses: actions/checkout@v4
+      
+    - name: "Install pnpm"
+      uses: pnpm/action-setup@v2
+      with:
+       version: latest
+       run_install: false
+       
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'pnpm'
+        
     - name: "Installing dependencies"
       run: pnpm install
+      
     - name: "Start unit tests: "
       run: pnpm tests:unit
+      
     - name: "Start screenshots test: "
       run: pnpm tests:screenshots
+      
     - name: "Start e2e tests: "
       run: pnpm tests:e2e
+      
   build:
     needs: [tests]
     name: "Build."
@@ -45,12 +58,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'pnpm'
+        
     - name: "Installing dependencies"
       run: pnpm install
+      
     - name: "Run build"
       run: pnpm run build
