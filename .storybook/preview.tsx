@@ -1,6 +1,7 @@
 import type { Preview } from '@storybook/react';
 
 import '../src/settings/styles/global.scss';
+import './storybook.scss';
 
 import { router } from '@settings/routing';
 import { ToastContainer } from '@widgets/ToastNotification';
