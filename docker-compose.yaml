@@ -1,0 +1,13 @@
+services:
+  frontend:
+    build:
+      context: ./
+      target: frontend-dev
+    ports: [3030:30]
+    develop:
+      watch:
+        - path: ./client/src
+          action: sync
+          target: /usr/local/app/src
+        - path: ./client/package.json
+          action: rebuild

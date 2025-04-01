@@ -1,7 +1,7 @@
 import type Surreal from 'surrealdb';
 
 import { createMutation, createQuery } from '@farfetched/core';
-import { $db, SurrealError } from '@settings/surreal';
+import { $db } from '@settings/surreal';
 import { createFormInput } from '@shared/factories';
 import { displayRequestError, displayRequestSuccess, type TTranslationOptions } from '@widgets/ToastNotification';
 import { createEffect, createEvent, createStore, sample, type StoreWritable } from 'effector';
@@ -22,7 +22,7 @@ const closeModalFx = createEffect<HTMLDialogElement | null, void>((ref) => {
 
 const countDuplicateMut = createQuery<[{ db: Surreal; name: string }], number>({
   handler: async ({ db, name }) => {
-    if (!(await db.info())?.id) throw SurrealError.DatabaseUnauthorized();
+    //if (!(await db.info())?.id) throw SurrealError.DatabaseUnauthorized();
 
     const [result] = await db.query<[{ count: number }]>(
       /* surql */ `
@@ -41,7 +41,7 @@ const countDuplicateMut = createQuery<[{ db: Surreal; name: string }], number>({
 
 const createFolderMut = createMutation<{ db: Surreal; name: string }, void>({
   handler: async ({ db, name }) => {
-    if (!(await db.info())?.id) throw SurrealError.DatabaseUnauthorized();
+    //if (!(await db.info())?.id) throw SurrealError.DatabaseUnauthorized();
 
     await db.query(
       /*surql */ `
@@ -85,6 +85,8 @@ sample({
   target: countDuplicateMut.start
 });
 
+countDuplicateMut.$error.watch((data) => console.log(data));
+
 // Create folder
 sample({
   clock: countDuplicateMut.finished.success,
@@ -97,6 +99,10 @@ sample({
   },
   target: createFolderMut.start
 });
+
+createFolderMut.start.watch(() => console.log('CREATE FOLDER'));
+createFolderMut.finished.success.watch(() => console.log('SUCCESS'));
+createFolderMut.finished.failure.watch(() => console.log('FAIL'));
 
 sample({
   clock: countDuplicateMut.finished.failure,
@@ -123,3 +129,6 @@ sample({
   fn: (): TTranslationOptions<'modal'> => ['createFolder.error.fail_create', { ns: 'modal' }],
   target: displayRequestError
 });
+
+countDuplicateMut.$error.watch((e) => console.log(e));
+createFolderMut.finished.failure.watch(({ error }) => console.log(error));

@@ -1,20 +1,32 @@
 import type { ConfigInput } from 'testplane';
 
+import { setupBrowser } from '@testing-library/webdriverio';
+
 export default {
-  baseUrl: 'http://localhost',
+  baseUrl: 'http://127.0.0.1',
   browsers: {
-    'chrome/yandex/opera': {
+    chrome: {
       automationProtocol: 'devtools',
       desiredCapabilities: {
         browserName: 'chrome',
+        browserVersion: '134',
         'goog:chromeOptions': {
-          binary: 'C:\\Users\\goroc\\AppData\\Local\\Yandex\\YandexBrowser\\Application\\browser.exe'
+          args: ['--no-sandbox']
         }
       },
       headless: true
+    },
+    firefox: {
+      desiredCapabilities: {
+        browserName: 'firefox',
+        browserVersion: '137',
+        'moz:firefoxOptions': {
+          args: ['--no-sandbox']
+        }
+      }
     }
   },
-  gridUrl: 'http://localhost:4444/wd/hub',
+  gridUrl: 'local',
   httpTimeout: 60000,
   pageLoadTimeout: 0,
   plugins: {
@@ -38,12 +50,20 @@ export default {
       path: 'testplane-report'
     }
   },
+  // eslint-disable-next-line no-undef
+  prepareBrowser(browser: WebdriverIO.Browser) {
+    // @ts-expect-error: type error in the library
+    setupBrowser(browser);
+  },
   resetCursor: false,
   sets: {
     desktop: {
-      browsers: ['chrome/yandex/opera'],
+      browsers: ['chrome'],
       files: ['**/tests/*.testplane.(t|j)s', '**/tests/*.testplane.(t|j)sx']
     }
+  },
+  system: {
+    fileExtensions: ['.ts', '.tsx']
   },
   testTimeout: 90000
 } satisfies ConfigInput;

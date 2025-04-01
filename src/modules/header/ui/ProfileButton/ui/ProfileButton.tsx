@@ -17,7 +17,7 @@ function ProfileButton(props: TProfileButtonProps) {
     <Menu offset={12} placement={'top-start'}>
       <MenuHandler>
         <button className={st.profileButton}>
-          <img src={avatar || '../../../../../../public/profile_avatar.webp'} />
+          <img src={avatar || '/public/profile_avatar.webp'} />
           <span>{username}</span>
         </button>
       </MenuHandler>

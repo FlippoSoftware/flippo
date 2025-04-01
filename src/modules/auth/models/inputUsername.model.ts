@@ -1,5 +1,5 @@
 import { authRoute } from '@settings/routing';
-import { sessionChanged } from '@settings/session';
+import { sessionChangedFx } from '@settings/session';
 import { createFormInput } from '@shared/factories';
 import { displayRequestError, displayRequestSuccess, type TTranslationOptions } from '@widgets/ToastNotification';
 import { attach, createEvent, sample } from 'effector';
@@ -56,7 +56,7 @@ sample({
 
 sample({
   clock: signUpWithEmailFx.doneData,
-  target: [sessionChanged, authClose]
+  target: [sessionChangedFx, authClose]
 });
 
 sample({

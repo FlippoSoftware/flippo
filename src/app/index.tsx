@@ -11,6 +11,8 @@ import {
   communityRoute,
   mainOptionalRoute,
   mainRoute,
+  setOptionalRoute,
+  setRoute,
   settingsAuthorizedRoute,
   settingsRoute
 } from '@settings/routing';
@@ -45,6 +47,17 @@ const RoutesView = createRoutesView({
       route: settingsRoute,
       view: createRouteView({ route: settingsAuthorizedRoute, view: () => <h1>{'Settings'}</h1> })
     },
+    {
+      layout: BaseLayout,
+      route: setOptionalRoute,
+      view: () => <h1>{'Set'}</h1>
+    },
+    {
+      layout: BaseLayout,
+      route: settingsRoute,
+      view: createRouteView({ route: settingsAuthorizedRoute, view: () => <h1>{'Settings'}</h1> })
+    },
+
     { route: authRoute, view: createRouteView({ route: authAnonymousRoute, view: () => <AuthPage /> }) },
     { route: callbackRoute, view: createRouteView({ route: callbackAnonymousRoute, view: () => <AuthCallbackPage /> }) }
   ]

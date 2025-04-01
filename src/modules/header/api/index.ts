@@ -1,37 +1,31 @@
-import { FolderSchema, record, SetSchema, type TFolder, type TSet } from '@shared/schemas';
-//import { getDb } from '@settings/surreal';
-import { z } from 'zod';
+import type Surreal from 'surrealdb';
 
-export async function fetchUserFolders(userId: string) {
-  userId = record('user').parse(userId);
+import { createQuery } from '@farfetched/core';
+import { type TFolder, type TSet } from '@shared/schemas';
 
-  // const db = await getDb();
-  // const [result] = await db.query<[Pick<TFolder, 'id' | 'name'>[]]>(
-  //   /* surql */ `
-  //   SELECT id, name FROM folder WHERE author = $userId LIMIT 20;
-  //   `,
-  //   {
-  //     userId
-  //   }
-  // );
-  const result = [{ id: 'folder:jandlwnfregergalkm', name: 'My folder' }];
+export const userFoldersQu = createQuery<[{ db: Surreal; userId: string }], Pick<TFolder, 'id' | 'name'>[]>({
+  handler: async ({ db, userId }) => {
+    const [result] = await db.query<[Pick<TFolder, 'id' | 'name'>[]]>(/* surql */ `
+    SELECT id, name FROM folder LIMIT 20;`); //WHERE author = $userId LIMIT
+    //{ userId }
 
-  return z.array(FolderSchema.pick({ id: true, name: true })).parse(result);
-}
+    return result;
+  },
+  initialData: []
+});
 
-export async function fetchUserRecent(userId: string) {
-  userId = record('user').parse(userId);
+export const userRecentQu = createQuery<[{ db: Surreal; userId: string }], Pick<TSet, 'id' | 'name'>[]>({
+  handler: async ({ db, userId }) => {
+    const [result] = await db.query<[Pick<TSet, 'id' | 'name'>[]]>(
+      /* surql */ `
+    SELECT id, name FROM set WHERE author = $userId ORDER BY updated DESC LIMIT 20;
+    `,
+      {
+        userId
+      }
+    );
 
-  // const db = await getDb();
-  // const [result] = await db.query<[Pick<TSet, 'id' | 'name'>[]]>(
-  //   /* surql */ `
-  //   SELECT id, name FROM set WHERE author = $userId ORDER BY updated DESC LIMIT 20;
-  //   `,
-  //   {
-  //     userId
-  //   }
-  // );
-  const result = [{ id: 'set:jandlwnadwalkm', name: 'My set' }];
-
-  return z.array(SetSchema.pick({ id: true, name: true })).parse(result);
-}
+    return result;
+  },
+  initialData: []
+});

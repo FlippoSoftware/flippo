@@ -1,4 +1,4 @@
-import { collectionRoute, communityRoute, mainRoute } from '@settings/routing';
+import { collectionRoute, communityRoute, folderRoute, mainRoute, setRoute } from '@settings/routing';
 import {
   AddIcon,
   ExploreIcon,
@@ -14,6 +14,7 @@ import { NavigationLink } from '@shared/ui/Link';
 import { Separator } from '@shared/ui/Separator';
 import NewFolderModal from '@widgets/Modal/NewFolderModal';
 import { Link } from 'atomic-router-react';
+import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
 
 import LanguageButton from '../ui/LanguageButton';
@@ -68,7 +69,13 @@ function Header() {
                 <ul aria-labelledby={'recent-header'}>
                   {recent.map((rec) => (
                     <li key={rec.id}>
-                      <NavigationLink icon={<SetIcon />} size={'small'} title={rec.name} to={collectionRoute} />
+                      <NavigationLink
+                        icon={<SetIcon />}
+                        params={{ setId: rec.id }}
+                        size={'small'}
+                        title={rec.name}
+                        to={setRoute}
+                      />
                     </li>
                   ))}
                 </ul>
@@ -81,12 +88,18 @@ function Header() {
                 <IconButton aria-label={'Add folder'} onClick={onOpenNewFolderModal} size={'small'} variant={'label'}>
                   <AddIcon />
                 </IconButton>
-                <NewFolderModal ref={newFolderModalRef} />
+                {createPortal(<NewFolderModal ref={newFolderModalRef} />, document.body)}
               </div>
               <ul aria-labelledby={'your-folders-header'}>
                 {folders.map((folder) => (
                   <li key={folder.id}>
-                    <NavigationLink icon={<FolderIcon />} size={'small'} title={folder.name} to={collectionRoute} />
+                    <NavigationLink
+                      icon={<FolderIcon />}
+                      params={{ folderId: folder.id }}
+                      size={'small'}
+                      title={folder.name}
+                      to={folderRoute}
+                    />
                   </li>
                 ))}
               </ul>

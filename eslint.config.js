@@ -24,7 +24,7 @@ export default [
   ...pluginStorybook.configs['flat/recommended'],
   pluginPerfectionist.configs['recommended-natural'],
   {
-    files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
+    files: ['**/*.{js,mjs,cjs,ts,cts,jsx,tsx}'],
     languageOptions: {
       globals: { ...globals.browser, NodeJS: true },
       parser: tseslint.parser,
