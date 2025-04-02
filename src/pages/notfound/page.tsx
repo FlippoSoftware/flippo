@@ -4,7 +4,7 @@ import { useUnit } from 'effector-react';
 import { useTranslation } from 'react-i18next';
 
 import { redirectBack } from './model/page.model';
-import st from './Page.module.scss';
+import st from './page.module.scss';
 
 function Page() {
   const redirect = useUnit(redirectBack);

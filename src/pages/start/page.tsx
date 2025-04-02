@@ -1,6 +1,6 @@
 import { Loader } from '@shared/ui/Loader';
 
-import st from './Page.module.scss';
+import st from './page.module.scss';
 
 function Page() {
   return (
