@@ -1,13 +1,15 @@
 services:
   frontend:
+    image: flippo-frontend
+    container_name: flippo-frontend
     build:
       context: ./
       target: frontend-dev
-    ports: [3030:30]
+    ports: [3030:3030]
     develop:
       watch:
-        - path: ./client/src
+        - path: ./
           action: sync
-          target: /usr/local/app/src
-        - path: ./client/package.json
+          target: /flippo/frontend
+        - path: ./package.json
           action: rebuild

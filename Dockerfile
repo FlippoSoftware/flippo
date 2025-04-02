@@ -1,14 +1,14 @@
 FROM node:20 AS base
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
-RUN corepack enable
+RUN npm install -g pnpm@10.7.0
 
 # frontend-base
 FROM base AS frontend-base
 WORKDIR /flippo/frontend
 
 COPY . .
-RUN pnpm install --frozen-lockfile
+RUN pnpm install
 
 # frontend-dev
 FROM frontend-base AS frontend-dev
