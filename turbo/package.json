@@ -1,5 +1,5 @@
 {
-  "name": ".pnpm dlx create-turbo@latest",
+  "name": "turbo",
   "private": true,
   "scripts": {
     "build": "turbo run build",
