@@ -48,5 +48,6 @@
     }
   },
 
-  "updateContentCommand": "pnpm install --frozen-lockfile"
+  "runArgs": ["--name", "flippo_devcontainer"],
+  //"updateContentCommand": "pnpm install --frozen-lockfile"
 }

@@ -7,7 +7,12 @@ RUN apt-get update && apt-get install -y curl
 RUN apt-get install -y git
 
 # Установка pnpm
-ENV PNPM_HOME="${HOME}/.local/share/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
+ENV HOME=/home/node
+ENV PNPM_HOME=$HOME/.local/share/pnpm
+ENV PATH=$PNPM_HOME:$PATH
+
 RUN npm install -g pnpm@10.7.0
 RUN pnpm config set -g store-dir "${HOME}/.local/share/pnpm/store"
+RUN chown -R node:node "$PNPM_HOME"
+
+USER node
