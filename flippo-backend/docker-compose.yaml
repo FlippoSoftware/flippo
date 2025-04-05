@@ -1,0 +1,39 @@
+services:
+  backend:
+    image: flippo-backend
+    container_name: backend
+    build:
+      context: ./
+      target: backend-dev
+    ports: ["80:${API_PORT}"]
+    depends_on: [surreal]
+    environment:
+      SURREALDB_ENDPOINT: http://surrealdb:3031/rpc
+    develop:
+      watch:
+        - path: ./
+          action: sync
+          target: /flippo/backend
+        - path: ./package.json
+          action: rebuild
+    networks: [backend-surreal]
+
+  surreal:
+    image: surrealdb/surrealdb:latest
+    container_name: surrealdb
+    command: start --bind 0.0.0.0:3031 --user ${SURREALDB_USER} --pass ${SURREALDB_PASS} surrealkv:database/flippo.db
+    ports: ["3031:3031"]
+    volumes:
+      - type: volume
+        source: surrealdb-data
+        target: /database
+    user: root
+    restart: always
+    networks: [backend-surreal]
+
+networks:
+ backend-surreal:
+  driver: bridge
+
+volumes:
+  surrealdb-data:
