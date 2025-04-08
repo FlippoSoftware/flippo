@@ -8,13 +8,16 @@
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
-      "outputs": [".next/**", "!.next/cache/**"]
+      "outputs": ["dist/**"]
     },
     "lint": {
-      "dependsOn": ["^lint"]
+      "dependsOn": ["lint"]
     },
-    "check-types": {
-      "dependsOn": ["^check-types"]
+    "transit": {
+      "dependsOn": ["^transit"]
+    },
+    "check:types": {
+      "dependsOn": ["transit"]
     },
     "dev": {
       "cache": false,

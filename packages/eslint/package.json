@@ -1,0 +1,35 @@
+{
+  "name": "@flippo/eslint",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    "types": "./dist/types/index.d.ts",
+    "import": "./dist/index.js",
+    "default": "./dist/index.js"
+  },
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "lint:check": "eslint . --max-warnings 0",
+    "lint:fix": "eslint . --fix",
+    "build": "rm -rf dist && tsc --build tsconfig.build.json --verbose --force"
+  },
+  "peerDependencies": {
+    "eslint-plugin-turbo": "catalog:"
+  },
+  "dependencies": {
+    "@antfu/eslint-config": "catalog:",
+    "eslint-plugin-format": "catalog:",
+    "globals": "catalog:"
+  },
+  "devDependencies": {
+    "@flippo/tsconfig": "workspace:*",
+    "@types/node": "catalog:",
+    "eslint": "catalog:",
+    "eslint-plugin-turbo": "catalog:",
+    "jiti": "catalog:",
+    "typescript": "catalog:"
+  }
+}

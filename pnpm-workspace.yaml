@@ -5,11 +5,30 @@ packages:
 catalog:
   "@antfu/eslint-config": ^4.11.0
   "@eslint-react/eslint-plugin": ^1.40.3
+  "@turbo/gen": ^2.4.4
+  "@types/node": ^22.14.0
+  "@types/react": 19.0.12
+  "@types/react-dom": 19.0.4
+  esbuild: ^0.25.2
   eslint: ^9.23.0
   eslint-plugin-format: ^1.0.1
   eslint-plugin-only-warn: ^1.1.0
   eslint-plugin-react-hooks: ^5.2.0
   eslint-plugin-react-refresh: ^0.4.19
   eslint-plugin-turbo: ^2.5.0
+  globals: ^16.0.0
   jiti: ^2.4.2
   typescript: ^5.8.2
+  react: "^19.1.0"
+  "react-dom": "^19.1.0"
+  vite: ^6.2.4
+  vite-plugin-dts: ^4.5.3
+catalogs:
+  conflicts_typescript_t5_7_2:
+    typescript: ~5.7.2
+  conflicts_vite_h6_2_0:
+    vite: ^6.2.0
+  conflicts_@types/node_h22_13_10:
+    "@types/node": ^22.13.10
+  conflicts_conflicts_typescript_t5_7_2_5_8_2:
+    typescript: 5.8.2

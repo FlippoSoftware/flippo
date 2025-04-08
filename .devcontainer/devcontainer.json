@@ -48,6 +48,7 @@
     }
   },
 
-  "runArgs": ["--name", "flippo_devcontainer"]
+  "runArgs": ["--name", "flippo_devcontainer"],
+  "workspaceFolder": "/workspace/flippo"
   //"updateContentCommand": "pnpm install --frozen-lockfile"
 }
