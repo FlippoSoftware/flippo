@@ -217,9 +217,9 @@ sample({
 // #endregion
 
 // #region chain routes of authorization
-interface ChainParams {
+type ChainParams = {
   otherwise?: Effect<void, any, any> | Event<void> | EventCallable<void>;
-}
+};
 
 export function chainAuthorized<Params extends RouteParams>(
   route: RouteInstance<Params>,

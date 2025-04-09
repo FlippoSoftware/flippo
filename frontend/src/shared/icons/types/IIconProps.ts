@@ -1,7 +1,7 @@
 import type { SVGProps } from 'react';
 
-interface IIconProps extends SVGProps<SVGSVGElement> {
+type IIconProps = {
   isDefaultFill?: boolean;
-}
+} & SVGProps<SVGSVGElement>;
 
 export type { IIconProps };

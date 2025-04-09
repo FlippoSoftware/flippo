@@ -1,6 +1,7 @@
-import type { ButtonHTMLAttributes, ReactNode } from 'react';
+import type { ButtonHTMLAttributes, ReactNode, Ref } from 'react';
 
 type TMenuItemProps = {
+  ref: Ref<HTMLButtonElement>;
   blockClose?: boolean;
   children: ReactNode;
   className?: string;

@@ -1,8 +1,8 @@
 import type { IIconProps } from './types/IIconProps';
 
-interface MoreIconProps extends IIconProps {
+type MoreIconProps = {
   type?: 'horizontal' | 'vertical';
-}
+} & IIconProps;
 
 const MoreTypes = {
   horizontal:

@@ -16,9 +16,9 @@ export const requestVerificationCodeFx = createEffect<string, void, string>((ema
   });
 });
 
-export interface TPkceResponse {
+export type TPkceResponse = {
   codeChallenge: string;
-}
+};
 
 export const requestPkceFx = createEffect<void, TPkceResponse, string>(() => {
   return requestFx({

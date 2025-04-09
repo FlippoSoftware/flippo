@@ -1,5 +1,5 @@
-import type { DialogHTMLAttributes } from 'react';
+import type { DialogHTMLAttributes, Ref } from 'react';
 
-type TDialogProps = DialogHTMLAttributes<HTMLDialogElement>;
+type TDialogProps = { ref?: Ref<HTMLDialogElement> } & DialogHTMLAttributes<HTMLDialogElement>;
 
 export { type TDialogProps };

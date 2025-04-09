@@ -1,5 +1,5 @@
 import type { MotionProps } from 'framer-motion';
-import type { HTMLProps, PropsWithChildren } from 'react';
+import type { HTMLProps, PropsWithChildren, Ref } from 'react';
 
 /**
  * Copy from csstype - @type {CSSProperties['opacity']}
@@ -17,17 +17,18 @@ type TOpacity =
   | ({} & string)
   | undefined;
 
-type TFadeTransitionProps = PropsWithChildren<
-  Omit<
-    {
-      animateOpacity?: TOpacity;
-      contentKey: bigint | null | number | string | undefined;
-      exitOpacity?: TOpacity;
-      initialOpacity?: TOpacity;
-    } & HTMLProps<HTMLDivElement> &
-    Partial<MotionProps>,
+type TFadeTransitionProps = { ref: Ref<HTMLDivElement> } &
+  PropsWithChildren<
+    Omit<
+      {
+        animateOpacity?: TOpacity;
+        contentKey: bigint | null | number | string | undefined;
+        exitOpacity?: TOpacity;
+        initialOpacity?: TOpacity;
+      } & HTMLProps<HTMLDivElement> &
+      Partial<MotionProps>,
     'animate' | 'exit' | 'initial'
-  >
->;
+    >
+  >;
 
 export type { TFadeTransitionProps };

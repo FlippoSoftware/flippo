@@ -2,7 +2,7 @@ import type { MouseEvent, ReactNode } from 'react';
 
 type TNotificationKind = 'error' | 'success' | 'timer' | 'warning';
 
-interface TToastProps {
+type TToastProps = {
   content?: ReactNode;
   id: string;
   message: string;
@@ -13,6 +13,6 @@ interface TToastProps {
   statusIconSize?: number;
   timeout?: number;
   variant: TNotificationKind;
-}
+};
 
 export { type TNotificationKind, type TToastProps };

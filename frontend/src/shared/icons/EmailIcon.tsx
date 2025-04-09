@@ -1,8 +1,8 @@
 import type { IIconProps } from './types/IIconProps';
 
-interface IEmailIconProps extends IIconProps {
+type IEmailIconProps = {
   type: 'aol' | 'gmail' | 'iCloud' | 'mailru' | 'outlook' | 'protonMail' | 'yahoo' | 'yandex';
-}
+} & IIconProps;
 
 const EmailTypes = {
   aol: (

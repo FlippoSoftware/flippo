@@ -1,10 +1,10 @@
 'use client';
 
-import type { ChangeEvent, ClipboardEvent, KeyboardEvent, MouseEvent, Ref } from 'react';
+import type { ChangeEvent, ClipboardEvent, KeyboardEvent, MouseEvent } from 'react';
 
-import type { TInputVerificationCodeProps, TVerifyInputHandler } from '../types/TInputVerificationCode';
+import type { TInputVerificationCodeProps } from '../types/TInputVerificationCode';
 import clsx from 'clsx';
-import { createRef, forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useState } from 'react';
+import { createRef, useCallback, useEffect, useImperativeHandle, useMemo, useState } from 'react';
 
 import { unknown } from 'zod';
 
@@ -13,7 +13,7 @@ import st from './InputVerificationCode.module.scss';
 const onChangeDefault = () => null;
 const onCompletedDefault = () => unknown;
 
-function InputVerificationCode(props: TInputVerificationCodeProps, ref: Ref<TVerifyInputHandler>) {
+function InputVerificationCode(props: TInputVerificationCodeProps) {
   const {
     autoFocus = true,
     inputSlotProps,
@@ -24,7 +24,8 @@ function InputVerificationCode(props: TInputVerificationCodeProps, ref: Ref<TVer
     placeholder = '.',
     valid = false,
     value: defaultValue = '',
-    variant = 'number'
+    variant = 'number',
+    ref
   } = props;
 
   const fillValues = (value: string) => Array.from({ length }).fill('').map((_, index) => value[index] ?? '');
@@ -235,4 +236,4 @@ function InputVerificationCode(props: TInputVerificationCodeProps, ref: Ref<TVer
   );
 }
 
-export default forwardRef<TVerifyInputHandler, TInputVerificationCodeProps>(InputVerificationCode);
+export default InputVerificationCode;

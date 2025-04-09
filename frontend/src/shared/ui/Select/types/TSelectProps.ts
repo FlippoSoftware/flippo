@@ -1,6 +1,6 @@
 import type { Dispatch, ReactElement, ReactNode, SetStateAction } from 'react';
 
-interface TSelectProps {
+type TSelectProps = {
   children: ReactNode;
   defaultOption?: string;
   icon?: ReactElement;
@@ -8,6 +8,6 @@ interface TSelectProps {
   placeholder: string;
   placementDropdown?: 'left' | 'right';
   selected: string;
-}
+};
 
 export type { TSelectProps };

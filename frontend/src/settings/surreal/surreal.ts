@@ -6,11 +6,11 @@ import { Surreal } from 'surrealdb';
 import { getDbTokenCookie, removeDbTokenCookie } from './utils/cookie.utils';
 import { SurrealError } from './utils/surreal.error';
 
-interface TDbConfig {
+type TDbConfig = {
   database: string;
   endpoint: string;
   namespace: string;
-}
+};
 
 const DEFAULT_CONFIG: TDbConfig = {
   database: ENV.SURREALDB_DB || 'test',

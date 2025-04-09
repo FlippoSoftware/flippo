@@ -1,6 +1,6 @@
 import type { MotionProps } from 'framer-motion';
-import type { ComponentProps } from 'react';
+import type { ComponentProps, Ref } from 'react';
 
-type TMenuList = ComponentProps<'menu'> & MotionProps;
+type TMenuList = { ref: Ref<HTMLMenuElement> } & ComponentProps<'menu'> & MotionProps;
 
 export type { TMenuList };

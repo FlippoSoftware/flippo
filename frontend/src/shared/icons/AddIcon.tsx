@@ -1,8 +1,8 @@
 import type { IIconProps } from './types/IIconProps';
 
-interface AddIconProps extends IIconProps {
+type AddIconProps = {
   type?: 'default' | 'note';
-}
+} & IIconProps;
 
 const AddTypes = {
   default: 'M11 13H5V11H11V5H13V11H19V13H13V19H11V13Z',

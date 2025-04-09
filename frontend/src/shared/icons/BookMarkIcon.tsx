@@ -1,8 +1,8 @@
 import type { IIconProps } from './types/IIconProps';
 
-interface BookMarkIconProps extends IIconProps {
+type BookMarkIconProps = {
   type?: 'active' | 'default' | 'stack';
-}
+} & IIconProps;
 
 const BookMarkTypes = {
   active:

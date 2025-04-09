@@ -1,8 +1,8 @@
 import type { IIconProps } from './types/IIconProps';
 
-interface IArrowIconProps extends IIconProps {
+type IArrowIconProps = {
   type?: 'default' | 'link';
-}
+} & IIconProps;
 
 const ArrowTypes = {
   default:

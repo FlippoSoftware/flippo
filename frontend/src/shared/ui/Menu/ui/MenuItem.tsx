@@ -1,13 +1,12 @@
-import type { ForwardedRef, MouseEvent } from 'react';
+import type { MouseEvent } from 'react';
 import type { TMenuItemProps } from '../types/TMenuItemProps';
 import clsx from 'clsx';
 
-import { forwardRef } from 'react';
 import st from './Menu.module.scss';
 import { useMenu } from './MenuContext';
 
-function MenuItem(props: TMenuItemProps, ref: ForwardedRef<HTMLButtonElement>) {
-  const { blockClose, children, className = '', onClick, ...otherProps } = props;
+function MenuItem(props: TMenuItemProps) {
+  const { blockClose, children, className = '', onClick, ref, ...otherProps } = props;
   const { onClose } = useMenu();
 
   const onClickItem = (event: MouseEvent<HTMLButtonElement>) => {
@@ -25,4 +24,4 @@ function MenuItem(props: TMenuItemProps, ref: ForwardedRef<HTMLButtonElement>) {
   );
 }
 
-export default forwardRef(MenuItem);
+export default MenuItem;

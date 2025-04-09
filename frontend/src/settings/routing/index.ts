@@ -4,17 +4,17 @@ import { createHistoryRouter, createRoute } from 'atomic-router';
 import { createEvent, sample } from 'effector';
 import { createBrowserHistory } from 'history';
 
-export interface TSettingsRouteParams {
+export type TSettingsRouteParams = {
   userId?: string;
-}
+};
 
-export interface TFolderRouteParams {
+export type TFolderRouteParams = {
   folderId: string;
-}
+};
 
-export interface TSetRouteParams {
+export type TSetRouteParams = {
   setId: string;
-}
+};
 
 export const initRouter = createEvent();
 

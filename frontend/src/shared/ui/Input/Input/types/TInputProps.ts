@@ -1,10 +1,11 @@
-import type { ComponentPropsWithRef, ReactElement } from 'react';
+import type { ComponentPropsWithRef, ReactElement, Ref } from 'react';
 
-interface TInputOwnProps {
+type TInputOwnProps = {
+  ref?: Ref<HTMLInputElement>;
   icon?: ReactElement<HTMLOrSVGElement>;
   size: 'large' | 'regular';
   type?: 'email' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'url';
-}
+};
 
 type TInputProps = Omit<ComponentPropsWithRef<'input'>, keyof TInputOwnProps> & TInputOwnProps;
 

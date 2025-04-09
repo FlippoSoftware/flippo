@@ -1,11 +1,10 @@
-import type { ForwardedRef } from 'react';
 import type { TMenuHandlerProps } from '../types/TMenuHandlerProps';
 
-import { cloneElement, forwardRef, useImperativeHandle } from 'react';
+import { cloneElement, useImperativeHandle } from 'react';
 import { useMenu } from './MenuContext';
 
-function MenuHandler(props: TMenuHandlerProps, ref: ForwardedRef<HTMLElement>) {
-  const { children, ...otherProps } = props;
+function MenuHandler(props: TMenuHandlerProps) {
+  const { children, ref, ...otherProps } = props;
   const { handler, isOpen, onToggle } = useMenu();
 
   useImperativeHandle<HTMLElement | null, HTMLElement | null>(ref, () => handler.current);
@@ -28,4 +27,4 @@ function MenuHandler(props: TMenuHandlerProps, ref: ForwardedRef<HTMLElement>) {
 
 MenuHandler.displayName = 'Flippo.MenuHandler';
 
-export default forwardRef(MenuHandler);
+export default MenuHandler;

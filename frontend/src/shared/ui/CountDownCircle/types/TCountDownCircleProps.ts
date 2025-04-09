@@ -1,4 +1,4 @@
-interface TCountDownCircleProps {
+type TCountDownCircleProps = {
   className?: string;
   classNameEmptyBar?: string;
   duration: number;
@@ -6,6 +6,6 @@ interface TCountDownCircleProps {
   size?: number;
   strokeLinecap?: 'butt' | 'inherit' | 'round' | 'square' | undefined;
   strokeWidth?: number;
-}
+};
 
 export type { TCountDownCircleProps };

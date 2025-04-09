@@ -1,6 +1,7 @@
-import type { ComponentProps, ReactElement } from 'react';
+import type { ComponentProps, ReactElement, Ref } from 'react';
 
 type TMenuHandlerProps = {
+  ref: Ref<HTMLElement>;
   children: ComponentProps<any> | ReactElement;
 } & ComponentProps<any>;
 

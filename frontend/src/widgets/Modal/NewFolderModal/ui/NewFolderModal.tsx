@@ -1,15 +1,15 @@
-import type { ChangeEvent, ForwardedRef } from 'react';
+import type { ChangeEvent } from 'react';
+import type { TNewFolderModalProps } from '../types/TNewFolderModalProps';
 import { SuccessIcon } from '@shared/icons';
 import { Button } from '@shared/ui/Button';
 import { Dialog } from '@shared/ui/Dialog';
 import { FormInput } from '@shared/ui/Input';
-import { forwardRef } from 'react';
-import { useTranslation } from 'react-i18next';
 
+import { useTranslation } from 'react-i18next';
 import st from './NewFolderModal.module.scss';
 import { useNewFolderModal } from './useNewFolderModal';
 
-function NewFolderModal(_: object, ref: ForwardedRef<HTMLDialogElement>) {
+function NewFolderModal({ ref }: TNewFolderModalProps) {
   const { t } = useTranslation('modal', { keyPrefix: 'createFolder' });
   const {
     creationInProgress,
@@ -56,4 +56,4 @@ function NewFolderModal(_: object, ref: ForwardedRef<HTMLDialogElement>) {
   );
 }
 
-export default forwardRef(NewFolderModal);
+export default NewFolderModal;

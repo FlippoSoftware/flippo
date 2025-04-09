@@ -14,21 +14,21 @@ import { and } from 'patronum';
 
 type TInputError = null | string;
 
-interface TManipulationTools<T> {
+type TManipulationTools<T> = {
   $input: StoreWritable<T>;
   $inputRef: StoreWritable<HTMLInputElement | null>;
   inputBlur: EventCallable<void>;
   inputChanged: EventCallable<Exclude<T, null>>;
   inputFocus: EventCallable<void>;
   inputRefChanged: EventCallable<HTMLInputElement | null>;
-}
+};
 
-interface TManipulationToolsExtension {
+type TManipulationToolsExtension = {
   $inputError: StoreWritable<TInputError>;
   inputErrorClear: EventCallable<void>;
   inputFocusedDueError: EventCallable<void>;
   inputValidate: EventCallable<void>;
-}
+};
 
 type TAdvancedManipulationTools<T> = TManipulationTools<T> & TManipulationToolsExtension;
 

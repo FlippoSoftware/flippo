@@ -1,14 +1,12 @@
-import type { ForwardedRef } from 'react';
 import type { TFormInputProps } from '../types/TFormInputProps';
 import { Input } from '@shared/ui/Input';
 
 import { clsx } from 'clsx';
-import { forwardRef } from 'react';
 
 import st from './FormInput.module.scss';
 
-function FormInput(props: TFormInputProps, ref: ForwardedRef<HTMLInputElement>) {
-  const { className, errorMessage, ...otherProps } = props;
+function FormInput(props: TFormInputProps) {
+  const { className, errorMessage, ref, ...otherProps } = props;
 
   return (
     <div className={ clsx(st.inputGroup, !!errorMessage && st.show) }>
@@ -20,4 +18,4 @@ function FormInput(props: TFormInputProps, ref: ForwardedRef<HTMLInputElement>) 
   );
 }
 
-export default forwardRef(FormInput);
+export default FormInput;

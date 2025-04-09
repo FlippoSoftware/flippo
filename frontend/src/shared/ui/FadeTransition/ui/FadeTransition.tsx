@@ -1,10 +1,7 @@
-import type { ForwardedRef } from 'react';
 import type { TFadeTransitionProps } from '../types/TFadeTransitionProps';
 import { AnimatePresence, motion } from 'framer-motion';
 
-import { forwardRef } from 'react';
-
-function FadeTransition(props: TFadeTransitionProps, ref: ForwardedRef<HTMLDivElement>) {
+function FadeTransition(props: TFadeTransitionProps) {
   const {
     animateOpacity = 1,
     children,
@@ -13,6 +10,7 @@ function FadeTransition(props: TFadeTransitionProps, ref: ForwardedRef<HTMLDivEl
     exitOpacity = 0,
     initialOpacity = 0,
     transition,
+    ref,
     ...otherProps
   } = props;
 
@@ -34,4 +32,4 @@ function FadeTransition(props: TFadeTransitionProps, ref: ForwardedRef<HTMLDivEl
   );
 }
 
-export default forwardRef(FadeTransition);
+export default FadeTransition;

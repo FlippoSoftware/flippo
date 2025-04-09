@@ -1,8 +1,8 @@
 import type { IIconProps } from './types/IIconProps';
 
-interface VKIconProps extends IIconProps {
+type VKIconProps = {
   type?: 'negative' | 'origin';
-}
+} & IIconProps;
 
 function VKIcon(props: VKIconProps) {
   const { type = 'origin', ...otherProps } = props;

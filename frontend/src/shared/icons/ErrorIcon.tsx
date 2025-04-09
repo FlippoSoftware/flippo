@@ -1,8 +1,8 @@
 import type { IIconProps } from './types/IIconProps';
 
-interface ErrorIconProps extends IIconProps {
+type ErrorIconProps = {
   type: 'circle' | 'circleFilled';
-}
+} & IIconProps;
 
 const ErrorTypes = {
   circle:

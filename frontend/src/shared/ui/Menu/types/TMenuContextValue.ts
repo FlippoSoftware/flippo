@@ -16,14 +16,14 @@ type TPlacement =
 
 type TOffset = number;
 
-interface TAnimation {
+type TAnimation = {
   animateSize?: number;
   duration?: number;
   exitSize?: number;
   initialSize?: number;
-}
+};
 
-interface TMenuContextValue {
+type TMenuContextValue = {
   activeIndex?: number;
   animation?: TAnimation;
   handler: RefObject<HTMLElement>;
@@ -36,11 +36,11 @@ interface TMenuContextValue {
   setActiveIndex: Dispatch<SetStateAction<number>>;
   x: number;
   y: number;
-}
+};
 
-interface TMenuContextProviderProps {
+type TMenuContextProviderProps = {
   children: ReactNode;
   value: TMenuContextValue;
-}
+};
 
 export type { TAnimation, TMenuContextProviderProps, TMenuContextValue, TOffset, TPlacement };

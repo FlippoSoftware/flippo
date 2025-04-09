@@ -1,12 +1,11 @@
-import type { ForwardedRef } from 'react';
 import type { TInputProps } from '../types/TInputProps';
 import clsx from 'clsx';
 
-import { forwardRef, useImperativeHandle, useRef } from 'react';
+import { useImperativeHandle, useRef } from 'react';
 import st from './Input.module.scss';
 
-function Input(props: TInputProps, ref: ForwardedRef<HTMLInputElement | null>) {
-  const { children, className, icon, size, ...otherProps } = props;
+function Input(props: TInputProps) {
+  const { children, className, icon, size, ref, ...otherProps } = props;
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   useImperativeHandle<HTMLInputElement | null, HTMLInputElement | null>(ref, () => {
@@ -29,4 +28,4 @@ function Input(props: TInputProps, ref: ForwardedRef<HTMLInputElement | null>) {
   );
 }
 
-export default forwardRef<HTMLInputElement, TInputProps>(Input);
+export default Input;

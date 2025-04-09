@@ -22,7 +22,7 @@ const RedirectEmail: { [key in TEmailProviderNames]: string } = {
   yandex: 'https://mail.yandex.ru'
 };
 
-export interface TEmailProvider { name: TEmailProviderNames; redirectURL: string }
+export type TEmailProvider = { name: TEmailProviderNames; redirectURL: string };
 
 export function getEmailProvider(email: string): null | TEmailProvider {
   for (const [key, value] of Object.entries(EmailDomains)) {

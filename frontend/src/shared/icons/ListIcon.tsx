@@ -1,8 +1,8 @@
 import type { IIconProps } from './types/IIconProps';
 
-interface ListIconProps extends IIconProps {
+type ListIconProps = {
   type?: 'order' | 'unorder';
-}
+} & IIconProps;
 
 const ListTypes = {
   order:

@@ -1,8 +1,9 @@
-import type { ComponentPropsWithRef, ElementType } from 'react';
+import type { ComponentPropsWithRef, ElementType, Ref } from 'react';
 
-interface TUnstyledButtonOwnProps<E extends ElementType> {
+type TUnstyledButtonOwnProps<E extends ElementType> = {
   as?: E;
-}
+  ref?: Ref<HTMLButtonElement>;
+};
 
 type TUnstyledButtonProps<E extends ElementType> = Omit<ComponentPropsWithRef<E>, keyof TUnstyledButtonOwnProps<E>> &
   TUnstyledButtonOwnProps<E>;

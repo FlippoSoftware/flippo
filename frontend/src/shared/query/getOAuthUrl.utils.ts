@@ -6,7 +6,7 @@ import { addQueryParams } from './addQueryParams.utils';
 const authProviders = ['google', 'vkontakte', 'yandexID'] as const;
 type TAuthProvider = (typeof authProviders)[number];
 
-interface TSharedQueryParams {
+type TSharedQueryParams = {
   client_id: string;
   code_challenge?: string;
   code_challenge_method?: string;
@@ -15,7 +15,7 @@ interface TSharedQueryParams {
   response_type: string;
   scope: string;
   state?: string;
-}
+};
 
 const oauthBaseUrlRecord: Record<TAuthProvider, string> = {
   google: 'https://accounts.google.com/o/oauth2/v2/auth',

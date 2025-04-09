@@ -1,10 +1,11 @@
-import type { InputHTMLAttributes } from 'react';
+import type { InputHTMLAttributes, Ref } from 'react';
 
-interface TVerifyInputHandler {
+type TVerifyInputHandler = {
   focus: ()=> void;
-}
+};
 
-interface TInputVerificationCodeProps {
+type TInputVerificationCodeProps = {
+  ref: Ref<TVerifyInputHandler>;
   autoFocus?: boolean;
   inputSlotProps?: InputHTMLAttributes<HTMLInputElement>;
   invalid?: boolean;
@@ -15,6 +16,6 @@ interface TInputVerificationCodeProps {
   valid?: boolean;
   value?: string;
   variant?: 'alphanumeric' | 'number';
-}
+};
 
 export { type TInputVerificationCodeProps, type TVerifyInputHandler };

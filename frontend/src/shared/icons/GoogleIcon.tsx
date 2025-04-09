@@ -1,8 +1,8 @@
 import type { IIconProps } from './types/IIconProps';
 
-interface GoogleIconProps extends IIconProps {
+type GoogleIconProps = {
   type?: 'negative' | 'origin';
-}
+} & IIconProps;
 
 function GoogleIcon(props: GoogleIconProps) {
   const { type = 'origin', ...otherProps } = props;

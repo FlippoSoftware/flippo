@@ -1,15 +1,14 @@
-import type { ForwardedRef } from 'react';
 import type { TMenuList } from '../types/TMenuListProps';
 import clsx from 'clsx';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Children, cloneElement, forwardRef, isValidElement, useImperativeHandle } from 'react';
+import { Children, cloneElement, isValidElement, useImperativeHandle } from 'react';
 
 import { createPortal } from 'react-dom';
 import st from './Menu.module.scss';
 import { useMenu } from './MenuContext';
 
-function MenuList(props: TMenuList, ref: ForwardedRef<HTMLMenuElement>) {
-  const { children, className, ...otherProps } = props;
+function MenuList(props: TMenuList) {
+  const { children, className, ref, ...otherProps } = props;
   const { animation, isOpen, menu, x, y } = useMenu();
 
   useImperativeHandle<HTMLMenuElement | null, HTMLMenuElement | null>(ref, () => menu.current);
@@ -50,4 +49,4 @@ function MenuList(props: TMenuList, ref: ForwardedRef<HTMLMenuElement>) {
   );
 }
 
-export default forwardRef(MenuList);
+export default MenuList;

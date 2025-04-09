@@ -30,6 +30,10 @@ export const overridesStylisticConfig: Exclude<OptionsConfig['stylistic'], boole
 export const overridesTsConfig: Exclude<OptionsConfig['typescript'], boolean | undefined>['overrides'] = {
   'ts/consistent-type-exports': 'error',
   'ts/consistent-type-imports': 'error',
+  "ts/consistent-type-definitions": [
+      "error",
+      "type"
+    ],
   'ts/naming-convention': [
     'warn',
     {

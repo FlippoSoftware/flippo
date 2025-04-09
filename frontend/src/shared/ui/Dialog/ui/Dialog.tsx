@@ -1,14 +1,13 @@
 'use client';
 
-import type { ForwardedRef } from 'react';
 import type { TDialogProps } from '../types/TDialogProps';
 import clsx from 'clsx';
 
-import { forwardRef, useImperativeHandle, useRef } from 'react';
+import { useImperativeHandle, useRef } from 'react';
 import st from './Dialog.module.scss';
 
-function Dialog(props: TDialogProps, ref: ForwardedRef<HTMLDialogElement>) {
-  const { children, className, ...otherProps } = props;
+function Dialog(props: TDialogProps) {
+  const { children, className, ref, ...otherProps } = props;
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   useImperativeHandle(ref, () => dialogRef.current as HTMLDialogElement);
@@ -20,4 +19,4 @@ function Dialog(props: TDialogProps, ref: ForwardedRef<HTMLDialogElement>) {
   );
 }
 
-export default forwardRef(Dialog);
+export default Dialog;

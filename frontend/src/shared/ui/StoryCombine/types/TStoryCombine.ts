@@ -2,23 +2,23 @@ import type { ComponentType, ForwardRefExoticComponent, ReactNode } from 'react'
 
 type TComponentProps<E extends object> = E;
 
-interface TVariantComponent<E extends object> {
+type TVariantComponent<E extends object> = {
   components: TComponentProps<Partial<E>>[];
   name: string;
   variantArgs?: Partial<E>;
-}
+};
 
-interface TGroup<E extends object> {
+type TGroup<E extends object> = {
   groupArgs?: Partial<E>;
   name: string;
   variants: TVariantComponent<E>[];
-}
+};
 
-interface TStoryCombineProps<E extends object> {
+type TStoryCombineProps<E extends object> = {
   args?: Partial<E>;
   component: ComponentType<E> | ForwardRefExoticComponent<Omit<E, 'ref'>>;
   decorator?: (component: ReactNode, args?: Partial<E>)=> ReactNode;
   groups: TGroup<E>[];
-}
+};
 
 export type { TComponentProps, TGroup, TStoryCombineProps, TVariantComponent };

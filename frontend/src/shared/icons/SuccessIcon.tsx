@@ -1,8 +1,8 @@
 import type { IIconProps } from './types/IIconProps';
 
-interface SuccessIconProps extends IIconProps {
+type SuccessIconProps = {
   type?: 'circle' | 'circleFilled' | 'default';
-}
+} & IIconProps;
 
 const SuccessTypes = {
   circle:

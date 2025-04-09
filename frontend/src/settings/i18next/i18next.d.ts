@@ -14,22 +14,22 @@ type THeader = typeof header;
 type TNotfound = typeof notfound;
 type TModal = typeof modal;
 
-interface TResource {
+type TResource = {
   auth: TAuth;
   header: THeader;
   modal: TModal;
   notfound: TNotfound;
   translation: TTranslation;
-}
+};
 
 declare module 'i18next' {
-  interface CustomTypeOptions {
+  type CustomTypeOptions = {
     resources: TResource;
-  }
+  };
 }
 
 declare module '@withease/i18next' {
-  export interface I18nextIntegration {
+  export type I18nextIntegration = {
     $instance: Store<i18n | null>;
     $isReady: Store<boolean>;
     $language: Store<null | string>;
@@ -39,17 +39,17 @@ declare module '@withease/i18next' {
       missingKey: Event_2<MissinKeyReport>;
     };
     translated: Translated;
-  }
+  };
 
-  export interface MissinKeyReport {
+  export type MissinKeyReport = {
     key: string;
     lngs: readonly string[];
     namespace: string;
     res: string;
-  }
+  };
 
-  export interface Translated {
+  export type Translated = {
     (key: string, variables?: Record<string, Store<string>>): Store<string>;
     (parts: TemplateStringsArray, ...stores: Store<string>[]): Store<string>;
-  }
+  };
 }

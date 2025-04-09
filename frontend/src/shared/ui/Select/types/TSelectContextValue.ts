@@ -1,6 +1,6 @@
 import type { Dispatch, ReactNode, RefObject, SetStateAction } from 'react';
 
-interface TSelectContextValue {
+type TSelectContextValue = {
   activeIndex?: number;
   isOpen: boolean;
   listTitleRef: RefObject<(null | string)[]>;
@@ -9,11 +9,11 @@ interface TSelectContextValue {
   selectedIndex: number;
   setActiveIndex: Dispatch<SetStateAction<number>>;
   setSelectedIndex: Dispatch<SetStateAction<number>>;
-}
+};
 
-interface TSelectContextProviderProps {
+type TSelectContextProviderProps = {
   children: ReactNode;
   value: TSelectContextValue;
-}
+};
 
 export type { TSelectContextProviderProps, TSelectContextValue };

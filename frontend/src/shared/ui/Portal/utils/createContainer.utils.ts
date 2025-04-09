@@ -1,7 +1,7 @@
-export interface ContainerOptions {
+export type ContainerOptions = {
   id: string;
   mountNode?: HTMLElement;
-}
+};
 
 export function createContainer(options: ContainerOptions) {
   if (document.getElementById(options.id))

@@ -9,12 +9,12 @@ const api = axios.create({
   validateStatus: status => status >= 200 && status < 300
 });
 
-interface Request {
+type Request = {
   body?: unknown;
   method: 'DELETE' | 'GET' | 'PATCH' | 'POST' | 'PUT';
   options?: AxiosRequestConfig;
   url: string;
-}
+};
 
 export const requestFx = createEffect<Request, any, string>((request) => {
   return (

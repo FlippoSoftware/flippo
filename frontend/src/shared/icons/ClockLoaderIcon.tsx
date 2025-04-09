@@ -1,8 +1,8 @@
 import type { IIconProps } from './types/IIconProps';
 
-interface ClockLoaderIconProps extends IIconProps {
+type ClockLoaderIconProps = {
   type?: 'load40' | 'load60';
-}
+} & IIconProps;
 
 const ClockLoaderTypes = {
   load40:

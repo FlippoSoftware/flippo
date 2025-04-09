@@ -1,13 +1,10 @@
-import type { ElementType, ForwardedRef } from 'react';
+import type { ElementType } from 'react';
 import type { TUnstyledButtonProps } from '../types/TUnstyledButtonProps';
 
-import { forwardRef } from 'react';
-
 function UnstyledButton<E extends ElementType = 'a' | 'button'>(
-  props: TUnstyledButtonProps<E>,
-  ref: ForwardedRef<HTMLButtonElement>
+  props: TUnstyledButtonProps<E>
 ) {
-  const { as: Element = 'button', children, ...otherProps } = props;
+  const { as: Element = 'button', children, ref, ...otherProps } = props;
 
   return (
     <Element ref={ ref } { ...otherProps }>
@@ -16,4 +13,4 @@ function UnstyledButton<E extends ElementType = 'a' | 'button'>(
   );
 }
 
-export default forwardRef(UnstyledButton);
+export default UnstyledButton;
