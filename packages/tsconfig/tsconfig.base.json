@@ -6,7 +6,6 @@
     /* Type Checking */
     "strict": true,
     "alwaysStrict": true,
-    "exactOptionalPropertyTypes": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
     "noImplicitReturns": true,
@@ -33,8 +32,6 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "verbatimModuleSyntax": true,
-    "isolatedDeclarations": true,
     
     /* Language and Environment */
     "lib": ["ESNext"],

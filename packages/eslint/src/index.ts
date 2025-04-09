@@ -15,9 +15,8 @@ export const overridesStylisticConfig: Exclude<OptionsConfig['stylistic'], boole
   'style/template-tag-spacing': ['error'],
 
   /* misc */
-  'style/max-len': ['warn', { code: 120, tabWidth: 2, ignoreTrailingComments: true, ignoreUrls: true, ignoreStrings: true, ignoreTemplateLiterals: true, ignoreRegExpLiterals: true, ignorePattern: '^\\s*var\\s.+=\\s*require\\s*\\(' }],
+  'style/max-len': ['warn', { code: 140, tabWidth: 2, ignoreTrailingComments: true, ignoreUrls: true, ignoreStrings: true, ignoreTemplateLiterals: true, ignoreRegExpLiterals: true, ignorePattern: '^\\s*var\\s.+=\\s*require\\s*\\(' }],
   'style/one-var-declaration-per-line': ['error', 'always'],
-  'style/nonblock-statement-body-position': ['error', 'beside', { overrides: { while: 'below' } }],
 
   /* jsx */
   'style/jsx-quotes': ['error', 'prefer-single'],

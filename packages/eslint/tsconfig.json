@@ -3,10 +3,13 @@
   "compilerOptions": {
     "types": ["node"],
     "allowImportingTsExtensions": false,
-    "declarationDir": "./dist/types",
+    "allowJs": true,
+    "declaration": false,
+    "declarationMap": false,
+    "composite": false,
     "emitDeclarationOnly": false,
-    "outDir": "./dist"
+    "isolatedDeclarations": false
   },
-  "include": ["src", "eslint.config.ts"],
-  "exclude": ["node_modules", "dist"]
+  "include": ["src"],
+  "exclude": ["node_modules", "dist", "eslint.config.js"]
 }

@@ -1,0 +1,19 @@
+import type { Dispatch, ReactNode, RefObject, SetStateAction } from 'react';
+
+interface TSelectContextValue {
+  activeIndex?: number;
+  isOpen: boolean;
+  listTitleRef: RefObject<(null | string)[]>;
+  onChange: ((value: string)=> void) | Dispatch<SetStateAction<string>>;
+  selected: string;
+  selectedIndex: number;
+  setActiveIndex: Dispatch<SetStateAction<number>>;
+  setSelectedIndex: Dispatch<SetStateAction<number>>;
+}
+
+interface TSelectContextProviderProps {
+  children: ReactNode;
+  value: TSelectContextValue;
+}
+
+export type { TSelectContextProviderProps, TSelectContextValue };
