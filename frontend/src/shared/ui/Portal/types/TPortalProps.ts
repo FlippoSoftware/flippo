@@ -6,6 +6,6 @@ type TPortalProps = PropsWithChildren<{
 }>;
 
 type TPortalPropsWithId = PropsWithChildren<{ targetId?: string }>;
-type TPortalPropsWithContainerRef = PropsWithChildren<{ targetRef?: RefObject<HTMLElement> }>;
+type TPortalPropsWithContainerRef = PropsWithChildren<{ targetRef?: RefObject<HTMLElement | null> }>;
 
 export { type TPortalProps, type TPortalPropsWithContainerRef, type TPortalPropsWithId };
