@@ -1,0 +1,4 @@
+CREATE repetition CONTENT {
+  cards: []
+}
+;

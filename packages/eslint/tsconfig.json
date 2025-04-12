@@ -1,0 +1,15 @@
+{
+  "extends": "@flippo/tsconfig",
+  "compilerOptions": {
+    "types": ["node"],
+    "allowImportingTsExtensions": false,
+    "allowJs": true,
+    "declaration": false,
+    "declarationMap": false,
+    "composite": false,
+    "emitDeclarationOnly": false,
+    "isolatedDeclarations": false
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist", "eslint.config.js"]
+}

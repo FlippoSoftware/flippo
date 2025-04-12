@@ -1,0 +1,22 @@
+@use 'mixins/_flex.scss' as flex;
+@use 'mixins/_font.scss' as font;
+
+.languageButton {
+  &[aria-expanded='true'] {
+    background: var(--bg-2-hover);
+    color: var(--text-primary);
+  }
+}
+
+.languageSwitch {
+  @include flex.display(flex, column, center, center, 4px);
+  @include font.label('default');
+
+  color: var(--text-5);
+
+  & > span {
+    width: 100%;
+    text-align: center;
+    padding-top: 4px;
+  }
+}

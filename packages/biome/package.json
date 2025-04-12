@@ -1,0 +1,31 @@
+{
+  "name": "@flippo/biome",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "exports": {
+    "base": {
+      "default": "./src/configs/base.config.json"
+    },
+    "react": {
+      "default": "./src/configs/react.config.json"
+    },
+    "storybook": {
+      "default": "./src/configs/storybook.config.json"
+    },
+    "test": {
+      "default": "./src/configs/test.config.json"
+    }
+  },
+  "files": ["src"],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "BlackPoretsky (Egor Gorochkin)",
+  "license": "ISC",
+  "packageManager": "pnpm@10.7.0",
+  "dependencies": {
+    "@biomejs/biome": "catalog:"
+  }
+}

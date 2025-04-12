@@ -1,0 +1,54 @@
+{
+  "name": "Flippo frontend DevContainer",
+
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "formulahendry.auto-rename-tag",
+        "streetsidesoftware.code-spell-checker",
+        "vunguyentuan.vscode-css-variables",
+        "dsznajder.es7-react-js-snippets",
+        "dbaeumer.vscode-eslint",
+        "felipecaputo.git-project-manager",
+        "esbenp.prettier-vscode",
+        "streetsidesoftware.code-spell-checker-russian",
+        "sibiraj-s.vscode-scss-formatter",
+        "stylelint.vscode-stylelint",
+        "surrealdb.surrealql",
+        "simonsiefke.svg-preview",
+        "ionutvmi.path-autocomplete",
+        "christian-kohler.npm-intellisense",
+        "eamodio.gitlens",
+        "sidthesloth.html5-boilerplate",
+        "ecmel.vscode-html-css",
+        "lokalise.i18n-ally",
+        "ms-vscode.vscode-typescript-next",
+        "katsute.code-background",
+        "ms-azuretools.vscode-docker",
+        "mgmcdermott.vscode-language-babel"
+      ]
+    }
+  },
+
+  "forwardPorts": ["3030:3030", "3031:3031", "80:80"],
+  "portsAttributes": {
+    "3030:3030": {
+      "label": "Frontend port",
+      "onAutoForward": "openBrowserOnce"
+    },
+    "3031:3031": {
+      "label": "SurrealDB port"
+    },
+    "80:80": {
+      "label": "Backend port"
+    }
+  },
+
+  "runArgs": ["--name", "flippo_devcontainer"],
+  "workspaceFolder": "/workspace/flippo"
+  //"updateContentCommand": "pnpm install --frozen-lockfile"
+}

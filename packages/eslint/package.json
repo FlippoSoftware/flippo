@@ -1,0 +1,37 @@
+{
+  "name": "@flippo/eslint",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "description": "ESLint configuration for Flippo. \n Separately, you need to install 'eslint'. For configuration with the reagent, you must additionally install 'eslint-plugin-react-hooks', 'eslint-plugin-react-refresh', '@eslint-react/eslint-plugin'. If necessary, 'eslint-plugin-turbo' can be installed for 'Turborepo'.",
+  "exports": {
+    "types": "./dist/types/index.d.ts",
+    "import": "./dist/index.js",
+    "default": "./dist/index.js"
+  },
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "lint:check": "eslint . --max-warnings 0",
+    "lint:fix": "eslint . --fix",
+    "build": "rm -rf dist && tsc --build tsconfig.build.json --verbose --force"
+  },
+  "peerDependencies": {
+    "eslint": "catalog:",
+    "eslint-plugin-turbo": "catalog:"
+  },
+  "dependencies": {
+    "@antfu/eslint-config": "catalog:",
+    "eslint-plugin-format": "catalog:",
+    "globals": "catalog:"
+  },
+  "devDependencies": {
+    "@flippo/tsconfig": "workspace:*",
+    "@types/node": "catalog:",
+    "eslint": "catalog:",
+    "eslint-plugin-turbo": "catalog:",
+    "jiti": "catalog:",
+    "typescript": "catalog:"
+  }
+}

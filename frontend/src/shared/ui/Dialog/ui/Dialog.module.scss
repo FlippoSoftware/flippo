@@ -1,0 +1,13 @@
+.dialog {
+  border: none;
+  padding: 0;
+  background: transparent;
+
+  &:where(:focus, :focus-visible, :focus-within) {
+    outline-color: transparent;
+  }
+
+  &::backdrop {
+    background: rgba($color: var(--brand), $alpha: 0.5);
+  }
+}

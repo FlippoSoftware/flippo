@@ -1,0 +1,2 @@
+ RELATE $tagId->tagTo->$setId
+ ;

@@ -1,0 +1,2 @@
+RELATE $folderId->folderTo->$setId
+;

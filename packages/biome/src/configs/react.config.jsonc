@@ -1,0 +1,46 @@
+{
+	"$schema": "https://biomejs.dev/schemas/2.0.0-beta.1/schema.json",
+	"overrides": [
+		{
+			// Provide support for React components.
+			"includes": ["**/*.tsx", "!**/index.tsx"],
+			"linter": {
+        "domains": {
+          "react": "recommended"
+        },
+        "rules": {
+          "suspicious": {
+						"noReactSpecificProps": "off" // Allow React-specific props such as `className` and `htmlFor`.
+					},
+          "style": {
+            "noDefaultExport": "off" // Allow default exports of React components.
+          }
+        }
+			}
+		},
+    {
+      "includes": [
+        "**/*.tsx",
+        "!**/index.tsx",
+        "!**/layout.tsx",
+        "!**/loading.tsx",
+        "!**/error.tsx",
+        "!**/page.tsx",
+        "!**/default.tsx",
+        "!**/template.tsx"
+      ],
+      "linter": {
+        "rules": {
+          "style": {
+            "useFilenamingConvention": {
+              "level": "warn",
+              "options": {
+                "filenameCases": ["PascalCase"]
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
