@@ -1,0 +1,307 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.0.0-beta.1/schema.json",
+  "files": {
+    "includes": [
+      "**",
+      "!**/node_modules",
+      "!**/dist",
+      "!**/.git"
+    ]
+  },
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true
+  },
+  "formatter": {
+    "includes": ["**"],
+    "formatWithErrors": true,
+    "indentStyle":"space",
+    "lineWidth": 140
+  },
+  "linter": {
+    "rules": {
+      "a11y": {
+        "noSvgWithoutTitle": "warn",
+        "useKeyWithClickEvents": "off",
+        "useKeyWithMouseEvents": "off"
+      },
+      "complexity": {
+        "noExcessiveCognitiveComplexity": "info",
+        "useWhile": "warn"
+      },
+      "correctness": {
+        "noConstantCondition": "warn",
+        "noNodejsModules": "warn",
+        "noUndeclaredDependencies": "off", /* Await support for path aliases from `tsconfig.json`. */
+        "noInvalidNewBuiltin": "warn",
+        "noNewSymbol": "warn",
+        "noUnreachable": "warn",
+        "noUnusedFunctionParameters": "warn",
+        "useExhaustiveDependencies": "off", // Not applicable outside React apps.
+        "useHookAtTopLevel": "off", // Not applicable outside React apps.
+        "useJsxKeyInIterable": "off" // Not applicable outside React apps.
+      },
+      "nursery": {
+        "noConstantBinaryExpression":"info",
+        "noDocumentCookie": "info",
+        "noExportedImports": "warn",
+        "noFloatingPromises": "warn",
+        "noGlobalDirnameFilename": "warn",
+        "noImportCycles": "error",
+        "noIrregularWhitespace": "warn",
+        "noSecrets": "error",
+        "noSubstr": "warn",
+        "noTemplateCurlyInString": "off",
+        "noTsIgnore": "error",
+        "noUnresolvedImports": "error",
+        "noUselessEscapeInRegex": "warn",
+        "noUselessEscapeInString": "warn",
+        "noUselessStringRaw": "warn",
+        "noUselessUndefined": "warn",
+        "useAdjacentOverloadSignatures": "warn",
+        "useAriaPropsSupportedByRole": "warn",
+        "useCollapsedIf": "warn",
+        "useGuardForIn": "warn",
+        "useValidAutocomplete": "warn"
+      },
+      "performance": {
+        "noBarrelFile": "warn",
+        "noDelete": "warn",
+        "noReExportAll": "warn",
+        "useTopLevelRegex": "warn"
+      },
+      "security": {
+        
+      },
+      "style": {
+        "noDefaultExport": "error",
+        "noDoneCallback": "warn",
+        "noImplicitBoolean": "warn",
+        "noInferrableTypes": "warn",
+        "noNonNullAssertion": "warn",
+        "noParameterAssign":  "warn",
+        "noParameterProperties": "warn",
+        "noUnusedTemplateLiteral": "warn",
+        "noUselessElse": "warn",
+        "noYodaExpression": "warn",
+        "useAsConstAssertion": "warn",
+        "useCollapsedElseIf": "warn",
+        "useConsistentArrayType": {
+					"level": "warn",
+					"options": { "syntax": "generic" }
+				},
+        "useConst": "warn",
+        "useDefaultParameterLast": "warn",
+        "useDefaultSwitchClause": "warn",
+        "useEnumInitializers": "warn",
+        "useExplicitLengthCheck": "warn",
+        "useExponentiationOperator": "warn",
+        "useExportType": "warn",
+        "useFilenamingConvention": {
+          "level": "warn",
+          "options": {
+            "match": "%?(.+?)[.](.+)",
+            "filenameCases": ["PascalCase", "camelCase"]
+          }
+        },
+        "useForOf": "warn",
+        "useImportType": "warn",
+        "useNamingConvention": {
+					"level": "warn",
+					"options": {
+						"conventions": [
+							{
+								"selector": {
+									"kind": "objectLiteralMember", // Ignore object literals for third-party compatibility reasons.
+									"scope": "any"
+								},
+								"match": ".*"
+							}
+						]
+					}
+				},
+        "useNodejsImportProtocol": "warn",
+        "useNumberNamespace": "error",
+        "useNumericLiterals": "error",
+        "useShorthandArrayType": "warn",
+        "useShorthandAssign": "warn",
+        "useShorthandFunctionType": "warn",
+        "useSingleCaseStatement": "warn",
+        "useSingleVarDeclarator": "warn",
+        "useTemplate": "warn",
+        "useThrowNewError": "error",
+        "useThrowOnlyError": "error"
+      },
+      "suspicious": {
+        "noApproximativeNumericConstant": "warn",
+				"noArrayIndexKey": "warn",
+				"noAssignInExpressions": "warn",
+				"noAsyncPromiseExecutor": "warn",
+				"noCatchAssign": "warn",
+				"noClassAssign": "warn",
+				"noCommentText": "warn",
+				"noCompareNegZero": "warn",
+				"noConfusingLabels": "warn",
+				"noConfusingVoidType": "warn",
+				"noConsole": "warn",
+				"noConstEnum": "warn",
+				"noControlCharactersInRegex": "warn",
+				"noDebugger": "warn",
+				"noDoubleEquals": "warn",
+				"noDuplicateAtImportRules": "warn",
+				"noDuplicateCase": "warn",
+				"noDuplicateClassMembers": "warn",
+				"noDuplicateFontNames": "warn",
+				"noDuplicateJsxProps": "warn",
+				"noDuplicateObjectKeys": "warn",
+				"noDuplicateParameters": "warn",
+				"noDuplicateSelectorsKeyframeBlock": "warn",
+				"noDuplicateTestHooks": "warn",
+				"noEmptyInterface": "warn",
+				"noExplicitAny": "warn",
+				"noExportsInTest": "warn",
+				"noExtraNonNullAssertion": "warn",
+				"noFallthroughSwitchClause": "warn",
+				"noFocusedTests": "warn",
+				"noFunctionAssign": "warn",
+				"noGlobalAssign": "warn",
+				"noGlobalIsFinite": "warn",
+				"noGlobalIsNan": "warn",
+				"noImplicitAnyLet": "warn",
+				"noImportAssign": "warn",
+				"noImportantInKeyframe": "warn",
+				"noLabelVar": "warn",
+				"noMisleadingCharacterClass": "warn",
+				"noMisleadingInstantiator": "warn",
+				"noMisplacedAssertion": "warn",
+				"noMisrefactoredShorthandAssign": "warn",
+				"noPrototypeBuiltins": "warn",
+				"noReactSpecificProps": "warn",
+				"noRedeclare": "warn",
+				"noRedundantUseStrict": "warn",
+				"noSelfCompare": "warn",
+				"noShadowRestrictedNames": "warn",
+				"noShorthandPropertyOverrides": "warn",
+				"noSkippedTests": "warn",
+				"noSparseArray": "warn",
+				"noSuspiciousSemicolonInJsx": "warn",
+				"noThenProperty": "warn",
+				"noUnsafeDeclarationMerging": "warn",
+				"noUnsafeNegation": "warn",
+				"useAwait": "off", // Allow async modifiers on any function for consistency and to improve maintainability. TypeScript is able to detect incorrect use of the resulting promises.
+				"useDefaultSwitchClauseLast": "warn",
+				"useErrorMessage": "warn",
+				"useGetterReturn": "warn",
+				"useIsArray": "warn",
+				"useNamespaceKeyword": "warn",
+				"useNumberToFixedDigitsArgument": "warn",
+				"useValidTypeof": "warn"
+      }
+    }
+  },
+  "assist": {
+    "enabled": true,
+    "actions": {
+      "source": {
+        "organizeImports": {
+          "level": "on",
+          "options": {
+            "groups": [
+              ":BLANK_LINE:",
+              ":ALIAS:",
+              ":BLANK_LINE:",
+              ":BUN:",
+              ":BLANK_LINE:",
+              ":NODE:",
+              ":BLANK_LINE:",
+              ":PACKAGE:",
+              ":BLANK_LINE:",
+              ":PACKAGE_WITH_PROTOCOL:",
+              ":BLANK_LINE:",
+              ":PATH:",
+              ":BLANK_LINE:",
+              ":URL:",
+              ":BLANK_LINE:"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single",
+      "jsxQuoteStyle": "single",
+      "trailingCommas": "none"
+    }
+  },
+  "css": {
+    "parser": {
+      "cssModules": true
+    },
+    "formatter": {
+      "enabled": true,
+      "quoteStyle": "single"
+    }
+  },
+  "json": {
+    "parser": {
+      "allowComments": true,
+      "allowTrailingCommas": false
+    },
+    "formatter": {
+      "trailingCommas": "none"
+    }
+  },
+  "overrides": [
+		{
+      // Provide support for ambient TypeScript modules (i.e. type declaration files).
+      "includes": ["src/**/*.d.ts"],
+      "linter": {
+      "rules": {
+					"style": {
+						"useNamingConvention": {
+							"level": "warn",
+							"options": {
+								"conventions": [
+									{
+										"selector": {
+											"kind": "typeProperty", // Ignore properties for third-party compatibility reasons.
+											"scope": "any"
+										},
+										"match": ".*"
+									}
+								],
+								"strictCase": false // Allow consecutive uppercase letters for third-party compatibility reasons.
+							}
+						}
+					}
+				}
+			}
+		},
+		{
+			// Provide support for configuration files in a Node.js- and ESM-based toolchain.
+			"includes": ["*.config.js", "*.config.ts"],
+			"linter": {
+				"rules": {
+					"correctness": {
+						"noNodejsModules": "off" // Allow importing Node.js-specific modules such as `node:path` and `node:url` in configuration files.
+					},
+					"style": {
+						"noDefaultExport": "off", // Allow default exports in configuration files.
+						"useFilenamingConvention": {
+							"level": "warn",
+							"options": {
+								"filenameCases": ["kebab-case"] // Allow the kebab-case naming convention motivated by the `.config.{js,ts}` extension.
+							}
+						}
+					},
+					"nursery": {
+						"noProcessEnv": "off" // Allow accessing environment variables in configuration files.
+					}
+				}
+			}
+		}
+	]
+}

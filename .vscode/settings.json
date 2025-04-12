@@ -3,11 +3,11 @@
     "**/locales"
   ],
 
-  "eslint.useFlatConfig": true,
-  "eslint.useESLintClass": false, // важно!
-  // "eslint.options": {
-  //   "overrideConfigFile": "**/eslint.config.ts"
-  // },
+  "eslint.enable": true,
+  "biome.enabled": false,
+ 
+  //"eslint.useFlatConfig": true,
+  //"eslint.useESLintClass": false, // важно!
 
   // Disable the default formatter, use eslint instead
   "prettier.enable": false,
@@ -15,11 +15,14 @@
 
   // Auto fix
   "editor.codeActionsOnSave": {
+    //"source.fixAll.biome": "explicit",
+    //"source.organizeImports.biome": "explicit",
+
     "source.fixAll.eslint": "explicit",
     "source.organizeImports": "never"
   },
 
-  "eslint.runtime": "node",
+  //"eslint.runtime": "node",
 
   // Silent the stylistic rules in you IDE, but still auto fix them
   "eslint.rules.customizations": [

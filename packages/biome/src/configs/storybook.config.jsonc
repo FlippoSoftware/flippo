@@ -1,0 +1,86 @@
+{
+	"$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+	"files": {
+		"ignore": ["storybook-static/"]
+	},
+	"overrides": [
+		{
+			// Provide support for CSF3-based stories in Storybook.
+			// https://storybook.js.org/docs/api/csf
+			"include": ["src/**/*.stories.ts", "src/**/*.stories.tsx"],
+			"linter": {
+				"rules": {
+					"complexity": {
+						"noExcessiveCognitiveComplexity": {
+							"level": "warn",
+							"options": {
+								"maxAllowedComplexity": 2 // Limit conditional logic in stories.
+							}
+						}
+					},
+					"performance": {
+						"useTopLevelRegex": "off" // Allow inline regex selectors in Testing Library queries in story interaction tests.
+					},
+					"style": {
+						"noDefaultExport": "off", // Allow default exports of static metadata required by Storybook.
+						"useNamingConvention": {
+							"level": "warn",
+							"options": {
+								"conventions": [
+									{
+										"selector": {
+											"kind": "objectLiteralMember", // Inherited from `base.jsonc`.
+											"scope": "any"
+										},
+										"match": ".*"
+									},
+									{
+										"selector": {
+											"kind": "const", // Ignore top-level constants, as they declare stories.
+											"scope": "global"
+										},
+										"match": ".*"
+									}
+								]
+							}
+						}
+					},
+					"nursery": {
+						"useComponentExportOnlyModules": "off" // Allow exports of stories and static metadata required by Storybook.
+					}
+				}
+			}
+		},
+		{
+			// Provide support for Storybook configuration files.
+			// https://storybook.js.org/docs/configure
+			"include": [
+				".storybook/main.ts",
+				".storybook/main.tsx",
+				".storybook/manager.ts",
+				".storybook/manager.tsx",
+				".storybook/preview.ts",
+				".storybook/preview.tsx"
+			],
+			"linter": {
+				"rules": {
+					"correctness": {
+						"noNodejsModules": "off" // Allow importing Node.js-specific modules such as `node:path` and `node:url` in Storybook configuration files.
+					},
+					"style": {
+						"noDefaultExport": "off", // Allow default exports of configuration objects required by Storybook.
+						"useFilenamingConvention": {
+							"level": "warn",
+							"options": {
+								"filenameCases": ["kebab-case"] // Allow the kebab-case naming convention required by Storybook.
+							}
+						}
+					},
+					"nursery": {
+						"useImportRestrictions": "off" // Allow relative import statements in Storybook configuration files.
+					}
+				}
+			}
+		}
+	]
+}
