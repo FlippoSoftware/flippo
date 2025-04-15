@@ -55,5 +55,8 @@
     "react-dom": "catalog:",
     "svgo": "catalog:",
     "typescript": "catalog:"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
