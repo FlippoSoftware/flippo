@@ -30,7 +30,7 @@ async function generateIcons() {
     await fs.mkdir(path.parse(iconFilePath).dir, { recursive: true });
     await fs.writeFile(iconFilePath, content);
 
-    return { name: componentName, path: iconFileRelativePath };
+    return { name: componentName, path: path.join(fileMeta.dir, componentName) };
   }));
 
   await createIndexFile(iconFiles);

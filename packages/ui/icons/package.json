@@ -2,18 +2,42 @@
   "name": "@flippo/icons",
   "type": "module",
   "version": "1.0.0",
+  "description": "Pack of Flippo UI icons",
+  "keywords": [
+    "icons",
+    "svg",
+    "react"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/**/*.d.ts",
+      "default": "./dist/**/*.jsx"
+    }
+  },
+  "module": "dist/index.jsx",
+  "types": "dist/index.d.ts",
   "files": [
     "README.md",
-    "dist/",
+    "dist/**/*.d.ts",
+    "dist/**/*.jsx",
     "package.json",
     "src/svgs/"
   ],
   "scripts": {
-    "dev": "vite",
-    "build": "node src/scripts/clear.js && tsc --project ./tsconfig.build.json && vite build",
+    "build": "node './src/scripts/clear.js' && tsc --project './tsconfig.build.json' && tsc --project tsconfig.build.json --declaration --emitDeclarationOnly",
     "lint": "eslint --fix",
-    "src:download": "node --env-file=.env.locale src/scripts/download.js",
-    "src:generate": "node --env-file=.env.locale src/scripts/generateIcons.js && eslint --fix src/lib"
+    "src:download": "node --env-file=.env.local src/scripts/download.js",
+    "src:generate": "node --env-file=.env.local src/scripts/generateIcons.js && eslint --fix src/lib",
+    "redown": "pnpm src:download && pnpm src:generate",
+    "prepublishOnly": "pnpm run build"
+  },
+  "peerDependencies": {
+    "react": "*"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@figma-export/core": "catalog:",
@@ -24,15 +48,12 @@
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
-    "@vitejs/plugin-react": "catalog:",
     "eslint": "catalog:",
     "eslint-plugin-react-refresh": "catalog:",
     "is-svg": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
     "svgo": "catalog:",
-    "typescript": "catalog:",
-    "vite": "catalog:",
-    "vite-plugin-dts": "catalog:"
+    "typescript": "catalog:"
   }
 }

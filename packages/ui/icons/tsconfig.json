@@ -1,14 +1,14 @@
 {
   "extends": "@flippo/tsconfig",
   "compilerOptions": {
-    "jsx": "react-jsx",
+    "composite": false,
+    "jsx": "react",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
 
     "baseUrl": ".",
     "types": ["node", "react", "react-dom"],
-    "allowJs": true,
-    "noEmit": true
+    "allowJs": true
   },
-  "include": ["src/**/*.ts", "src/**/*.js", "src/**/*.tsx", "vite.config.ts", "src/scripts/constants.js", "src/scripts/renameSvg.js"],
+  "include": ["src/**/*.ts", "src/**/*.js", "src/**/*.tsx", "tsup.config.ts"],
   "exclude": ["node_modules", "dist"]
 }
