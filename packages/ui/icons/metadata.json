@@ -1,0 +1,1278 @@
+{
+  "info": {
+    "palettes": [
+      "colored",
+      "monochrome"
+    ],
+    "groups": [
+      "avatar",
+      "flags",
+      "logos",
+      "misc",
+      "editor",
+      "social",
+      "navigation",
+      "arrows",
+      "folders",
+      "tool",
+      "sets",
+      "doc",
+      "time",
+      "file",
+      "symbol",
+      "system"
+    ]
+  },
+  "icons": [
+    {
+      "name": "flag_ru",
+      "style": "regular",
+      "svgName": "flag_ru",
+      "componentName": "FlagRu",
+      "meta": {
+        "palette": "colored",
+        "group": "flags"
+      }
+    },
+    {
+      "name": "flag_uk",
+      "style": "regular",
+      "svgName": "flag_uk",
+      "componentName": "FlagUk",
+      "meta": {
+        "palette": "colored",
+        "group": "flags"
+      }
+    },
+    {
+      "name": "mail_yahoo",
+      "style": "regular",
+      "svgName": "mail_yahoo",
+      "componentName": "MailYahoo",
+      "meta": {
+        "palette": "colored",
+        "group": "logos"
+      }
+    },
+    {
+      "name": "mail_yandex",
+      "style": "regular",
+      "svgName": "mail_yandex",
+      "componentName": "MailYandex",
+      "meta": {
+        "palette": "colored",
+        "group": "logos"
+      }
+    },
+    {
+      "name": "mail_proton",
+      "style": "regular",
+      "svgName": "mail_proton",
+      "componentName": "MailProton",
+      "meta": {
+        "palette": "colored",
+        "group": "logos"
+      }
+    },
+    {
+      "name": "mail_aol",
+      "style": "regular",
+      "svgName": "mail_aol",
+      "componentName": "MailAol",
+      "meta": {
+        "palette": "colored",
+        "group": "logos"
+      }
+    },
+    {
+      "name": "mail_icloud",
+      "style": "regular",
+      "svgName": "mail_icloud",
+      "componentName": "MailIcloud",
+      "meta": {
+        "palette": "colored",
+        "group": "logos"
+      }
+    },
+    {
+      "name": "mail_mail",
+      "style": "regular",
+      "svgName": "mail_mail",
+      "componentName": "MailMail",
+      "meta": {
+        "palette": "colored",
+        "group": "logos"
+      }
+    },
+    {
+      "name": "mail_outlook",
+      "style": "regular",
+      "svgName": "mail_outlook",
+      "componentName": "MailOutlook",
+      "meta": {
+        "palette": "colored",
+        "group": "logos"
+      }
+    },
+    {
+      "name": "mail_gmail",
+      "style": "regular",
+      "svgName": "mail_gmail",
+      "componentName": "MailGmail",
+      "meta": {
+        "palette": "colored",
+        "group": "logos"
+      }
+    },
+    {
+      "name": "yandex",
+      "style": "regular",
+      "svgName": "yandex",
+      "componentName": "Yandex",
+      "meta": {
+        "palette": "colored",
+        "group": "logos"
+      }
+    },
+    {
+      "name": "google",
+      "style": "regular",
+      "svgName": "google",
+      "componentName": "Google",
+      "meta": {
+        "palette": "colored",
+        "group": "logos"
+      }
+    },
+    {
+      "name": "vk",
+      "style": "regular",
+      "svgName": "vk",
+      "componentName": "Vk",
+      "meta": {
+        "palette": "colored",
+        "group": "logos"
+      }
+    },
+    {
+      "name": "spinner",
+      "style": "regular",
+      "svgName": "spinner",
+      "componentName": "Spinner",
+      "meta": {
+        "palette": "monochrome",
+        "group": "misc"
+      }
+    },
+    {
+      "name": "sort",
+      "style": "regular",
+      "svgName": "sort",
+      "componentName": "Sort",
+      "meta": {
+        "palette": "monochrome",
+        "group": "misc"
+      }
+    },
+    {
+      "name": "star",
+      "style": "regular",
+      "svgName": "star",
+      "componentName": "Star",
+      "meta": {
+        "palette": "monochrome",
+        "group": "misc"
+      }
+    },
+    {
+      "name": "preview",
+      "style": "regular",
+      "svgName": "preview",
+      "componentName": "Preview",
+      "meta": {
+        "palette": "monochrome",
+        "group": "misc"
+      }
+    },
+    {
+      "name": "sort_by_alpha",
+      "style": "regular",
+      "svgName": "sort_by_alpha",
+      "componentName": "SortByAlpha",
+      "meta": {
+        "palette": "monochrome",
+        "group": "misc"
+      }
+    },
+    {
+      "name": "tag",
+      "style": "regular",
+      "svgName": "tag",
+      "componentName": "Tag",
+      "meta": {
+        "palette": "monochrome",
+        "group": "misc"
+      }
+    },
+    {
+      "name": "language",
+      "style": "regular",
+      "svgName": "language",
+      "componentName": "Language",
+      "meta": {
+        "palette": "monochrome",
+        "group": "misc"
+      }
+    },
+    {
+      "name": "fullscreen",
+      "style": "regular",
+      "svgName": "fullscreen",
+      "componentName": "Fullscreen",
+      "meta": {
+        "palette": "monochrome",
+        "group": "misc"
+      }
+    },
+    {
+      "name": "format_list_ol",
+      "style": "regular",
+      "svgName": "format_list_ol",
+      "componentName": "FormatListOl",
+      "meta": {
+        "palette": "monochrome",
+        "group": "editor"
+      }
+    },
+    {
+      "name": "format_list_ul",
+      "style": "regular",
+      "svgName": "format_list_ul",
+      "componentName": "FormatListUl",
+      "meta": {
+        "palette": "monochrome",
+        "group": "editor"
+      }
+    },
+    {
+      "name": "code_block",
+      "style": "regular",
+      "svgName": "code_block",
+      "componentName": "CodeBlock",
+      "meta": {
+        "palette": "monochrome",
+        "group": "editor"
+      }
+    },
+    {
+      "name": "format_undeline",
+      "style": "regular",
+      "svgName": "format_undeline",
+      "componentName": "FormatUndeline",
+      "meta": {
+        "palette": "monochrome",
+        "group": "editor"
+      }
+    },
+    {
+      "name": "format_italic",
+      "style": "regular",
+      "svgName": "format_italic",
+      "componentName": "FormatItalic",
+      "meta": {
+        "palette": "monochrome",
+        "group": "editor"
+      }
+    },
+    {
+      "name": "format_bold",
+      "style": "regular",
+      "svgName": "format_bold",
+      "componentName": "FormatBold",
+      "meta": {
+        "palette": "monochrome",
+        "group": "editor"
+      }
+    },
+    {
+      "name": "text_format",
+      "style": "regular",
+      "svgName": "text_format",
+      "componentName": "TextFormat",
+      "meta": {
+        "palette": "monochrome",
+        "group": "editor"
+      }
+    },
+    {
+      "name": "favorite",
+      "style": "regular",
+      "svgName": "favorite",
+      "componentName": "Favorite",
+      "meta": {
+        "palette": "monochrome",
+        "group": "social"
+      }
+    },
+    {
+      "name": "favorite",
+      "style": "fill",
+      "svgName": "favorite_fill",
+      "componentName": "FavoriteFill",
+      "meta": {
+        "palette": "monochrome",
+        "group": "social"
+      }
+    },
+    {
+      "name": "globe_add",
+      "style": "regular",
+      "svgName": "globe_add",
+      "componentName": "GlobeAdd",
+      "meta": {
+        "palette": "monochrome",
+        "group": "social"
+      }
+    },
+    {
+      "name": "globe",
+      "style": "regular",
+      "svgName": "globe",
+      "componentName": "Globe",
+      "meta": {
+        "palette": "monochrome",
+        "group": "social"
+      }
+    },
+    {
+      "name": "person_pin",
+      "style": "regular",
+      "svgName": "person_pin",
+      "componentName": "PersonPin",
+      "meta": {
+        "palette": "monochrome",
+        "group": "social"
+      }
+    },
+    {
+      "name": "person_group",
+      "style": "regular",
+      "svgName": "person_group",
+      "componentName": "PersonGroup",
+      "meta": {
+        "palette": "monochrome",
+        "group": "social"
+      }
+    },
+    {
+      "name": "person_add",
+      "style": "regular",
+      "svgName": "person_add",
+      "componentName": "PersonAdd",
+      "meta": {
+        "palette": "monochrome",
+        "group": "social"
+      }
+    },
+    {
+      "name": "person_check",
+      "style": "regular",
+      "svgName": "person_check",
+      "componentName": "PersonCheck",
+      "meta": {
+        "palette": "monochrome",
+        "group": "social"
+      }
+    },
+    {
+      "name": "person_check",
+      "style": "fill",
+      "svgName": "person_check_fill",
+      "componentName": "PersonCheckFill",
+      "meta": {
+        "palette": "monochrome",
+        "group": "social"
+      }
+    },
+    {
+      "name": "person_edit",
+      "style": "regular",
+      "svgName": "person_edit",
+      "componentName": "PersonEdit",
+      "meta": {
+        "palette": "monochrome",
+        "group": "social"
+      }
+    },
+    {
+      "name": "person_edit",
+      "style": "fill",
+      "svgName": "person_edit_fill",
+      "componentName": "PersonEditFill",
+      "meta": {
+        "palette": "monochrome",
+        "group": "social"
+      }
+    },
+    {
+      "name": "interests",
+      "style": "regular",
+      "svgName": "interests",
+      "componentName": "Interests",
+      "meta": {
+        "palette": "monochrome",
+        "group": "navigation"
+      }
+    },
+    {
+      "name": "interests",
+      "style": "fill",
+      "svgName": "interests_fill",
+      "componentName": "InterestsFill",
+      "meta": {
+        "palette": "monochrome",
+        "group": "navigation"
+      }
+    },
+    {
+      "name": "explore",
+      "style": "regular",
+      "svgName": "explore",
+      "componentName": "Explore",
+      "meta": {
+        "palette": "monochrome",
+        "group": "navigation"
+      }
+    },
+    {
+      "name": "explore",
+      "style": "fill",
+      "svgName": "explore_fill",
+      "componentName": "ExploreFill",
+      "meta": {
+        "palette": "monochrome",
+        "group": "navigation"
+      }
+    },
+    {
+      "name": "home",
+      "style": "regular",
+      "svgName": "home",
+      "componentName": "Home",
+      "meta": {
+        "palette": "monochrome",
+        "group": "navigation"
+      }
+    },
+    {
+      "name": "home",
+      "style": "fill",
+      "svgName": "home_fill",
+      "componentName": "HomeFill",
+      "meta": {
+        "palette": "monochrome",
+        "group": "navigation"
+      }
+    },
+    {
+      "name": "arrow_uturn_cw_right",
+      "style": "regular",
+      "svgName": "arrow_uturn_cw_right",
+      "componentName": "ArrowUturnCwRight",
+      "meta": {
+        "palette": "monochrome",
+        "group": "arrows"
+      }
+    },
+    {
+      "name": "arrow_uturn_ccw_left",
+      "style": "regular",
+      "svgName": "arrow_uturn_ccw_left",
+      "componentName": "ArrowUturnCcwLeft",
+      "meta": {
+        "palette": "monochrome",
+        "group": "arrows"
+      }
+    },
+    {
+      "name": "shuffle",
+      "style": "regular",
+      "svgName": "shuffle",
+      "componentName": "Shuffle",
+      "meta": {
+        "palette": "monochrome",
+        "group": "arrows"
+      }
+    },
+    {
+      "name": "arrow_left_arrow_right",
+      "style": "regular",
+      "svgName": "arrow_left_arrow_right",
+      "componentName": "ArrowLeftArrowRight",
+      "meta": {
+        "palette": "monochrome",
+        "group": "arrows"
+      }
+    },
+    {
+      "name": "arrows_rotate_right_add",
+      "style": "regular",
+      "svgName": "arrows_rotate_right_add",
+      "componentName": "ArrowsRotateRightAdd",
+      "meta": {
+        "palette": "monochrome",
+        "group": "arrows"
+      }
+    },
+    {
+      "name": "arrows_rotate_right_check",
+      "style": "regular",
+      "svgName": "arrows_rotate_right_check",
+      "componentName": "ArrowsRotateRightCheck",
+      "meta": {
+        "palette": "monochrome",
+        "group": "arrows"
+      }
+    },
+    {
+      "name": "arrow_up_arrow_down",
+      "style": "regular",
+      "svgName": "arrow_up_arrow_down",
+      "componentName": "ArrowUpArrowDown",
+      "meta": {
+        "palette": "monochrome",
+        "group": "arrows"
+      }
+    },
+    {
+      "name": "arrow_down_to_square",
+      "style": "regular",
+      "svgName": "arrow_down_to_square",
+      "componentName": "ArrowDownToSquare",
+      "meta": {
+        "palette": "monochrome",
+        "group": "arrows"
+      }
+    },
+    {
+      "name": "arrow_shape_turn_up_right_check",
+      "style": "regular",
+      "svgName": "arrow_shape_turn_up_right_check",
+      "componentName": "ArrowShapeTurnUpRightCheck",
+      "meta": {
+        "palette": "monochrome",
+        "group": "arrows"
+      }
+    },
+    {
+      "name": "arrow_shape_turn_up_right",
+      "style": "regular",
+      "svgName": "arrow_shape_turn_up_right",
+      "componentName": "ArrowShapeTurnUpRight",
+      "meta": {
+        "palette": "monochrome",
+        "group": "arrows"
+      }
+    },
+    {
+      "name": "arrow_right_from_square",
+      "style": "regular",
+      "svgName": "arrow_right_from_square",
+      "componentName": "ArrowRightFromSquare",
+      "meta": {
+        "palette": "monochrome",
+        "group": "arrows"
+      }
+    },
+    {
+      "name": "arrow_right_to_square",
+      "style": "regular",
+      "svgName": "arrow_right_to_square",
+      "componentName": "ArrowRightToSquare",
+      "meta": {
+        "palette": "monochrome",
+        "group": "arrows"
+      }
+    },
+    {
+      "name": "arrow_outward",
+      "style": "regular",
+      "svgName": "arrow_outward",
+      "componentName": "ArrowOutward",
+      "meta": {
+        "palette": "monochrome",
+        "group": "arrows"
+      }
+    },
+    {
+      "name": "chevron_up_to_line",
+      "style": "regular",
+      "svgName": "chevron_up_to_line",
+      "componentName": "ChevronUpToLine",
+      "meta": {
+        "palette": "monochrome",
+        "group": "arrows"
+      }
+    },
+    {
+      "name": "chevron_down_to_line",
+      "style": "regular",
+      "svgName": "chevron_down_to_line",
+      "componentName": "ChevronDownToLine",
+      "meta": {
+        "palette": "monochrome",
+        "group": "arrows"
+      }
+    },
+    {
+      "name": "chevrons_expand_up_right",
+      "style": "regular",
+      "svgName": "chevrons_expand_up_right",
+      "componentName": "ChevronsExpandUpRight",
+      "meta": {
+        "palette": "monochrome",
+        "group": "arrows"
+      }
+    },
+    {
+      "name": "chevrons_collapse_up_right",
+      "style": "regular",
+      "svgName": "chevrons_collapse_up_right",
+      "componentName": "ChevronsCollapseUpRight",
+      "meta": {
+        "palette": "monochrome",
+        "group": "arrows"
+      }
+    },
+    {
+      "name": "arrow_360",
+      "style": "regular",
+      "svgName": "arrow_360",
+      "componentName": "Arrow360",
+      "meta": {
+        "palette": "monochrome",
+        "group": "arrows"
+      }
+    },
+    {
+      "name": "chevron_right",
+      "style": "regular",
+      "svgName": "chevron_right",
+      "componentName": "ChevronRight",
+      "meta": {
+        "palette": "monochrome",
+        "group": "arrows"
+      }
+    },
+    {
+      "name": "chevron_left",
+      "style": "regular",
+      "svgName": "chevron_left",
+      "componentName": "ChevronLeft",
+      "meta": {
+        "palette": "monochrome",
+        "group": "arrows"
+      }
+    },
+    {
+      "name": "chevron_down",
+      "style": "regular",
+      "svgName": "chevron_down",
+      "componentName": "ChevronDown",
+      "meta": {
+        "palette": "monochrome",
+        "group": "arrows"
+      }
+    },
+    {
+      "name": "chevron_up",
+      "style": "regular",
+      "svgName": "chevron_up",
+      "componentName": "ChevronUp",
+      "meta": {
+        "palette": "monochrome",
+        "group": "arrows"
+      }
+    },
+    {
+      "name": "arrow_back",
+      "style": "regular",
+      "svgName": "arrow_back",
+      "componentName": "ArrowBack",
+      "meta": {
+        "palette": "monochrome",
+        "group": "arrows"
+      }
+    },
+    {
+      "name": "folders",
+      "style": "regular",
+      "svgName": "folders",
+      "componentName": "Folders",
+      "meta": {
+        "palette": "monochrome",
+        "group": "folders"
+      }
+    },
+    {
+      "name": "move_to_folder",
+      "style": "regular",
+      "svgName": "move_to_folder",
+      "componentName": "MoveToFolder",
+      "meta": {
+        "palette": "monochrome",
+        "group": "folders"
+      }
+    },
+    {
+      "name": "folder_open",
+      "style": "regular",
+      "svgName": "folder_open",
+      "componentName": "FolderOpen",
+      "meta": {
+        "palette": "monochrome",
+        "group": "folders"
+      }
+    },
+    {
+      "name": "folder_open",
+      "style": "fill",
+      "svgName": "folder_open_fill",
+      "componentName": "FolderOpenFill",
+      "meta": {
+        "palette": "monochrome",
+        "group": "folders"
+      }
+    },
+    {
+      "name": "folder",
+      "style": "regular",
+      "svgName": "folder",
+      "componentName": "Folder",
+      "meta": {
+        "palette": "monochrome",
+        "group": "folders"
+      }
+    },
+    {
+      "name": "folder",
+      "style": "fill",
+      "svgName": "folder_fill",
+      "componentName": "FolderFill",
+      "meta": {
+        "palette": "monochrome",
+        "group": "folders"
+      }
+    },
+    {
+      "name": "folder_add",
+      "style": "regular",
+      "svgName": "folder_add",
+      "componentName": "FolderAdd",
+      "meta": {
+        "palette": "monochrome",
+        "group": "folders"
+      }
+    },
+    {
+      "name": "attach_file",
+      "style": "regular",
+      "svgName": "attach_file",
+      "componentName": "AttachFile",
+      "meta": {
+        "palette": "monochrome",
+        "group": "tool"
+      }
+    },
+    {
+      "name": "funnel",
+      "style": "regular",
+      "svgName": "funnel",
+      "componentName": "Funnel",
+      "meta": {
+        "palette": "monochrome",
+        "group": "tool"
+      }
+    },
+    {
+      "name": "pencil",
+      "style": "regular",
+      "svgName": "pencil",
+      "componentName": "Pencil",
+      "meta": {
+        "palette": "monochrome",
+        "group": "tool"
+      }
+    },
+    {
+      "name": "magnifier",
+      "style": "regular",
+      "svgName": "magnifier",
+      "componentName": "Magnifier",
+      "meta": {
+        "palette": "monochrome",
+        "group": "tool"
+      }
+    },
+    {
+      "name": "learn",
+      "style": "regular",
+      "svgName": "learn",
+      "componentName": "Learn",
+      "meta": {
+        "palette": "monochrome",
+        "group": "sets"
+      }
+    },
+    {
+      "name": "hint_slash",
+      "style": "regular",
+      "svgName": "hint_slash",
+      "componentName": "HintSlash",
+      "meta": {
+        "palette": "monochrome",
+        "group": "sets"
+      }
+    },
+    {
+      "name": "hint",
+      "style": "regular",
+      "svgName": "hint",
+      "componentName": "Hint",
+      "meta": {
+        "palette": "monochrome",
+        "group": "sets"
+      }
+    },
+    {
+      "name": "hint_add",
+      "style": "regular",
+      "svgName": "hint_add",
+      "componentName": "HintAdd",
+      "meta": {
+        "palette": "monochrome",
+        "group": "sets"
+      }
+    },
+    {
+      "name": "add_row_above",
+      "style": "regular",
+      "svgName": "add_row_above",
+      "componentName": "AddRowAbove",
+      "meta": {
+        "palette": "monochrome",
+        "group": "sets"
+      }
+    },
+    {
+      "name": "add_row_below",
+      "style": "regular",
+      "svgName": "add_row_below",
+      "componentName": "AddRowBelow",
+      "meta": {
+        "palette": "monochrome",
+        "group": "sets"
+      }
+    },
+    {
+      "name": "table_convert",
+      "style": "regular",
+      "svgName": "table_convert",
+      "componentName": "TableConvert",
+      "meta": {
+        "palette": "monochrome",
+        "group": "sets"
+      }
+    },
+    {
+      "name": "clipboard",
+      "style": "regular",
+      "svgName": "clipboard",
+      "componentName": "Clipboard",
+      "meta": {
+        "palette": "monochrome",
+        "group": "sets"
+      }
+    },
+    {
+      "name": "list_add",
+      "style": "regular",
+      "svgName": "list_add",
+      "componentName": "ListAdd",
+      "meta": {
+        "palette": "monochrome",
+        "group": "sets"
+      }
+    },
+    {
+      "name": "add_square",
+      "style": "regular",
+      "svgName": "add_square",
+      "componentName": "AddSquare",
+      "meta": {
+        "palette": "monochrome",
+        "group": "sets"
+      }
+    },
+    {
+      "name": "set",
+      "style": "regular",
+      "svgName": "set",
+      "componentName": "Set",
+      "meta": {
+        "palette": "monochrome",
+        "group": "sets"
+      }
+    },
+    {
+      "name": "set_add",
+      "style": "regular",
+      "svgName": "set_add",
+      "componentName": "SetAdd",
+      "meta": {
+        "palette": "monochrome",
+        "group": "sets"
+      }
+    },
+    {
+      "name": "link_slash",
+      "style": "regular",
+      "svgName": "link_slash",
+      "componentName": "LinkSlash",
+      "meta": {
+        "palette": "monochrome",
+        "group": "doc"
+      }
+    },
+    {
+      "name": "link_add",
+      "style": "regular",
+      "svgName": "link_add",
+      "componentName": "LinkAdd",
+      "meta": {
+        "palette": "monochrome",
+        "group": "doc"
+      }
+    },
+    {
+      "name": "link",
+      "style": "regular",
+      "svgName": "link",
+      "componentName": "Link",
+      "meta": {
+        "palette": "monochrome",
+        "group": "doc"
+      }
+    },
+    {
+      "name": "bookmarks",
+      "style": "regular",
+      "svgName": "bookmarks",
+      "componentName": "Bookmarks",
+      "meta": {
+        "palette": "monochrome",
+        "group": "doc"
+      }
+    },
+    {
+      "name": "bookmark",
+      "style": "regular",
+      "svgName": "bookmark",
+      "componentName": "Bookmark",
+      "meta": {
+        "palette": "monochrome",
+        "group": "doc"
+      }
+    },
+    {
+      "name": "bookmark",
+      "style": "fill",
+      "svgName": "bookmark_fill",
+      "componentName": "BookmarkFill",
+      "meta": {
+        "palette": "monochrome",
+        "group": "doc"
+      }
+    },
+    {
+      "name": "clock_arrow_rotate_ccw_left",
+      "style": "regular",
+      "svgName": "clock_arrow_rotate_ccw_left",
+      "componentName": "ClockArrowRotateCcwLeft",
+      "meta": {
+        "palette": "monochrome",
+        "group": "time"
+      }
+    },
+    {
+      "name": "clock_60",
+      "style": "regular",
+      "svgName": "clock_60",
+      "componentName": "Clock60",
+      "meta": {
+        "palette": "monochrome",
+        "group": "time"
+      }
+    },
+    {
+      "name": "clock_40",
+      "style": "regular",
+      "svgName": "clock_40",
+      "componentName": "Clock40",
+      "meta": {
+        "palette": "monochrome",
+        "group": "time"
+      }
+    },
+    {
+      "name": "file",
+      "style": "regular",
+      "svgName": "file",
+      "componentName": "File",
+      "meta": {
+        "palette": "monochrome",
+        "group": "file"
+      }
+    },
+    {
+      "name": "file_add",
+      "style": "regular",
+      "svgName": "file_add",
+      "componentName": "FileAdd",
+      "meta": {
+        "palette": "monochrome",
+        "group": "file"
+      }
+    },
+    {
+      "name": "copy",
+      "style": "regular",
+      "svgName": "copy",
+      "componentName": "Copy",
+      "meta": {
+        "palette": "monochrome",
+        "group": "file"
+      }
+    },
+    {
+      "name": "file_check",
+      "style": "regular",
+      "svgName": "file_check",
+      "componentName": "FileCheck",
+      "meta": {
+        "palette": "monochrome",
+        "group": "file"
+      }
+    },
+    {
+      "name": "file_check",
+      "style": "fill",
+      "svgName": "file_check_fill",
+      "componentName": "FileCheckFill",
+      "meta": {
+        "palette": "monochrome",
+        "group": "file"
+      }
+    },
+    {
+      "name": "circle_xmark",
+      "style": "regular",
+      "svgName": "circle_xmark",
+      "componentName": "CircleXmark",
+      "meta": {
+        "palette": "monochrome",
+        "group": "symbol"
+      }
+    },
+    {
+      "name": "circle_xmark",
+      "style": "fill",
+      "svgName": "circle_xmark_fill",
+      "componentName": "CircleXmarkFill",
+      "meta": {
+        "palette": "monochrome",
+        "group": "symbol"
+      }
+    },
+    {
+      "name": "circle_check",
+      "style": "regular",
+      "svgName": "circle_check",
+      "componentName": "CircleCheck",
+      "meta": {
+        "palette": "monochrome",
+        "group": "symbol"
+      }
+    },
+    {
+      "name": "circle_check",
+      "style": "fill",
+      "svgName": "circle_check_fill",
+      "componentName": "CircleCheckFill",
+      "meta": {
+        "palette": "monochrome",
+        "group": "symbol"
+      }
+    },
+    {
+      "name": "circle_info",
+      "style": "regular",
+      "svgName": "circle_info",
+      "componentName": "CircleInfo",
+      "meta": {
+        "palette": "monochrome",
+        "group": "symbol"
+      }
+    },
+    {
+      "name": "circle_info",
+      "style": "fill",
+      "svgName": "circle_info_fill",
+      "componentName": "CircleInfoFill",
+      "meta": {
+        "palette": "monochrome",
+        "group": "symbol"
+      }
+    },
+    {
+      "name": "equal",
+      "style": "regular",
+      "svgName": "equal",
+      "componentName": "Equal",
+      "meta": {
+        "palette": "monochrome",
+        "group": "symbol"
+      }
+    },
+    {
+      "name": "xmark",
+      "style": "regular",
+      "svgName": "xmark",
+      "componentName": "Xmark",
+      "meta": {
+        "palette": "monochrome",
+        "group": "symbol"
+      }
+    },
+    {
+      "name": "check",
+      "style": "regular",
+      "svgName": "check",
+      "componentName": "Check",
+      "meta": {
+        "palette": "monochrome",
+        "group": "symbol"
+      }
+    },
+    {
+      "name": "minus",
+      "style": "regular",
+      "svgName": "minus",
+      "componentName": "Minus",
+      "meta": {
+        "palette": "monochrome",
+        "group": "symbol"
+      }
+    },
+    {
+      "name": "plus",
+      "style": "regular",
+      "svgName": "plus",
+      "componentName": "Plus",
+      "meta": {
+        "palette": "monochrome",
+        "group": "symbol"
+      }
+    },
+    {
+      "name": "delete",
+      "style": "regular",
+      "svgName": "delete",
+      "componentName": "Delete",
+      "meta": {
+        "palette": "monochrome",
+        "group": "system"
+      }
+    },
+    {
+      "name": "delete_xmark",
+      "style": "regular",
+      "svgName": "delete_xmark",
+      "componentName": "DeleteXmark",
+      "meta": {
+        "palette": "monochrome",
+        "group": "system"
+      }
+    },
+    {
+      "name": "filter",
+      "style": "regular",
+      "svgName": "filter",
+      "componentName": "Filter",
+      "meta": {
+        "palette": "monochrome",
+        "group": "system"
+      }
+    },
+    {
+      "name": "filter",
+      "style": "fill",
+      "svgName": "filter_fill",
+      "componentName": "FilterFill",
+      "meta": {
+        "palette": "monochrome",
+        "group": "system"
+      }
+    },
+    {
+      "name": "grip",
+      "style": "regular",
+      "svgName": "grip",
+      "componentName": "Grip",
+      "meta": {
+        "palette": "monochrome",
+        "group": "system"
+      }
+    },
+    {
+      "name": "dots_vertical",
+      "style": "regular",
+      "svgName": "dots_vertical",
+      "componentName": "DotsVertical",
+      "meta": {
+        "palette": "monochrome",
+        "group": "system"
+      }
+    },
+    {
+      "name": "dots_horizontal",
+      "style": "regular",
+      "svgName": "dots_horizontal",
+      "componentName": "DotsHorizontal",
+      "meta": {
+        "palette": "monochrome",
+        "group": "system"
+      }
+    },
+    {
+      "name": "notifications",
+      "style": "regular",
+      "svgName": "notifications",
+      "componentName": "Notifications",
+      "meta": {
+        "palette": "monochrome",
+        "group": "system"
+      }
+    },
+    {
+      "name": "settings",
+      "style": "regular",
+      "svgName": "settings",
+      "componentName": "Settings",
+      "meta": {
+        "palette": "monochrome",
+        "group": "system"
+      }
+    }
+  ]
+}

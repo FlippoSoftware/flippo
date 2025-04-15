@@ -1,0 +1,14 @@
+{
+  "extends": "@flippo/tsconfig",
+  "compilerOptions": {
+    "composite": false,
+    "jsx": "react",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+
+    "baseUrl": ".",
+    "types": ["node", "react", "react-dom"],
+    "allowJs": true
+  },
+  "include": ["lib/**/*.ts", "scripts/**/*.js", "lib/**/*.tsx", "lib/**/*.jsx", "./*.d.ts"],
+  "exclude": ["node_modules", "dist"]
+}
