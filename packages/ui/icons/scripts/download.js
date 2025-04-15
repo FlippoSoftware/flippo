@@ -26,14 +26,12 @@ function parseComponentPropsFromString(props) {
 
 function parseComponentSetName(name) {
   const params = name.split('/');
-  const iconPath = params.slice(0, -1).join('/');
 
   if (params.length < 3)
     throw new Error(`Icon must have palette, group and name (Monochrome/Logo/yandex): ${name}`);
 
   return {
     name: params.at(-1),
-    iconPath,
     meta: {
       palette: params.at(0).toLowerCase(),
       group: params.at(1).toLowerCase()
@@ -114,7 +112,7 @@ function createSvgBuilder(metadata) {
     console.log(iconSets);
 
     for (const iconSet of iconSets) {
-      const { name, iconPath: svgPath, meta } = parseComponentSetName(iconSet.name);
+      const { name, meta } = parseComponentSetName(iconSet.name);
 
       if (!ICONS_NAME_REGEX.test(name))
         throw new Error(`Invalid icon name: ${name}. Pattern: ${ICONS_NAME_REGEX.source}`);
@@ -131,9 +129,6 @@ function createSvgBuilder(metadata) {
 
       if (!meta.group)
         throw new Error(`Icon must have group: ${name}`);
-
-      if (!metadata.info.groups.has(meta.group))
-        await fs.mkdir(path.join(SVGS_DIR, svgPath), { recursive: true });
 
       metadata.info.palettes.add(meta.palette);
       metadata.info.groups.add(meta.group);
@@ -171,8 +166,8 @@ function createSvgBuilder(metadata) {
         });
 
         const optimizedSvg = svgTransformer(svg, meta.palette);
-        console.log(path.join(SVGS_DIR, svgPath, `${svgName}.svg`));
-        await fs.writeFile(path.join(SVGS_DIR, svgPath, `${svgName}.svg`), optimizedSvg);
+        console.log(path.join(SVGS_DIR, `${svgName}.svg`));
+        await fs.writeFile(path.join(SVGS_DIR, `${svgName}.svg`), optimizedSvg);
       }
     }
   };

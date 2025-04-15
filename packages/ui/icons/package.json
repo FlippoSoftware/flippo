@@ -1,5 +1,5 @@
 {
-  "name": "@flippo/icons",
+  "name": "@flippo_ui/icons",
   "type": "module",
   "version": "1.0.1",
   "description": "Pack of Flippo UI icons",
@@ -8,28 +8,23 @@
     "svg",
     "react"
   ],
-  "exports": {
-    ".": {
-      "types": "./dist/**/*.d.ts",
-      "default": "./dist/**/*.jsx"
-    }
-  },
   "module": "dist/index.jsx",
-  "types": "dist/index.d.ts",
   "files": [
+    "*.d.ts",
+    "*.jsx",
     "README.md",
-    "dist/**/*.d.ts",
-    "dist/**/*.jsx",
+    "metadata.json",
     "package.json",
-    "src/svgs/"
+    "svgs"
   ],
   "scripts": {
-    "build": "node './src/scripts/clear.js' && tsc --project './tsconfig.build.json' && tsc --project tsconfig.build.json --declaration --emitDeclarationOnly",
+    "build": "node 'scripts/clear.js' && tsc --project './tsconfig.build.json' && tsc --project tsconfig.build.json --declaration --emitDeclarationOnly && pnpm eslint './*.{jsx,d.ts}' --fix --no-ignore",
     "lint": "eslint --fix",
-    "src:download": "node --env-file=.env.local src/scripts/download.js",
-    "src:generate": "node --env-file=.env.local src/scripts/generateIcons.js && eslint --fix src/lib",
+    "src:download": "node --env-file=.env.local scripts/download.js",
+    "src:generate": "node --env-file=.env.local scripts/generateIcons.js && eslint --fix lib",
     "redown": "pnpm src:download && pnpm src:generate",
-    "prepublishOnly": "pnpm run build"
+    "prepublishOnly": "pnpm run build",
+    "clear": "node scripts/clear.js"
   },
   "peerDependencies": {
     "react": "*"
@@ -50,9 +45,11 @@
     "@types/react-dom": "catalog:",
     "eslint": "catalog:",
     "eslint-plugin-react-refresh": "catalog:",
+    "fast-glob": "catalog:",
     "is-svg": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
+    "rimraf": "catalog:",
     "svgo": "catalog:",
     "typescript": "catalog:"
   },

@@ -22,15 +22,14 @@ async function generateIcons() {
     const componentName = kebabCaseToCamelCase(fileMeta.name);
     const svg = await fs.readFile(path.join(SVGS_DIR, file), 'utf-8');
 
-    const iconFileRelativePath = path.join(fileMeta.dir, `${componentName}.tsx`);
-    const iconFilePath = path.join(ICONS_DIR, iconFileRelativePath);
+    const iconFilePath = path.join(ICONS_DIR, `${componentName}.tsx`);
 
     const content = await transform(svg, { typescript: true, plugins: ['@svgr/plugin-jsx'] }, { componentName });
 
     await fs.mkdir(path.parse(iconFilePath).dir, { recursive: true });
     await fs.writeFile(iconFilePath, content);
 
-    return { name: componentName, path: path.join(fileMeta.dir, componentName) };
+    return { name: componentName, path: componentName };
   }));
 
   await createIndexFile(iconFiles);
