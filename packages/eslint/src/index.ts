@@ -17,6 +17,7 @@ export const overridesStylisticConfig: Exclude<OptionsConfig['stylistic'], boole
   /* misc */
   'style/max-len': ['warn', { code: 140, tabWidth: 2, ignoreTrailingComments: true, ignoreUrls: true, ignoreStrings: true, ignoreTemplateLiterals: true, ignoreRegExpLiterals: true, ignorePattern: '^\\s*var\\s.+=\\s*require\\s*\\(' }],
   'style/one-var-declaration-per-line': ['error', 'always'],
+  'style/max-statements-per-line': ['error', { max: 3 }],
 
   /* jsx */
   'style/jsx-quotes': ['error', 'prefer-single'],
@@ -24,16 +25,19 @@ export const overridesStylisticConfig: Exclude<OptionsConfig['stylistic'], boole
   'style/jsx-curly-spacing': [2, { when: 'always' }],
 
   /* semis */
-  'style/no-extra-semi': 'error'
+  'style/no-extra-semi': 'error',
+
+  /* bracket */
+  'style/arrow-parens': ['warn', 'always']
 };
 
 export const overridesTsConfig: Exclude<OptionsConfig['typescript'], boolean | undefined>['overrides'] = {
   'ts/consistent-type-exports': 'error',
   'ts/consistent-type-imports': 'error',
-  "ts/consistent-type-definitions": [
-      "error",
-      "type"
-    ],
+  'ts/consistent-type-definitions': [
+    'error',
+    'type'
+  ],
   'ts/naming-convention': [
     'warn',
     {
