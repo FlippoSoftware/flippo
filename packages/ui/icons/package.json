@@ -1,0 +1,34 @@
+{
+  "name": "@flippo/icons",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "src:download": "node --env-file=.env.locale src/scripts/download.js",
+    "src:generate": "node --env-file=.env.locale src/scripts/generateIcons.js && eslint --fix src/lib",
+    "src:renameSvg": "node --env-file=.env.locale src/scripts/renameSvg.js"
+  },
+  "devDependencies": {
+    "@figma-export/core": "catalog:",
+    "@flippo/eslint": "workspace:*",
+    "@flippo/tsconfig": "workspace:*",
+    "@svgr/core": "catalog:",
+    "@svgr/plugin-jsx": "catalog:",
+    "@types/node": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "@vitejs/plugin-react": "catalog:",
+    "eslint": "catalog:",
+    "eslint-plugin-react-refresh": "catalog:",
+    "is-svg": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "svgo": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:"
+  }
+}
