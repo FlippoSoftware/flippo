@@ -1,16 +1,38 @@
 {
-  "name": "@flippo/icons",
+  "name": "@flippo_ui/icons",
   "type": "module",
-  "version": "0.0.0",
-  "private": true,
+  "version": "1.0.2",
+  "description": "Pack of Flippo UI icons",
+  "keywords": [
+    "icons",
+    "svg",
+    "react"
+  ],
+  "module": "dist/index.jsx",
+  "files": [
+    "*.d.ts",
+    "*.jsx",
+    "README.md",
+    "metadata.json",
+    "package.json",
+    "svgs"
+  ],
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview",
-    "src:download": "node --env-file=.env.locale src/scripts/download.js",
-    "src:generate": "node --env-file=.env.locale src/scripts/generateIcons.js && eslint --fix src/lib",
-    "src:renameSvg": "node --env-file=.env.locale src/scripts/renameSvg.js"
+    "build": "node 'scripts/clear.js' && tsc --project './tsconfig.build.json' && tsc --project tsconfig.build.json --declaration --emitDeclarationOnly && pnpm eslint './*.{jsx,d.ts}' --fix --no-ignore",
+    "lint": "eslint --fix",
+    "src:download": "node --env-file=.env.local scripts/download.js",
+    "src:generate": "node --env-file=.env.local scripts/generateIcons.js && eslint --fix lib",
+    "redown": "pnpm src:download && pnpm src:generate",
+    "prepublishOnly": "pnpm run build",
+    "clear": "node scripts/clear.js"
+  },
+  "peerDependencies": {
+    "react": "*"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@figma-export/core": "catalog:",
@@ -21,14 +43,17 @@
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
-    "@vitejs/plugin-react": "catalog:",
     "eslint": "catalog:",
     "eslint-plugin-react-refresh": "catalog:",
+    "fast-glob": "catalog:",
     "is-svg": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
+    "rimraf": "catalog:",
     "svgo": "catalog:",
-    "typescript": "catalog:",
-    "vite": "catalog:"
+    "typescript": "catalog:"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

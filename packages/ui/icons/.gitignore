@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Artifacts
+/*.d.ts
+/*.jsx

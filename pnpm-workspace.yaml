@@ -51,6 +51,7 @@ catalog:
   eslint-plugin-react-refresh: ^0.4.19
   eslint-plugin-storybook: ^0.12.0
   eslint-plugin-turbo: ^2.5.0
+  fast-glob: ^0.0.0
   framer-motion: ^12.6.2
   globals: ^16.0.0
   history: ^5.3.0
@@ -68,6 +69,7 @@ catalog:
   postcss-preset-env: ^10.1.5
   react-i18next: ^15.4.1
   react-use-measure: ^2.1.7
+  rimraf: ^0.0.0
   sass-embedded: ^1.86.1
   storybook: 8.6.11
   storybook-react-i18next: ^3.2.1
@@ -75,6 +77,7 @@ catalog:
   surrealdb: ^1.2.1
   svgo: ^3.3.2
   testplane: ^8.26.0
+  tsup: ^8.4.0
   typescript: ^5.8.2
   react: "^19.1.0"
   "react-dom": "^19.1.0"
