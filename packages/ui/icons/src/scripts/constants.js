@@ -3,6 +3,7 @@ import { isHex } from './utils.js';
 
 export const SVGS_DIR = fileURLToPath(import.meta.resolve('../svgs', import.meta.dirname));
 export const ICONS_DIR = fileURLToPath(import.meta.resolve('../lib', import.meta.dirname));
+export const DIST_DIR = fileURLToPath(import.meta.resolve('../../dist', import.meta.dirname));
 
 export const ICONS_NAME_REGEX = /^([a-z0-9](_?[a-z0-9])*)$/i;
 

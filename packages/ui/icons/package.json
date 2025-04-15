@@ -1,16 +1,19 @@
 {
   "name": "@flippo/icons",
   "type": "module",
-  "version": "0.0.0",
-  "private": true,
+  "version": "1.0.0",
+  "files": [
+    "README.md",
+    "dist/",
+    "package.json",
+    "src/svgs/"
+  ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview",
+    "build": "node src/scripts/clear.js && tsc --project ./tsconfig.build.json && vite build",
+    "lint": "eslint --fix",
     "src:download": "node --env-file=.env.locale src/scripts/download.js",
-    "src:generate": "node --env-file=.env.locale src/scripts/generateIcons.js && eslint --fix src/lib",
-    "src:renameSvg": "node --env-file=.env.locale src/scripts/renameSvg.js"
+    "src:generate": "node --env-file=.env.locale src/scripts/generateIcons.js && eslint --fix src/lib"
   },
   "devDependencies": {
     "@figma-export/core": "catalog:",
@@ -29,6 +32,7 @@
     "react-dom": "catalog:",
     "svgo": "catalog:",
     "typescript": "catalog:",
-    "vite": "catalog:"
+    "vite": "catalog:",
+    "vite-plugin-dts": "catalog:"
   }
 }
