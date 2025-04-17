@@ -29,6 +29,7 @@ catalog:
   "@testplane/url-decorator": ^1.0.0
   "@turbo/gen": ^2.4.4
   "@types/eslint": ^9.6.1
+  "@types/fs-extra": ^11.0.4
   "@types/js-cookie": ^3.0.6
   "@types/node": ^22.14.0
   "@types/react": 19.0.12
@@ -39,9 +40,13 @@ catalog:
   atomic-router: ^0.11.0
   atomic-router-react: ^0.10.0
   axios: ^1.8.4
+  chalk: ^5.4.1
   clsx: ^2.1.1
+  commander: ^13.1.0
+  cosmiconfig: ^9.0.0
   effector: ^23.3.0
   effector-react: ^23.3.0
+  enquirer: ^2.4.1
   esbuild: ^0.25.2
   eslint: ^9.24.0
   eslint-plugin-effector: ^0.15.0
@@ -51,8 +56,9 @@ catalog:
   eslint-plugin-react-refresh: ^0.4.19
   eslint-plugin-storybook: ^0.12.0
   eslint-plugin-turbo: ^2.5.0
-  fast-glob: ^0.0.0
+  fast-glob: ^3.3.3
   framer-motion: ^12.6.2
+  fs-extra: ^11.3.0
   globals: ^16.0.0
   history: ^5.3.0
   html-reporter: ^10.15.0
@@ -69,7 +75,7 @@ catalog:
   postcss-preset-env: ^10.1.5
   react-i18next: ^15.4.1
   react-use-measure: ^2.1.7
-  rimraf: ^0.0.0
+  rimraf: ^6.0.1
   sass-embedded: ^1.86.1
   storybook: 8.6.11
   storybook-react-i18next: ^3.2.1
@@ -78,6 +84,7 @@ catalog:
   svgo: ^3.3.2
   testplane: ^8.26.0
   tsup: ^8.4.0
+  tsx: ^4.19.3
   typescript: ^5.8.2
   react: "^19.1.0"
   "react-dom": "^19.1.0"

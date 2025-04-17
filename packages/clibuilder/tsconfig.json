@@ -1,0 +1,5 @@
+{
+  "extends": "@flippo/tsconfig",
+  "include": ["lib", "eslint.config.js"],
+  "exclude": ["node_modules"]
+}

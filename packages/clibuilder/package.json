@@ -1,0 +1,31 @@
+{
+  "name": "@blackp/cli_builder",
+  "type": "module",
+  "version": "1.0.0",
+  "packageManager": "pnpm@10.7.0",
+  "description": "",
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "commander": "catalog:",
+    "cosmiconfig": "catalog:",
+    "fs-extra": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@flippo/eslint": "workspace:*",
+    "@flippo/tsconfig": "workspace:*",
+    "@types/fs-extra": "catalog:",
+    "@types/node": "catalog:",
+    "chalk": "catalog:",
+    "enquirer": "catalog:",
+    "tsup": "catalog:",
+    "tsx": "catalog:",
+    "typescript": "catalog:"
+  }
+}
