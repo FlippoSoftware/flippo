@@ -3,6 +3,11 @@ packages:
   - "frontend"
   - "packages/*"
   - "packages/ui/*"
+  - "packages/ui/uikit/*"
+  - "packages/ui/uikit/headless/*"
+  - "packages/ui/uikit/headless/components/*"
+  - "packages/ui/uikit/headless/hooks/*"
+  - "packages/ui/uikit/headless/utils/*"
 
 catalog:
   "@antfu/eslint-config": ^4.11.0
@@ -11,6 +16,7 @@ catalog:
   "@eslint-react/eslint-plugin": ^1.40.3
   "@farfetched/core": ^0.13.1
   "@figma-export/core": ^6.2.0
+  "@floating-ui/react": ^0.27.7
   "@storybook/addon-essentials": 8.6.11
   "@storybook/addon-interactions": 8.6.11
   "@storybook/addon-onboarding": 8.6.11
@@ -51,7 +57,7 @@ catalog:
   eslint-plugin-react-refresh: ^0.4.19
   eslint-plugin-storybook: ^0.12.0
   eslint-plugin-turbo: ^2.5.0
-  fast-glob: ^0.0.0
+  fast-glob: ^3.3.3
   framer-motion: ^12.6.2
   globals: ^16.0.0
   history: ^5.3.0
@@ -69,7 +75,7 @@ catalog:
   postcss-preset-env: ^10.1.5
   react-i18next: ^15.4.1
   react-use-measure: ^2.1.7
-  rimraf: ^0.0.0
+  rimraf: ^6.0.1
   sass-embedded: ^1.86.1
   storybook: 8.6.11
   storybook-react-i18next: ^3.2.1
