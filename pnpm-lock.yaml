@@ -96,6 +96,9 @@ catalogs:
     '@types/react-dom':
       specifier: 19.0.4
       version: 19.0.4
+    '@types/use-sync-external-store':
+      specifier: ^1.5.0
+      version: 1.5.0
     '@vitejs/plugin-react':
       specifier: ^4.3.4
       version: 4.3.4
@@ -234,6 +237,9 @@ catalogs:
     typescript:
       specifier: ^5.8.2
       version: 5.7.3
+    use-sync-external-store:
+      specifier: ^1.5.0
+      version: 1.5.0
     vite:
       specifier: ^6.2.4
       version: 6.2.5
@@ -725,6 +731,16 @@ importers:
         version: 5.7.3
 
   packages/ui/uikit/headless/hooks:
+    dependencies:
+      '@types/use-sync-external-store':
+        specifier: 'catalog:'
+        version: 1.5.0
+      reselect:
+        specifier: ^5.1.1
+        version: 5.1.1
+      use-sync-external-store:
+        specifier: 'catalog:'
+        version: 1.5.0(react@19.1.0)
     devDependencies:
       '@flippo/eslint':
         specifier: workspace:*
@@ -2614,6 +2630,9 @@ packages:
 
   '@types/unist@3.0.3':
     resolution: {integrity: sha512-ko/gIFJRv177XgZsZcBwnqJN5x/Gien8qNOn0D5bQU/zAzVf9Zt3BlcUiLqhV9y4ARk0GbT3tnUiPNgnTXzc/Q==}
+
+  '@types/use-sync-external-store@1.5.0':
+    resolution: {integrity: sha512-5dyB8nLC/qogMrlCizZnYWQTA4lnb/v+It+sqNl5YnSRAPMlIqY/X0Xn+gZw8vOL+TgTTr28VEbn3uf8fUtAkw==}
 
   '@types/uuid@9.0.8':
     resolution: {integrity: sha512-jg+97EGIcY9AGHJJRaaPVgetKDsrTgbRjQ5Msgjh/DQKEFl0DtyRr/VCOyD1T2R1MNeWPK/u7JoGhlDZnKBAfA==}
@@ -6340,6 +6359,9 @@ packages:
     resolution: {integrity: sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==}
     engines: {node: '>=0.10.0'}
 
+  reselect@5.1.1:
+    resolution: {integrity: sha512-K/BG6eIky/SBpzfHZv/dd+9JBFiS4SWV7FIujVyJRux6e45+73RaUHXLmIR1f7WOMaQ0U1km6qwklRQxpJJY0w==}
+
   resolve-from@1.0.1:
     resolution: {integrity: sha512-kT10v4dhrlLNcnO084hEjvXCI1wUG9qZLoz2RogxqDQQYy7IxjI/iMUkOtQTNEh6rzHxvdQWHsJyel1pKOVCxg==}
     engines: {node: '>=0.10.0'}
@@ -9627,6 +9649,8 @@ snapshots:
   '@types/stack-utils@2.0.3': {}
 
   '@types/unist@3.0.3': {}
+
+  '@types/use-sync-external-store@1.5.0': {}
 
   '@types/uuid@9.0.8': {}
 
@@ -14029,6 +14053,8 @@ snapshots:
   require-directory@2.1.1: {}
 
   require-from-string@2.0.2: {}
+
+  reselect@5.1.1: {}
 
   resolve-from@1.0.1: {}
 
