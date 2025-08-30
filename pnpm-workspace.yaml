@@ -30,6 +30,9 @@ catalog:
   '@storybook/theming': ^8.6.11
   '@svgr/core': ^8.1.0
   '@svgr/plugin-jsx': ^8.1.0
+  '@testing-library/jest-dom': ^0.0.0
+  '@testing-library/react': ^0.0.0
+  '@testing-library/user-event': ^0.0.0
   '@testing-library/webdriverio': ^3.2.1
   '@testplane/global-hook': ^1.0.0
   '@testplane/storybook': ^1.6.1
@@ -43,6 +46,7 @@ catalog:
   '@types/react-dom': 19.0.4
   '@types/use-sync-external-store': ^1.5.0
   '@vitejs/plugin-react': ^4.3.4
+  '@vitest/ui': ^0.0.0
   '@withease/i18next': ^24.0.0
   '@withease/web-api': ^1.3.0
   atomic-router: ^0.11.0
@@ -72,6 +76,7 @@ catalog:
   is-svg: ^5.1.0
   jiti: ^2.4.2
   js-cookie: ^3.0.5
+  jsdom: ^0.0.0
   patronum: ^2.3.0
   postcss: ^8.5.3
   postcss-flexbugs-fixes: ^5.0.2
@@ -95,4 +100,18 @@ catalog:
   use-sync-external-store: ^1.5.0
   vite: ^6.2.4
   vite-plugin-dts: ^4.5.3
+  vitest: ^0.0.0
   zod: ^3.24.2
+catalogs:
+  conflicts_@testing-library/jest-dom_h6_4_8:
+    '@testing-library/jest-dom': ^6.4.8
+  conflicts_@testing-library/react_h16_0_0:
+    '@testing-library/react': ^16.0.0
+  conflicts_@testing-library/user-event_h14_5_2:
+    '@testing-library/user-event': ^14.5.2
+  conflicts_@vitest/ui_h2_0_4:
+    '@vitest/ui': ^2.0.4
+  conflicts_jsdom_h24_1_1:
+    jsdom: ^24.1.1
+  conflicts_vitest_h2_0_4:
+    vitest: ^2.0.4
