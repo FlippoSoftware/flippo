@@ -1,5 +1,5 @@
 {
-  "name": "@flippo_ui/icons",
+  "name": "@flippo-ui/icons",
   "type": "module",
   "version": "1.0.2",
   "description": "Pack of Flippo UI icons",
@@ -8,15 +8,12 @@
     "svg",
     "react"
   ],
-  "module": "dist/index.jsx",
-  "files": [
-    "*.d.ts",
-    "*.jsx",
-    "README.md",
-    "metadata.json",
-    "package.json",
-    "svgs"
-  ],
+
+  "exports": {
+    ".": "./lib/index.tsx",
+    "./svgs": "./svgs/*.svg",
+    "./Spinner": "./lib/Spinner.tsx"
+  },
   "scripts": {
     "build": "node 'scripts/clear.js' && tsc --project './tsconfig.build.json' && tsc --project tsconfig.build.json --declaration --emitDeclarationOnly && pnpm eslint './*.{jsx,d.ts}' --fix --no-ignore",
     "lint": "eslint --fix",
