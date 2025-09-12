@@ -24,7 +24,14 @@ async function generateIcons() {
 
         const iconFilePath = path.join(ICONS_DIR, `${componentName}Icon.tsx`);
 
-        const content = await transform(svg, { typescript: true, plugins: ['@svgr/plugin-jsx'] }, { componentName });
+        const content = await transform(svg, {
+            typescript: true,
+            plugins: ['@svgr/plugin-svgo', '@svgr/plugin-jsx'],
+            svgoConfig: {
+                plugins: ['removeDimensions'],
+                floatPrecision: 2
+            }
+        }, { componentName });
 
         await fs.mkdir(path.parse(iconFilePath).dir, { recursive: true });
         await fs.writeFile(iconFilePath, content);

@@ -3,7 +3,7 @@ import * as React from 'react';
 
 function FlagUk(props: SVGProps<SVGSVGElement>) {
     return (
-        <svg xmlns={'http://www.w3.org/2000/svg'} width={24} height={24} fill={'none'} viewBox={'0 0 24 24'} {...props}>
+        <svg xmlns={'http://www.w3.org/2000/svg'} fill={'none'} viewBox={'0 0 24 24'} {...props}>
             <mask
               id={'a'} width={24} height={24} x={0} y={0} maskUnits={'userSpaceOnUse'} style={{
                     maskType: 'luminance'

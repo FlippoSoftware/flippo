@@ -3,7 +3,7 @@ import * as React from 'react';
 
 function MailOutlook(props: SVGProps<SVGSVGElement>) {
     return (
-        <svg xmlns={'http://www.w3.org/2000/svg'} width={24} height={24} fill={'none'} viewBox={'0 0 24 24'} {...props}>
+        <svg xmlns={'http://www.w3.org/2000/svg'} fill={'none'} viewBox={'0 0 24 24'} {...props}>
             <path fill={'#1A237E'} d={'m21.803 11.876-3.58-2.086v5.797H22v-3.369a.4.4 0 0 0-.197-.342'} />
             <path fill={'#0C4999'} d={'M16.96 4.42h4.523v-.554A.866.866 0 0 0 20.617 3H8.834a.866.866 0 0 0-.866.866v.554z'} />
             <path fill={'#0F73D9'} d={'M16.96 16.76h3.657a.866.866 0 0 0 .866-.865V12.48H16.96z'} />
