@@ -1,8 +1,8 @@
-export enum PinInputPinDataAttributes {
+export enum PinInputFocusFunnelDataAttributes {
     /**
-     * Present when the field has a value.
+     * Present when the focus mode is set.
      */
-    value = 'data-value',
+    focusMode = 'data-focus-mode',
     /**
      * Present when the field is disabled.
      */
