@@ -3,115 +3,115 @@ packages:
   - frontend
   - packages/*
   - packages/ui/*
+  - packages/ui/icons/*
   - packages/ui/uikit/*
   - packages/ui/uikit/headless/*
   - packages/ui/uikit/headless/components/*
   - packages/ui/uikit/headless/hooks/*
   - packages/ui/uikit/headless/utils/*
+  - packages/ui/uikit/flippo/*
+  - packages/ui/uikit/flippo/components/*
+  - packages/ui/uikit/flippo/utils/*
+  - packages/test/*
 
 catalog:
-  '@antfu/eslint-config': ^5.2.0
-  '@biomejs/biome': 2.0.0-beta.1
-  '@chromatic-com/storybook': 3.2.6
-  '@eslint-react/eslint-plugin': ^1.40.3
-  '@farfetched/core': ^0.13.1
-  '@figma-export/core': ^6.2.0
-  '@floating-ui/react': ^0.27.7
-  '@floating-ui/react-dom': ^2.1.5
-  '@floating-ui/utils': ^0.2.9
-  '@storybook/addon-essentials': 8.6.11
-  '@storybook/addon-interactions': 8.6.11
-  '@storybook/addon-onboarding': 8.6.11
-  '@storybook/blocks': 8.6.11
-  '@storybook/manager-api': ^8.6.11
-  '@storybook/react': 8.6.11
-  '@storybook/react-vite': 8.6.11
-  '@storybook/test': 8.6.11
-  '@storybook/theming': ^8.6.11
+  '@antfu/eslint-config': ^5.2.1
+  '@biomejs/biome': ^2.0.0-beta.1
+  '@chromatic-com/storybook': ^3.2.6
+  '@eslint-react/eslint-plugin': ^1.52.8
+  '@farfetched/core': ^0.13.2
+  '@figma-export/core': ^6.2.2
+  '@floating-ui/react': ^0.27.16
+  '@floating-ui/react-dom': ^2.1.6
+  '@floating-ui/utils': ^0.2.10
+  '@storybook/addon-essentials': ^8.6.14
+  '@storybook/addon-interactions': ^8.6.14
+  '@storybook/addon-links': ^8.6.14
+  '@storybook/addon-onboarding': ^8.6.14
+  '@storybook/blocks': ^8.6.14
+  '@storybook/manager-api': 8.6.14
+  '@storybook/react': ^8.6.14
+  '@storybook/react-vite': ^8.6.14
+  '@storybook/test': ^8.6.14
+  '@storybook/theming': 8.6.14
   '@svgr/core': ^8.1.0
   '@svgr/plugin-jsx': ^8.1.0
-  '@testing-library/jest-dom': ^0.0.0
-  '@testing-library/react': ^0.0.0
-  '@testing-library/user-event': ^0.0.0
+  '@svgr/plugin-svgo': ^8.1.0
+  '@testing-library/jest-dom': ^6.8.0
+  '@testing-library/react': ^16.3.0
+  '@testing-library/user-event': ^14.6.1
   '@testing-library/webdriverio': ^3.2.1
   '@testplane/global-hook': ^1.0.0
-  '@testplane/storybook': ^1.6.1
-  '@testplane/test-filter': ^1.0.0
+  '@testplane/storybook': ^1.7.3
+  '@testplane/test-filter': ^1.1.0
   '@testplane/url-decorator': ^1.0.0
   '@turbo/gen': ^2.4.4
   '@types/eslint': ^9.6.1
   '@types/js-cookie': ^3.0.6
-  '@types/node': ^22.14.0
-  '@types/react': 19.0.12
-  '@types/react-dom': 19.0.4
+  '@types/node': ^22.18.0
+  '@types/react': ^19.0.12
+  '@types/react-dom': ^19.0.4
   '@types/use-sync-external-store': ^1.5.0
   '@vitejs/plugin-react': ^4.3.4
-  '@vitest/ui': ^0.0.0
+  '@vitest/ui': ^3.2.4
   '@withease/i18next': ^24.0.0
   '@withease/web-api': ^1.3.0
-  atomic-router: ^0.11.0
+  atomic-router: ^0.11.1
   atomic-router-react: ^0.10.0
-  axios: ^1.8.4
+  axios: ^1.11.0
+  class-variance-authority: ^0.7.1
   clsx: ^2.1.1
-  effector: ^23.3.0
+  effector: ^23.4.2
   effector-react: ^23.3.0
   esbuild: ^0.25.2
-  eslint: 9.33.0
+  eslint: ^9.33.0
   eslint-plugin-effector: ^0.15.0
   eslint-plugin-format: ^1.0.1
   eslint-plugin-only-warn: ^1.1.0
   eslint-plugin-react-hooks: ^5.2.0
-  eslint-plugin-react-refresh: ^0.4.19
+  eslint-plugin-react-refresh: ^0.4.20
   eslint-plugin-storybook: ^0.12.0
-  eslint-plugin-turbo: ^2.5.0
+  eslint-plugin-turbo: ^2.5.6
   fast-glob: ^3.3.3
-  framer-motion: ^12.6.2
-  globals: ^16.0.0
+  framer-motion: ^12.23.12
+  glob: ^11.0.3
+  globals: ^16.3.0
   history: ^5.3.0
-  html-reporter: ^10.15.0
+  html-reporter: ^10.19.0
   i18next: ^24.2.3
-  i18next-browser-languagedetector: ^8.0.4
-  i18next-hmr: ^3.1.3
+  i18next-browser-languagedetector: ^8.2.0
+  i18next-hmr: ^3.1.4
   i18next-http-backend: ^3.0.2
   is-svg: ^5.1.0
-  jiti: ^2.4.2
+  jiti: ^2.5.1
   js-cookie: ^3.0.5
-  jsdom: ^0.0.0
+  jsdom: ^24.1.3
   patronum: ^2.3.0
-  postcss: ^8.5.3
+  postcss: ^8.5.6
   postcss-flexbugs-fixes: ^5.0.2
-  postcss-preset-env: ^10.1.5
-  react: ^19.1.0
-  react-dom: ^19.1.0
-  react-i18next: ^15.4.1
+  postcss-preset-env: ^10.3.1
+  react: ^19.1.1
+  react-dom: ^19.1.1
+  react-i18next: ^15.7.3
   react-use-measure: ^2.1.7
   reselect: ^5.1.1
   rimraf: ^6.0.1
-  sass-embedded: ^1.86.1
-  storybook: 8.6.11
-  storybook-react-i18next: ^3.2.1
-  stylelint: ^16.17.0
-  surrealdb: ^1.2.1
+  sass: ^1.91.0
+  sass-embedded: 1.91.0
+  storybook: ^8.6.14
+  storybook-react-i18next: ^3.3.1
+  stylelint: ^16.23.1
+  surrealdb: ^1.3.2
   svgo: ^3.3.2
   tabbable: ^6.2.0
-  testplane: ^8.26.0
+  testplane: ^8.31.0
   tsup: ^8.4.0
-  typescript: ^5.8.2
+  typescript: ^5.9.2
   use-sync-external-store: ^1.5.0
-  vite: ^6.2.4
-  vite-plugin-dts: ^4.5.3
-  vitest: ^0.0.0
-  zod: ^3.24.2
-catalogs:
-  conflicts_@testing-library/jest-dom_h6_4_8:
-    '@testing-library/jest-dom': ^6.4.8
-  conflicts_@testing-library/react_h16_0_0:
-    '@testing-library/react': ^16.0.0
-  conflicts_@testing-library/user-event_h14_5_2:
-    '@testing-library/user-event': ^14.5.2
-  conflicts_@vitest/ui_h2_0_4:
-    '@vitest/ui': ^2.0.4
-  conflicts_jsdom_h24_1_1:
-    jsdom: ^24.1.1
-  conflicts_vitest_h2_0_4:
-    vitest: ^2.0.4
+  vite: 6.2.5
+  vite-plugin-css-modules-dts: ^1.3.0
+  vite-plugin-dts: ^4.5.4
+  vite-plugin-sass-dts: ^1.3.31
+  vite-tsconfig-paths: ^5.1.4
+  vitest: ^3.2.4
+  zod: ^3.25.76
