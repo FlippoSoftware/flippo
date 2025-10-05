@@ -1,4 +1,4 @@
-'use client';
+
 
 import { ArrowIcon, EmailIcon } from '@shared/icons';
 

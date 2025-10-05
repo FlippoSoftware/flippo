@@ -1,4 +1,4 @@
-'use client';
+
 
 import type { TDialogProps } from '../types/TDialogProps';
 import clsx from 'clsx';

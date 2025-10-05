@@ -1,4 +1,4 @@
-'use client';
+
 
 import type { ChangeEvent, ClipboardEvent, KeyboardEvent, MouseEvent } from 'react';
 
