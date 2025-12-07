@@ -1,4 +1,4 @@
-'use client';
+
 
 import type { JSX, MouseEvent } from 'react';
 import type { TNotificationKind, TToastProps } from '../types/TToastProps';

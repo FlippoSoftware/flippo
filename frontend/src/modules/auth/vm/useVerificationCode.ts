@@ -1,4 +1,4 @@
-'use client';
+
 
 import type { TVerifyInputHandler } from '@shared/ui/Input';
 import { useUnit } from 'effector-react';

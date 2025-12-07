@@ -33,12 +33,14 @@ export const overridesStylisticConfig: Exclude<OptionsConfig['stylistic'], boole
     'style/max-statements-per-line': ['error', { max: 3 }],
     'style/newline-per-chained-call': ['error', { ignoreChainWithDepth: 3 }],
     'style/object-curly-newline': ['warn', { consistent: true, minProperties: 4 }],
-    'style/array-bracket-newline': ['warn', { minItems: 4 }],
+    'style/array-bracket-newline': ['warn', { minItems: 5 }],
 
     /* jsx */
     'style/jsx-quotes': ['error', 'prefer-single'],
     'style/jsx-curly-brace-presence': ['warn', 'always'],
     'style/jsx-curly-spacing': [2, { when: 'never' }],
+    'style/jsx-max-props-per-line': ['error', { maximum: 4, when: 'always' }],
+    'style/jsx-closing-bracket-location': ['error', 'line-aligned'],
 
     /* semis */
     'style/no-extra-semi': 'error',
@@ -51,55 +53,43 @@ export const overridesTsConfig: Exclude<OptionsConfig['typescript'], boolean | u
     'ts/consistent-type-exports': 'error',
     'ts/consistent-type-imports': 'error',
     'ts/consistent-type-definitions': ['error', 'type'],
-    'ts/naming-convention': [
-        'warn',
-        {
-            format: [
-                'camelCase',
-                'UPPER_CASE',
-                'PascalCase'
-            ],
-            selector: 'variable'
-        },
-        {
-            format: ['PascalCase'],
-            selector: 'typeLike'
-        }
-    ]
+    'ts/naming-convention': ['warn', {
+        format: ['camelCase', 'UPPER_CASE', 'PascalCase'],
+        selector: 'variable'
+    }, {
+        format: ['PascalCase'],
+        selector: 'typeLike'
+    }]
 };
 
-export const general: TypedFlatConfigItem[] = [
-    {
-        plugins: {
-            turbo: turboPlugin
-        },
-        rules: {
-            'turbo/no-undeclared-env-vars': 'warn',
-            'ts/consistent-type-definitions': ['error', 'type'],
-            'no-console': ['warn'],
-            'antfu/no-top-level-await': ['off'],
-            'node/prefer-global/process': ['off'],
-            'node/no-process-env': ['error'],
-            'perfectionist/sort-imports': ['error', {
-                tsconfigRootDir: import.meta.dirname
-            }]
-        }
+export const general: TypedFlatConfigItem[] = [{
+    plugins: {
+        turbo: turboPlugin
     },
-    {
-        languageOptions: {
-            globals: {
-                ...globals.browser,
-                ...globals.chai,
-                ...globals.mocha,
-                ...globals.node,
-                ...globals.es2024
-            }
-        }
-    },
-    {
-        ignores: ['dist/**']
+    rules: {
+        'turbo/no-undeclared-env-vars': 'warn',
+        'ts/consistent-type-definitions': ['error', 'type'],
+        'no-console': ['warn'],
+        'antfu/no-top-level-await': ['off'],
+        'node/prefer-global/process': ['off'],
+        'node/no-process-env': ['error'],
+        'perfectionist/sort-imports': ['error', {
+            tsconfigRootDir: import.meta.dirname
+        }]
     }
-];
+}, {
+    languageOptions: {
+        globals: {
+            ...globals.browser,
+            ...globals.chai,
+            ...globals.mocha,
+            ...globals.node,
+            ...globals.es2024
+        }
+    }
+}, {
+    ignores: ['dist/**']
+}];
 
 export type ESLintAntfuConfig = ReturnType<typeof antfu>;
 /**

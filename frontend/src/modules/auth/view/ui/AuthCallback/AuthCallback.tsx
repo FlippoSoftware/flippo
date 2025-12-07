@@ -1,4 +1,4 @@
-'use client';
+
 
 import type { JSX } from 'react';
 import { FadeTransition } from '@shared/ui/FadeTransition';

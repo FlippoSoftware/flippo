@@ -1,4 +1,4 @@
-'use client';
+
 
 import type { TAuthProvider } from '@shared/query';
 import type { ChangeEvent } from 'react';

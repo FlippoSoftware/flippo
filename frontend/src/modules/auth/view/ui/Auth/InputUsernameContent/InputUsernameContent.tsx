@@ -1,4 +1,4 @@
-'use client';
+
 
 import type { ChangeEvent } from 'react';
 import { LoadingButton } from '@shared/ui/Button';
