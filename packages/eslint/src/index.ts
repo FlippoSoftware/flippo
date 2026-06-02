@@ -36,6 +36,7 @@ export const overridesStylisticConfig: Exclude<OptionsConfig['stylistic'], boole
     'style/array-bracket-newline': ['warn', { minItems: 5 }],
 
     /* jsx */
+    'style/jsx-indent-props': ['warn', 4],
     'style/jsx-quotes': ['error', 'prefer-single'],
     'style/jsx-curly-brace-presence': ['warn', 'always'],
     'style/jsx-curly-spacing': [2, { when: 'never' }],

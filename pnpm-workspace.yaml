@@ -13,7 +13,7 @@ packages:
   - packages/ui/uikit/flippo/components/*
   - packages/ui/uikit/flippo/utils/*
   - packages/test/*
-
+  
 catalog:
   '@antfu/eslint-config': ^5.2.1
   '@base-ui-components/react': ^0.0.0

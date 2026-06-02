@@ -8,6 +8,11 @@
   // Disable the default formatter, use eslint instead
   "prettier.enable": false,
   "editor.formatOnSave": false,
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "[typescript]": { "editor.defaultFormatter": "dbaeumer.vscode-eslint" },
+  "[typescriptreact]": { "editor.defaultFormatter": "dbaeumer.vscode-eslint" },
+  "[javascript]": { "editor.defaultFormatter": "dbaeumer.vscode-eslint" },
+  "[javascriptreact]": { "editor.defaultFormatter": "dbaeumer.vscode-eslint" },
 
   // Auto fix
   "editor.codeActionsOnSave": {
