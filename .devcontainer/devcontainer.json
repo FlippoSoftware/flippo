@@ -1,5 +1,5 @@
 {
-  "name": "Flippo frontend DevContainer",
+  "name": "Flippo DevContainer",
 
   "build": {
     "dockerfile": "Dockerfile"
@@ -49,6 +49,6 @@
   },
 
   "runArgs": ["--name", "flippo_devcontainer"],
-  "workspaceFolder": "/workspace/flippo"
+  "workspaceFolder": "/workspaces/flippo"
   //"updateContentCommand": "pnpm install --frozen-lockfile"
 }

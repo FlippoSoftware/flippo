@@ -13,7 +13,19 @@ packages:
   - packages/ui/uikit/flippo/components/*
   - packages/ui/uikit/flippo/utils/*
   - packages/test/*
-  
+
+allowBuilds:
+  '@parcel/watcher': set this to true or false
+  '@testplane/edgedriver': set this to true or false
+  '@testplane/geckodriver': set this to true or false
+  better-sqlite3: set this to true or false
+  bufferutil: set this to true or false
+  edgedriver: set this to true or false
+  esbuild: set this to true or false
+  geckodriver: set this to true or false
+  sharp: set this to true or false
+  utf-8-validate: set this to true or false
+
 catalog:
   '@antfu/eslint-config': ^5.2.1
   '@base-ui-components/react': ^0.0.0
