@@ -1,0 +1,33 @@
+engine biome(1.0)
+language js(typescript, jsx)
+
+// Structural (single-file, syntax-only) approximation of `eslint-plugin-effector`'s
+// `enforce-store-naming-convention` (source: rules/enforce-store-naming-convention/*.js —
+// stores must be prefixed or suffixed with `$`). GritQL plugins can't do the cross-file
+// import-binding resolution the original ESLint rule does (verifying `createStore` etc. are
+// actually imported from `effector`), so this matches on the call shape alone — a local
+// function coincidentally named `createStore`/`restore`/`combine` would also be flagged.
+// `.map()`-derived stores and `domain.createStore()` aren't matched (edge cases, same as the
+// no-node-process-import plugin's scope note).
+//
+// Only this one rule is implemented so far. The rest of `eslint-plugin-effector`
+// (enforce-effect-naming-convention, enforce-gate-naming-convention, no-getState, no-watch,
+// no-guard, no-forward, prefer-useUnit, ...) needs GritQL's `r"..."` regex predicate, and
+// testing showed its matching semantics are not straightforward full-string-equality NOR
+// plain substring search NOR simple anchored prefix/suffix search in any single consistent
+// way found during manual testing (e.g. `r"b.*"` matched a leading "b" correctly, but
+// `r"^bad"` — same intent, no trailing wildcard — matched nothing; `not r"^\$|\$$"` below is
+// the only pattern verified to behave as intended). Extend this file with more rules only
+// after confirming each one's actual matching behavior against real fixtures — do not add
+// unverified regex predicates copied from this comment's failed attempts.
+
+`const $name = $init` as $decl where {
+    $init <: or { `createStore($_)`, `restore($_)`, `restore($_, $_)`, `combine($_)`, `combine($_, $_)` },
+    $name <: not r"^\$|\$$"
+} where {
+    register_diagnostic(
+        span = $decl,
+        message = "Effector stores should be named with a `$` prefix or suffix.",
+        severity = "warn"
+    )
+}

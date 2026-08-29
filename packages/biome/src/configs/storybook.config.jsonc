@@ -1,13 +1,13 @@
 {
-	"$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+	"$schema": "https://biomejs.dev/schemas/2.5.11/schema.json",
 	"files": {
-		"ignore": ["storybook-static/"]
+		"includes": ["**", "!**/storybook-static"]
 	},
 	"overrides": [
 		{
 			// Provide support for CSF3-based stories in Storybook.
 			// https://storybook.js.org/docs/api/csf
-			"include": ["src/**/*.stories.ts", "src/**/*.stories.tsx"],
+			"includes": ["src/**/*.stories.ts", "src/**/*.stories.tsx"],
 			"linter": {
 				"rules": {
 					"complexity": {
@@ -43,9 +43,7 @@
 									}
 								]
 							}
-						}
-					},
-					"nursery": {
+						},
 						"useComponentExportOnlyModules": "off" // Allow exports of stories and static metadata required by Storybook.
 					}
 				}
@@ -54,7 +52,7 @@
 		{
 			// Provide support for Storybook configuration files.
 			// https://storybook.js.org/docs/configure
-			"include": [
+			"includes": [
 				".storybook/main.ts",
 				".storybook/main.tsx",
 				".storybook/manager.ts",
@@ -75,9 +73,6 @@
 								"filenameCases": ["kebab-case"] // Allow the kebab-case naming convention required by Storybook.
 							}
 						}
-					},
-					"nursery": {
-						"useImportRestrictions": "off" // Allow relative import statements in Storybook configuration files.
 					}
 				}
 			}

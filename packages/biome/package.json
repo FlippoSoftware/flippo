@@ -5,16 +5,16 @@
   "private": true,
   "exports": {
     "base": {
-      "default": "./src/configs/base.config.json"
+      "default": "./src/configs/base.config.jsonc"
     },
     "react": {
-      "default": "./src/configs/react.config.json"
+      "default": "./src/configs/react.config.jsonc"
     },
     "storybook": {
-      "default": "./src/configs/storybook.config.json"
+      "default": "./src/configs/storybook.config.jsonc"
     },
     "test": {
-      "default": "./src/configs/test.config.json"
+      "default": "./src/configs/test.config.jsonc"
     }
   },
   "files": ["src"],
@@ -25,7 +25,10 @@
   "author": "BlackPoretsky (Egor Gorochkin)",
   "license": "ISC",
   "packageManager": "pnpm@10.7.0",
-  "dependencies": {
+  "peerDependencies": {
+    "@biomejs/biome": "catalog:"
+  },
+  "devDependencies": {
     "@biomejs/biome": "catalog:"
   }
 }

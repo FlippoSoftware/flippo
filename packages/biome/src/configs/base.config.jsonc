@@ -1,12 +1,7 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.0.0-beta.1/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.5.11/schema.json",
   "files": {
-    "includes": [
-      "**",
-      "!**/node_modules",
-      "!**/dist",
-      "!**/.git"
-    ]
+    "includes": ["**", "!**/node_modules", "!**/dist", "!**/.git"]
   },
   "vcs": {
     "enabled": true,
@@ -16,7 +11,8 @@
   "formatter": {
     "includes": ["**"],
     "formatWithErrors": true,
-    "indentStyle":"space",
+    "indentStyle": "space",
+    "indentWidth": 4,
     "lineWidth": 140
   },
   "linter": {
@@ -24,46 +20,35 @@
       "a11y": {
         "noSvgWithoutTitle": "warn",
         "useKeyWithClickEvents": "off",
-        "useKeyWithMouseEvents": "off"
+        "useKeyWithMouseEvents": "off",
+        "useAriaPropsSupportedByRole": "warn",
+        "useValidAutocomplete": "warn"
       },
       "complexity": {
         "noExcessiveCognitiveComplexity": "info",
-        "useWhile": "warn"
+        "useWhile": "warn",
+        "noUselessEscapeInRegex": "warn",
+        "noUselessStringRaw": "warn",
+        "noUselessUndefined": "warn",
+        "useNumericLiterals": "error"
       },
       "correctness": {
         "noConstantCondition": "warn",
         "noNodejsModules": "warn",
-        "noUndeclaredDependencies": "off", /* Await support for path aliases from `tsconfig.json`. */
-        "noInvalidNewBuiltin": "warn",
-        "noNewSymbol": "warn",
+        "noUndeclaredDependencies": "off" /* Await support for path aliases from `tsconfig.json`. */,
         "noUnreachable": "warn",
         "noUnusedFunctionParameters": "warn",
         "useExhaustiveDependencies": "off", // Not applicable outside React apps.
         "useHookAtTopLevel": "off", // Not applicable outside React apps.
-        "useJsxKeyInIterable": "off" // Not applicable outside React apps.
+        "useJsxKeyInIterable": "off", // Not applicable outside React apps.
+        "noInvalidBuiltinInstantiation": "warn",
+        "noGlobalDirnameFilename": "warn",
+        "noUnresolvedImports": "error",
+        "noSwitchDeclarations": "warn",
+        "useValidTypeof": "warn"
       },
       "nursery": {
-        "noConstantBinaryExpression":"info",
-        "noDocumentCookie": "info",
-        "noExportedImports": "warn",
-        "noFloatingPromises": "warn",
-        "noGlobalDirnameFilename": "warn",
-        "noImportCycles": "error",
-        "noIrregularWhitespace": "warn",
-        "noSecrets": "error",
-        "noSubstr": "warn",
-        "noTemplateCurlyInString": "off",
-        "noTsIgnore": "error",
-        "noUnresolvedImports": "error",
-        "noUselessEscapeInRegex": "warn",
-        "noUselessEscapeInString": "warn",
-        "noUselessStringRaw": "warn",
-        "noUselessUndefined": "warn",
-        "useAdjacentOverloadSignatures": "warn",
-        "useAriaPropsSupportedByRole": "warn",
-        "useCollapsedIf": "warn",
-        "useGuardForIn": "warn",
-        "useValidAutocomplete": "warn"
+        "noFloatingPromises": "warn"
       },
       "performance": {
         "noBarrelFile": "warn",
@@ -72,7 +57,7 @@
         "useTopLevelRegex": "warn"
       },
       "security": {
-        
+        "noSecrets": "error"
       },
       "style": {
         "noDefaultExport": "error",
@@ -80,7 +65,7 @@
         "noImplicitBoolean": "warn",
         "noInferrableTypes": "warn",
         "noNonNullAssertion": "warn",
-        "noParameterAssign":  "warn",
+        "noParameterAssign": "warn",
         "noParameterProperties": "warn",
         "noUnusedTemplateLiteral": "warn",
         "noUselessElse": "warn",
@@ -88,9 +73,9 @@
         "useAsConstAssertion": "warn",
         "useCollapsedElseIf": "warn",
         "useConsistentArrayType": {
-					"level": "warn",
-					"options": { "syntax": "generic" }
-				},
+          "level": "warn",
+          "options": { "syntax": "generic" }
+        },
         "useConst": "warn",
         "useDefaultParameterLast": "warn",
         "useDefaultSwitchClause": "warn",
@@ -108,95 +93,103 @@
         "useForOf": "warn",
         "useImportType": "warn",
         "useNamingConvention": {
-					"level": "warn",
-					"options": {
-						"conventions": [
-							{
-								"selector": {
-									"kind": "objectLiteralMember", // Ignore object literals for third-party compatibility reasons.
-									"scope": "any"
-								},
-								"match": ".*"
-							}
-						]
-					}
-				},
+          "level": "warn",
+          "options": {
+            "conventions": [
+              {
+                "selector": {
+                  "kind": "objectLiteralMember", // Ignore object literals for third-party compatibility reasons.
+                  "scope": "any"
+                },
+                "match": ".*"
+              }
+            ]
+          }
+        },
         "useNodejsImportProtocol": "warn",
         "useNumberNamespace": "error",
-        "useNumericLiterals": "error",
-        "useShorthandArrayType": "warn",
         "useShorthandAssign": "warn",
         "useShorthandFunctionType": "warn",
-        "useSingleCaseStatement": "warn",
         "useSingleVarDeclarator": "warn",
         "useTemplate": "warn",
         "useThrowNewError": "error",
-        "useThrowOnlyError": "error"
+        "useThrowOnlyError": "error",
+        "noExportedImports": "warn",
+        "noSubstr": "warn",
+        "useCollapsedIf": "warn"
       },
       "suspicious": {
         "noApproximativeNumericConstant": "warn",
-				"noArrayIndexKey": "warn",
-				"noAssignInExpressions": "warn",
-				"noAsyncPromiseExecutor": "warn",
-				"noCatchAssign": "warn",
-				"noClassAssign": "warn",
-				"noCommentText": "warn",
-				"noCompareNegZero": "warn",
-				"noConfusingLabels": "warn",
-				"noConfusingVoidType": "warn",
-				"noConsole": "warn",
-				"noConstEnum": "warn",
-				"noControlCharactersInRegex": "warn",
-				"noDebugger": "warn",
-				"noDoubleEquals": "warn",
-				"noDuplicateAtImportRules": "warn",
-				"noDuplicateCase": "warn",
-				"noDuplicateClassMembers": "warn",
-				"noDuplicateFontNames": "warn",
-				"noDuplicateJsxProps": "warn",
-				"noDuplicateObjectKeys": "warn",
-				"noDuplicateParameters": "warn",
-				"noDuplicateSelectorsKeyframeBlock": "warn",
-				"noDuplicateTestHooks": "warn",
-				"noEmptyInterface": "warn",
-				"noExplicitAny": "warn",
-				"noExportsInTest": "warn",
-				"noExtraNonNullAssertion": "warn",
-				"noFallthroughSwitchClause": "warn",
-				"noFocusedTests": "warn",
-				"noFunctionAssign": "warn",
-				"noGlobalAssign": "warn",
-				"noGlobalIsFinite": "warn",
-				"noGlobalIsNan": "warn",
-				"noImplicitAnyLet": "warn",
-				"noImportAssign": "warn",
-				"noImportantInKeyframe": "warn",
-				"noLabelVar": "warn",
-				"noMisleadingCharacterClass": "warn",
-				"noMisleadingInstantiator": "warn",
-				"noMisplacedAssertion": "warn",
-				"noMisrefactoredShorthandAssign": "warn",
-				"noPrototypeBuiltins": "warn",
-				"noReactSpecificProps": "warn",
-				"noRedeclare": "warn",
-				"noRedundantUseStrict": "warn",
-				"noSelfCompare": "warn",
-				"noShadowRestrictedNames": "warn",
-				"noShorthandPropertyOverrides": "warn",
-				"noSkippedTests": "warn",
-				"noSparseArray": "warn",
-				"noSuspiciousSemicolonInJsx": "warn",
-				"noThenProperty": "warn",
-				"noUnsafeDeclarationMerging": "warn",
-				"noUnsafeNegation": "warn",
-				"useAwait": "off", // Allow async modifiers on any function for consistency and to improve maintainability. TypeScript is able to detect incorrect use of the resulting promises.
-				"useDefaultSwitchClauseLast": "warn",
-				"useErrorMessage": "warn",
-				"useGetterReturn": "warn",
-				"useIsArray": "warn",
-				"useNamespaceKeyword": "warn",
-				"useNumberToFixedDigitsArgument": "warn",
-				"useValidTypeof": "warn"
+        "noArrayIndexKey": "warn",
+        "noAssignInExpressions": "warn",
+        "noAsyncPromiseExecutor": "warn",
+        "noCatchAssign": "warn",
+        "noClassAssign": "warn",
+        "noCommentText": "warn",
+        "noCompareNegZero": "warn",
+        "noConfusingLabels": "warn",
+        "noConfusingVoidType": "warn",
+        "noConsole": "warn",
+        "noConstEnum": "warn",
+        "noControlCharactersInRegex": "warn",
+        "noDebugger": "warn",
+        "noDoubleEquals": "warn",
+        "noDuplicateAtImportRules": "warn",
+        "noDuplicateCase": "warn",
+        "noDuplicateClassMembers": "warn",
+        "noDuplicateFontNames": "warn",
+        "noDuplicateJsxProps": "warn",
+        "noDuplicateObjectKeys": "warn",
+        "noDuplicateParameters": "warn",
+        "noDuplicateSelectorsKeyframeBlock": "warn",
+        "noDuplicateTestHooks": "warn",
+        "noEmptyInterface": "warn",
+        "noExplicitAny": "warn",
+        "noExportsInTest": "warn",
+        "noExtraNonNullAssertion": "warn",
+        "noFallthroughSwitchClause": "warn",
+        "noFocusedTests": "warn",
+        "noFunctionAssign": "warn",
+        "noGlobalAssign": "warn",
+        "noGlobalIsFinite": "warn",
+        "noGlobalIsNan": "warn",
+        "noImplicitAnyLet": "warn",
+        "noImportAssign": "warn",
+        "noImportantInKeyframe": "warn",
+        "noLabelVar": "warn",
+        "noMisleadingCharacterClass": "warn",
+        "noMisleadingInstantiator": "warn",
+        "noMisplacedAssertion": "warn",
+        "noMisrefactoredShorthandAssign": "warn",
+        "noPrototypeBuiltins": "warn",
+        "noReactSpecificProps": "warn",
+        "noRedeclare": "warn",
+        "noRedundantUseStrict": "warn",
+        "noSelfCompare": "warn",
+        "noShadowRestrictedNames": "warn",
+        "noShorthandPropertyOverrides": "warn",
+        "noSkippedTests": "warn",
+        "noSparseArray": "warn",
+        "noSuspiciousSemicolonInJsx": "warn",
+        "noThenProperty": "warn",
+        "noUnsafeDeclarationMerging": "warn",
+        "noUnsafeNegation": "warn",
+        "useAwait": "off", // Allow async modifiers on any function for consistency and to improve maintainability. TypeScript is able to detect incorrect use of the resulting promises.
+        "useDefaultSwitchClauseLast": "warn",
+        "useErrorMessage": "warn",
+        "useGetterReturn": "warn",
+        "useIsArray": "warn",
+        "useNamespaceKeyword": "warn",
+        "useNumberToFixedDigitsArgument": "warn",
+        "noConstantBinaryExpressions": "info",
+        "noDocumentCookie": "info",
+        "noImportCycles": "error",
+        "noIrregularWhitespace": "warn",
+        "noTemplateCurlyInString": "off",
+        "noTsIgnore": "error",
+        "noUselessEscapeInString": "warn",
+        "useAdjacentOverloadSignatures": "warn",
+        "useGuardForIn": "warn"
       }
     }
   },
@@ -204,22 +197,43 @@
     "enabled": true,
     "actions": {
       "source": {
+        // Approximates the `perfectionist/sort-imports` scheme previously configured per-package
+        // via `@flippo/eslint` (react group first, then builtin/external/internal/parent/sibling,
+        // each split into value vs. type-only). `newlinesBetween: 'always'` there put a blank line
+        // between EVERY adjacent group, including a value/type pair within the same category — so
+        // every group below is separated by `:BLANK_LINE:` too, verified against a real file
+        // (src/components/Button/Button.tsx) during rollout. Biome's group matchers are still
+        // coarser than perfectionist's (no distinct parent/sibling/index split, no regex custom
+        // groups), so this remains a best-effort mapping, not a guaranteed 1:1 match.
         "organizeImports": {
           "level": "on",
           "options": {
             "groups": [
+              ["react", "react-*", "react-*/**"],
               ":BLANK_LINE:",
-              ":ALIAS:",
+              { "type": false, "source": ":NODE:" },
               ":BLANK_LINE:",
-              ":BUN:",
+              { "type": true, "source": ":NODE:" },
               ":BLANK_LINE:",
-              ":NODE:",
+              { "type": false, "source": [":PACKAGE:", ":PACKAGE_WITH_PROTOCOL:"] },
               ":BLANK_LINE:",
-              ":PACKAGE:",
+              { "type": true, "source": [":PACKAGE:", ":PACKAGE_WITH_PROTOCOL:"] },
               ":BLANK_LINE:",
-              ":PACKAGE_WITH_PROTOCOL:",
+              { "type": false, "source": ":ALIAS:" },
+              ":BLANK_LINE:",
+              { "type": true, "source": ":ALIAS:" },
+              ":BLANK_LINE:",
+              { "type": false, "source": ["../*", "../**"] },
+              ":BLANK_LINE:",
+              { "type": true, "source": ["../*", "../**"] },
+              ":BLANK_LINE:",
+              { "type": false, "source": ["./*", "./**"] },
+              ":BLANK_LINE:",
+              { "type": true, "source": ["./*", "./**"] },
               ":BLANK_LINE:",
               ":PATH:",
+              ":BLANK_LINE:",
+              ":BUN:",
               ":BLANK_LINE:",
               ":URL:",
               ":BLANK_LINE:"
@@ -255,53 +269,52 @@
     }
   },
   "overrides": [
-		{
+    {
       // Provide support for ambient TypeScript modules (i.e. type declaration files).
       "includes": ["src/**/*.d.ts"],
       "linter": {
-      "rules": {
-					"style": {
-						"useNamingConvention": {
-							"level": "warn",
-							"options": {
-								"conventions": [
-									{
-										"selector": {
-											"kind": "typeProperty", // Ignore properties for third-party compatibility reasons.
-											"scope": "any"
-										},
-										"match": ".*"
-									}
-								],
-								"strictCase": false // Allow consecutive uppercase letters for third-party compatibility reasons.
-							}
-						}
-					}
-				}
-			}
-		},
-		{
-			// Provide support for configuration files in a Node.js- and ESM-based toolchain.
-			"includes": ["*.config.js", "*.config.ts"],
-			"linter": {
-				"rules": {
-					"correctness": {
-						"noNodejsModules": "off" // Allow importing Node.js-specific modules such as `node:path` and `node:url` in configuration files.
-					},
-					"style": {
-						"noDefaultExport": "off", // Allow default exports in configuration files.
-						"useFilenamingConvention": {
-							"level": "warn",
-							"options": {
-								"filenameCases": ["kebab-case"] // Allow the kebab-case naming convention motivated by the `.config.{js,ts}` extension.
-							}
-						}
-					},
-					"nursery": {
-						"noProcessEnv": "off" // Allow accessing environment variables in configuration files.
-					}
-				}
-			}
-		}
-	]
+        "rules": {
+          "style": {
+            "useNamingConvention": {
+              "level": "warn",
+              "options": {
+                "conventions": [
+                  {
+                    "selector": {
+                      "kind": "typeProperty", // Ignore properties for third-party compatibility reasons.
+                      "scope": "any"
+                    },
+                    "match": ".*"
+                  }
+                ],
+                "strictCase": false // Allow consecutive uppercase letters for third-party compatibility reasons.
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      // Provide support for configuration files in a Node.js- and ESM-based toolchain.
+      "includes": ["*.config.js", "*.config.ts"],
+      "linter": {
+        "rules": {
+          "correctness": {
+            "noNodejsModules": "off" // Allow importing Node.js-specific modules such as `node:path` and `node:url` in configuration files.
+          },
+          "style": {
+            "noDefaultExport": "off", // Allow default exports in configuration files.
+            "useFilenamingConvention": {
+              "level": "warn",
+              "options": {
+                "filenameCases": ["kebab-case"] // Allow the kebab-case naming convention motivated by the `.config.{js,ts}` extension.
+              }
+            },
+            "noProcessEnv": "off" // Allow accessing environment variables in configuration files.
+          },
+          "nursery": {}
+        }
+      }
+    }
+  ]
 }

@@ -15,21 +15,21 @@ packages:
   - packages/test/*
 
 allowBuilds:
-  '@parcel/watcher': set this to true or false
-  '@testplane/edgedriver': set this to true or false
-  '@testplane/geckodriver': set this to true or false
-  better-sqlite3: set this to true or false
-  bufferutil: set this to true or false
-  edgedriver: set this to true or false
-  esbuild: set this to true or false
-  geckodriver: set this to true or false
-  sharp: set this to true or false
-  utf-8-validate: set this to true or false
+  '@parcel/watcher': true
+  '@testplane/edgedriver': true
+  '@testplane/geckodriver': true
+  better-sqlite3: false
+  bufferutil: true
+  edgedriver: true
+  esbuild: true
+  geckodriver: true
+  sharp: true
+  utf-8-validate: true
 
 catalog:
   '@antfu/eslint-config': ^5.2.1
   '@base-ui-components/react': ^0.0.0
-  '@biomejs/biome': ^2.0.0-beta.1
+  '@biomejs/biome': ^2.5.11
   '@chromatic-com/storybook': ^3.2.6
   '@eslint-react/eslint-plugin': ^1.52.8
   '@farfetched/core': ^0.13.2

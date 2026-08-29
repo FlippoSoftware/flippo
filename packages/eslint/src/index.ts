@@ -74,9 +74,12 @@ export const general: TypedFlatConfigItem[] = [{
         'antfu/no-top-level-await': ['off'],
         'node/prefer-global/process': ['off'],
         'node/no-process-env': ['error'],
-        'perfectionist/sort-imports': ['error', {
-            tsconfigRootDir: import.meta.dirname
-        }]
+        // Import sorting is now handled by Biome's `organizeImports` assist action
+        // (`@flippo/biome`) on every package wired to `biome.json`. `@antfu/eslint-config`
+        // enables `perfectionist/sort-imports` by default with its own grouping, so it must
+        // be explicitly turned off here rather than just omitted — otherwise both tools
+        // fight over import order with conflicting autofixes.
+        'perfectionist/sort-imports': 'off'
     }
 }, {
     languageOptions: {

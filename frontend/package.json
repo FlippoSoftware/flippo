@@ -41,8 +41,10 @@
     "zod": "catalog:"
   },
   "devDependencies": {
+    "@biomejs/biome": "catalog:",
     "@chromatic-com/storybook": "catalog:",
     "@eslint-react/eslint-plugin": "catalog:",
+    "@flippo/biome": "workspace:*",
     "@flippo/eslint": "workspace:*",
     "@flippo/tsconfig": "workspace:*",
     "@storybook/addon-essentials": "catalog:",

@@ -16,7 +16,9 @@
     "publish": "npm i && turbo run build && changeset publish"
   },
   "devDependencies": {
+    "@biomejs/biome": "catalog:",
     "@changesets/cli": "^2.29.6",
+    "@flippo/biome": "workspace:*",
     "turbo": "^2.5.6"
   },
   "engines": {

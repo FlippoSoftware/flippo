@@ -1,0 +1,21 @@
+engine biome(1.0)
+language js(typescript, jsx)
+
+// Equivalent to `node/prefer-global/process: ['error', 'always']` from `@flippo/eslint`:
+// `process` is available as a global in both Node.js and bundler-injected browser builds,
+// so importing it explicitly from `node:process` is redundant.
+//
+// Diagnostic-only, no rewrite: a naive `=> \`\`` rewrite to delete the import statement was
+// tested and found to corrupt the file (it deleted unrelated following statements too), so
+// autofix is intentionally left out until a safe rewrite is verified.
+
+or {
+    `import process from 'node:process'`,
+    `import { $specifiers } from 'node:process'`
+} as $import where {
+    register_diagnostic(
+        span = $import,
+        message = "Use the global `process` instead of importing it from 'node:process'.",
+        severity = "error"
+    )
+}

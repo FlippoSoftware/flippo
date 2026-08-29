@@ -31,7 +31,9 @@
     }
   },
   "devDependencies": {
+    "@biomejs/biome": "catalog:",
     "@figma-export/core": "catalog:",
+    "@flippo/biome": "workspace:*",
     "@flippo/eslint": "workspace:*",
     "@flippo/tsconfig": "workspace:*",
     "@svgr/core": "catalog:",
