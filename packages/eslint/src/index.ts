@@ -95,6 +95,15 @@ export const general: TypedFlatConfigItem[] = [{
     ignores: ['dist/**']
 }];
 
+// `formatters: true` registers `format/prettier` for `**/*.css` (and `.scss`/`.less`,
+// left untouched — Biome doesn't parse those). `.css` files are now formatted by Biome
+// instead (see the editor's `[css]` formatter setting), so ESLint's own copy of that rule
+// is turned off here to stop the two from fighting over the same files.
+const cssFormatterDisable: TypedFlatConfigItem = {
+    files: ['**/*.css'],
+    rules: { 'format/prettier': 'off' }
+};
+
 export type ESLintAntfuConfig = ReturnType<typeof antfu>;
 /**
  * A shared ESLint configuration for the repository.
@@ -130,7 +139,7 @@ export function eslintReactConfig(dirname: string): ESLintAntfuConfig {
             formatters: true,
             ...general
         }
-    );
+    ).append(cssFormatterDisable);
 }
 
 /**
@@ -160,5 +169,5 @@ export function eslintNodeConfig(dirname: string): ESLintAntfuConfig {
             formatters: true,
             ...general
         }
-    );
+    ).append(cssFormatterDisable);
 }

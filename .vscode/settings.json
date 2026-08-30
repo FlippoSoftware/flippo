@@ -11,6 +11,14 @@
   // stable programmatic API yet, so typescript-eslint can't run on it until 7.1.
   "typescript.experimental.useTsgo": true,
 
+  // The default OS-native ("recommended") watcher gets stuck in an infinite re-index loop in
+  // this monorepo — `packages/ui/uikit/headless/components` (a nested Biome project pulling
+  // in the shared `@flippo/biome` plugins via a symlinked `node_modules/@flippo`) keeps
+  // getting reported as changed right after being scanned, pegging the `biome __run_server`
+  // daemon at 300%+ CPU and writing gigabytes of logs. Polling breaks that feedback loop.
+  "biome.lsp.watcher.kind": "polling",
+  "biome.lsp.watcher.pollingInterval": 2000,
+
   // Global fallback formatter (markdown/yaml/html/graphql/vue/astro/svelte/etc. — anything
   // Biome doesn't format — still goes through eslint-plugin-format/Prettier via ESLint).
   "prettier.enable": false,
@@ -18,16 +26,17 @@
   "editor.defaultFormatter": "dbaeumer.vscode-eslint",
 
   // Biome owns formatting for the languages it covers (see `@flippo/biome`'s
-  // `base.config.jsonc`: js/ts/jsx/tsx formatter + `javascript`/`json` blocks). CSS is
-  // deliberately NOT overridden here yet — eslint-plugin-format's `format/*` rule applies to
-  // CSS and markdown alike under the same rule id, so excluding it from ESLint's save-time
-  // fix (below) to hand CSS to Biome would also silently stop markdown's Prettier formatting.
+  // `base.config.jsonc`: js/ts/jsx/tsx/css formatter + `javascript`/`json` blocks). SCSS/LESS
+  // are NOT overridden — Biome doesn't parse those — so they still go through
+  // eslint-plugin-format/Prettier (see `cssFormatterDisable` in `@flippo/eslint`, which turns
+  // off ESLint's own `format/prettier` copy for `.css` only, leaving `.scss`/`.less` as-is).
   "[typescript]": { "editor.defaultFormatter": "biomejs.biome" },
   "[typescriptreact]": { "editor.defaultFormatter": "biomejs.biome" },
   "[javascript]": { "editor.defaultFormatter": "biomejs.biome" },
   "[javascriptreact]": { "editor.defaultFormatter": "biomejs.biome" },
   "[json]": { "editor.defaultFormatter": "biomejs.biome" },
   "[jsonc]": { "editor.defaultFormatter": "biomejs.biome" },
+  "[css]": { "editor.defaultFormatter": "biomejs.biome" },
 
   // Auto fix
   "editor.codeActionsOnSave": {

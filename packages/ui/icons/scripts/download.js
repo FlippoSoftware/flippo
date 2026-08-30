@@ -5,6 +5,7 @@ import process from 'node:process';
 import { components as loadComponents } from '@figma-export/core';
 import isSvg from 'is-svg';
 import { optimize } from 'svgo';
+
 import { ICONS_NAME_REGEX, IGNORED_COLORS_FOR_SVGO_REGEX, SVGS_DIR } from './constants.js';
 import { clearDir, kebabCaseToCamelCase } from './utils.js';
 
@@ -27,8 +28,7 @@ function parseComponentPropsFromString(props) {
 function parseComponentSetName(name) {
     const params = name.split('/');
 
-    if (params.length < 3)
-        throw new Error(`Icon must have palette, group and name (Monochrome/Logo/yandex): ${name}`);
+    if (params.length < 3) throw new Error(`Icon must have palette, group and name (Monochrome/Logo/yandex): ${name}`);
 
     return {
         name: params.at(-1),
@@ -44,28 +44,33 @@ function svgTransformer(svg, palette) {
 
     return optimize(svg, {
         multipass: true,
-        plugins: [{
-            name: 'preset-default',
-            params: {
-                overrides: {
-                    convertColors: {
-                        currentColor: isMonochrome ? IGNORED_COLORS_FOR_SVGO_REGEX : false
-                    },
-                    removeViewBox: false
+        plugins: [
+            {
+                name: 'preset-default',
+                params: {
+                    overrides: {
+                        convertColors: {
+                            currentColor: isMonochrome ? IGNORED_COLORS_FOR_SVGO_REGEX : false
+                        },
+                        removeViewBox: false
+                    }
                 }
             }
-        }]
+        ]
     }).data;
 }
 
 function createSvgBuilder(metadata) {
     return async function svgBuilder([{ children, components: icons }]) {
-        const targetNodes = targetNodesBFS(FIGMA_IDS, children);
+        const targetNodes = targetNodesBfs(FIGMA_IDS, children);
         const iconSets = componentSetsDfs(targetNodes);
-        const iconsById = icons.reduce((acc, icon) => { acc[icon.id] = icon; return acc; }, {});
+        const iconsById = icons.reduce((acc, icon) => {
+            acc[icon.id] = icon;
+            return acc;
+        }, {});
         const uniqueIcons = new Set();
 
-        function targetNodesBFS(targetIds, startQueue) {
+        function targetNodesBfs(targetIds, startQueue) {
             const queue = Array.from(startQueue);
             const resultNodes = [];
 
@@ -81,8 +86,7 @@ function createSvgBuilder(metadata) {
                     continue;
                 }
 
-                if (node.children)
-                    queue.push(...node.children);
+                if (node.children) queue.push(...node.children);
             }
 
             return resultNodes;
@@ -109,46 +113,36 @@ function createSvgBuilder(metadata) {
             return Array.from(resultSets);
         }
 
-        console.log(iconSets);
-
         for (const iconSet of iconSets) {
             const { name, meta } = parseComponentSetName(iconSet.name);
 
-            if (!ICONS_NAME_REGEX.test(name))
-                throw new Error(`Invalid icon name: ${name}. Pattern: ${ICONS_NAME_REGEX.source}`);
+            if (!ICONS_NAME_REGEX.test(name)) throw new Error(`Invalid icon name: ${name}. Pattern: ${ICONS_NAME_REGEX.source}`);
 
             if (uniqueIcons.has(name)) {
                 throw new Error(`Icon has been already added: ${name}`);
             }
-            else {
-                uniqueIcons.add(name);
-            }
 
-            if (!meta.palette)
-                throw new Error(`Icon must have palette: ${name}`);
+            uniqueIcons.add(name);
 
-            if (!meta.group)
-                throw new Error(`Icon must have group: ${name}`);
+            if (!meta.palette) throw new Error(`Icon must have palette: ${name}`);
+
+            if (!meta.group) throw new Error(`Icon must have group: ${name}`);
 
             metadata.info.palettes.add(meta.palette);
             metadata.info.groups.add(meta.group);
 
             for (const icon of iconSet.children) {
                 const props = parseComponentPropsFromString(icon.name);
-                if (!props.preview)
-                    throw new Error(`Icon has no preview: ${name}`);
+                if (!props.preview) throw new Error(`Icon has no preview: ${name}`);
 
-                if (props.preview === 'true')
-                    continue;
+                if (props.preview === 'true') continue;
 
                 let svg = iconsById[icon.id].svg;
                 let svgName = name;
 
-                if (!props.style)
-                    throw new Error(`Icon has no style: ${name}`);
+                if (!props.style) throw new Error(`Icon has no style: ${name}`);
 
-                if (props.style !== 'regular')
-                    svgName += `_${props.style}`;
+                if (props.style !== 'regular') svgName += `_${props.style}`;
 
                 if (props.animated === 'true') {
                     if (!isSvg(iconsById[icon.id].description))
@@ -166,7 +160,6 @@ function createSvgBuilder(metadata) {
                 });
 
                 const optimizedSvg = svgTransformer(svg, meta.palette);
-                console.log(path.join(SVGS_DIR, `${svgName}.svg`));
                 await fs.writeFile(path.join(SVGS_DIR, `${svgName}.svg`), optimizedSvg);
             }
         }
@@ -191,9 +184,7 @@ async function download() {
         onlyFromPages: FIGMA_PAGES,
         outputters: [createSvgBuilder(metadata)],
         filterComponent: (node) => {
-            if (node.name === 'Divider Horizontal')
-                console.log(node);
-            return node.type !== 'INSTANCE';
+            if (node.name === 'Divider Horizontal') return node.type !== 'INSTANCE';
         }
     });
 
@@ -202,7 +193,6 @@ async function download() {
     await fs.writeFile(path.join(process.cwd(), 'metadata.json'), JSON.stringify(metadata, null, 2));
 }
 
-download().catch((error) => {
-    console.error(`Failed to download icons: ${error}`);
+download().catch((_error) => {
     process.exit(1);
 });

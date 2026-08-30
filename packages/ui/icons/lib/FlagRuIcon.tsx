@@ -1,11 +1,16 @@
 import type { SVGProps } from 'react';
-import * as React from 'react';
 
 function FlagRu(props: SVGProps<SVGSVGElement>) {
     return (
         <svg xmlns={'http://www.w3.org/2000/svg'} fill={'none'} viewBox={'0 0 24 24'} {...props}>
             <mask
-              id={'a'} width={24} height={24} x={0} y={0} maskUnits={'userSpaceOnUse'} style={{
+                id={'a'}
+                width={24}
+                height={24}
+                x={0}
+                y={0}
+                maskUnits={'userSpaceOnUse'}
+                style={{
                     maskType: 'luminance'
                 }}
             >
