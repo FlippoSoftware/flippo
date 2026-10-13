@@ -153,7 +153,7 @@ Electron + Capacitor — две оболочки на JS; остаётся за�
 
 ```text
 Аккаунт
-  User ─ AuthIdentity (email, google, vk, yandex, apple) ─ SecondFactor (totp, passkey, recovery codes)
+  User ─ AuthIdentity (email, google, apple, microsoft, github, yandex) ─ SecondFactor (totp, passkey, recovery codes)
   Device (публичный ключ, доверенное: да/нет, политика синхронизации)
 
 Личное (сквозное шифрование при синхронизации)
